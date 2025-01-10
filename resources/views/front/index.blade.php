@@ -7,6 +7,8 @@
   <title>Home Page</title>
 </head>
 <body>
-  This is the main page
+  <div>
+    <h1>The Pacific Art. Your goto place for affordable and premium arts</h1>
+  </div>
 </body>
 </html>
