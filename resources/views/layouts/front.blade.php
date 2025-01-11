@@ -12,19 +12,19 @@
           <h1>The Pacific Art</h1>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <a href="{{ route('front.home') }}">Home</a>
             </li>
             <li>
-              <a href="#">Arts</a>
+              <a href="{{ route('front.arts') }}">Arts</a>
             </li>
             <li>
-              <a href="#">About</a>
+              <a href="{{ route('front.about') }}">About</a>
             </li>
             <li>
-              <a href="#">Gallery</a>
+              <a href="{{ route('front.gallery') }}">Gallery</a>
             </li>
             <li>
-              <a href="#">Blog</a>
+              <a href="{{ route('front.blog') }}">Blog</a>
             </li>
           </ul>
         </nav>

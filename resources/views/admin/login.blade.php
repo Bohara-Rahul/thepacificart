@@ -7,6 +7,29 @@
   <title>Document</title>
 </head>
 <body>
-  <form>This is a form</form>
+  <form action="{{ route('admin_login_submit') }}" method="POST">
+    @csrf
+    <div>
+      <label for="email">Email:</label>
+      <input 
+        id="email"
+        type="email" 
+        name="email"
+        placeholder="Enter your email here" 
+        value='{{ old("email") }}'
+      />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Enter your passsword here"
+        value='{{ old("password") }}'
+      />
+    </div>
+    <button type="submit">Login</button>
+  </form>
 </body>
 </html>

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <main class="text-center text-red-300">This is the About Page</main>
-</body>
-</html>
+@extends('layouts.front')
+
+@section('main_content')
+  <h2>About Us</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus doloremque earum amet illo quas officiis quisquam harum placeat accusamus sed?</p>
+@endsection

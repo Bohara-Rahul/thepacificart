@@ -16,4 +16,18 @@ class FrontController extends Controller
     {
         return view("front.about");
     }
+    
+    public function gallery()
+    {
+        return view("front.gallery");
+    }
+    
+    public function arts()
+    {
+        return view("front.arts");
+    }
+    public function blog()
+    {
+        return view("front.blog");
+    }
 }
