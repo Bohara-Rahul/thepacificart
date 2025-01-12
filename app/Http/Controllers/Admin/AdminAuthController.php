@@ -15,19 +15,12 @@ class AdminAuthController extends Controller
 
     public function login_submit(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
-        ]);
+        ]);    
 
-        $check = $request->all();
-
-        $data = [
-            "email" => $check["email"],
-            "password" => $check["password"],
-        ];
-
-        if (Auth::guard("admin")->attempt($data)) 
+        if (auth()->attempt(['email' => $validated['email'], 'password' => $validated['password']])) 
         {
             return redirect()->route("admin_dashboard");
         }

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('year_of_creation')->nullable();
             $table->integer('stock')->nullable();
             $table->string('size')->nullable();
-            $table->foreignId('photo_id')->references('id')->on('photos');
             $table->timestamps();
         });
     }

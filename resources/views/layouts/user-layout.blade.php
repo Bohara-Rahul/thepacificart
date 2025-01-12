@@ -7,29 +7,7 @@
         <title>Laravel</title>
     </head>
     <body>
-      <header>
-        <nav>
-          <h1>The Pacific Art</h1>
-          <ul>
-            <li>
-              <a href="{{ route('front.home') }}">Home</a>
-            </li>
-            <li>
-              <a href="{{ route('front.arts') }}">Arts</a>
-            </li>
-            <li>
-              <a href="{{ route('front.about') }}">About</a>
-            </li>
-            <li>
-              <a href="{{ route('front.gallery') }}">Gallery</a>
-            </li>
-            <li>
-              <a href="{{ route('front.blog') }}">Blog</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
+  
       @if (session()->has('success'))
       <div class="container container--narrow">
         <div class="alert alert-success text-center">

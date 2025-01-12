@@ -20,10 +20,10 @@ class Product extends Model
         "size"
     ];
 
-    public function photos() 
-    {
-        $this->hasMany(Photo::class);
-    }
+    // public function photos() 
+    // {
+    //     $this->hasMany(Photo::class);
+    // }
 
     public function setTitleAttribute($value)
     {
