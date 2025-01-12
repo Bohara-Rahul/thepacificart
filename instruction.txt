@@ -1,8 +1,7 @@
 Follow these instructions in order:
-1. Open project in vs code
-2. Press Ctrl + key on left of 1
-3. In the terminal run: git pull 
-4. In the terminal run: php artisan migrate:fresh --seed
-5. In the terminal run: npm install
-6. In the terminal run: npm run dev
-7. View the project in browser and login to admin site at url: localhost:8000/admin or thepacificart.test/admin and You can create new category now
+1. Press Ctrl + key on left of 1
+2. In the terminal run: git pull 
+3. In the terminal run: php artisan migrate:fresh --seed
+4. In the terminal run: npm install
+5. In the terminal run: npm run dev
+6. View the project in browser and login to admin site at url: localhost:8000/admin or thepacificart.test/admin and You can create new category now
