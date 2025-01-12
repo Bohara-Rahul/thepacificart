@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +12,11 @@ class Category extends Model
         'title',
         'slug',
     ];
+
+    public function products()
+    {
+        $this->hasMany(Product::class);
+    }
 
     public function setTitleAttribute($value)
     {

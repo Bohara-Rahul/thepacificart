@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Photo;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,13 +17,19 @@ class Product extends Model
         "surface",
         "year_of_creation",
         "stock",
-        "size"
+        "size",
+        "category_id",
     ];
 
     // public function photos() 
     // {
     //     $this->hasMany(Photo::class);
     // }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function setTitleAttribute($value)
     {

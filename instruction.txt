@@ -1,7 +1,5 @@
 Follow these instructions in order:
-1. Press Ctrl + key on left of 1
-2. In the terminal run: git pull 
-3. In the terminal run: php artisan migrate:fresh --seed
-4. In the terminal run: npm install
-5. In the terminal run: npm run dev
-6. View the project in browser and login to admin site at url: localhost:8000/admin or thepacificart.test/admin and You can create new category now
+1. In the terminal run: php artisan migrate:fresh --seed
+2. In the terminal run: npm install
+3. In the terminal run: npm run dev
+4. View the project in browser and login to admin site at url: localhost:8000/admin or thepacificart.test/admin and You can create new category now

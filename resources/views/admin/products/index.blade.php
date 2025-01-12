@@ -4,7 +4,7 @@
 <section>
   <header class="flex justify-between mb-5">
     <h2>List of Arts</h2>
-    <a href="#">Create New Art</a>
+    <a href="{{ route('admin_products_create') }}">Create New Art</a>
   </header>
   <table>
     <thead>

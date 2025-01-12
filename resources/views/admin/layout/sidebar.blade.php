@@ -7,15 +7,15 @@
       </div> --}}
 
       <ul>
-        <li class="{{ Request::is('admin/dashboard/*') ? 'font-bold' : '' }} mb-2"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+        <li class="{{ Request::is('admin/dashboard*') ? 'font-bold' : '' }} mb-2"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-        <li class="{{ Request::is('admin/products/*') ? 'text-red-500' : '' }} mb-2">
+        <li class="{{ Request::is('admin/products*') ? 'text-red-500' : '' }} mb-2">
           <a href="{{ route('admin_products') }}">
             <i class="fas fa-hand-point-right"></i> <span>Arts</span>
           </a>
         </li>
 
-        <li class="{{ Request::is('admin/categories/*') ? 'text-red-500' : '' }}">
+        <li class="{{ Request::is('admin/categories*') ? 'text-red-500' : '' }}">
             <a href="{{ route('admin_categories') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Categories</span>
             </a>
