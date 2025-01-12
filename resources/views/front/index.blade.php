@@ -10,6 +10,8 @@
                 </a>
                 <p>{!! $product->description !!}</p>
                 <p>{{ $product->medium }}</p>
+                <p>{{ $product->surface }}</p>
+                <p>{{ $product->size }}</p>
             </div>
         @endforeach
     </div>
