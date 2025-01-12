@@ -1,18 +1,20 @@
 @extends("layouts.front")
 
 @section("main_content")
-    <h2>Products</h2>
-    <div class="row">
-        @foreach ($products as $product)
-            <div style="background-color: ghostwhite; padding: 10px;">
-                <a href="{{ route('product_detail', $product->slug) }}">
-                    <h3>{{ $product->title }}</h3>
-                </a>
-                <p>{!! $product->description !!}</p>
-                <p>{{ $product->medium }}</p>
-                <p>{{ $product->surface }}</p>
-                <p>{{ $product->size }}</p>
-            </div>
-        @endforeach
-    </div>
+    <section class="mt-10">
+        <h2 class="font-bold text-3xl">Featured Products</h2>
+        <article class="flex justify-between">
+            @foreach ($products as $product)
+                <section>
+                    <a href="{{ route('product_detail', $product->slug) }}">
+                        <h3>{{ $product->title }}</h3>
+                    </a>
+                    <p>{!! $product->description !!}</p>
+                    <p>{{ $product->medium }}</p>
+                    <p>{{ $product->surface }}</p>
+                    <p>{{ $product->size }}</p>
+                </section>
+            @endforeach
+        </article>
+    </section>
 @endsection
