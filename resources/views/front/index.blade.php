@@ -9,6 +9,7 @@
                     <h3>{{ $product->title }}</h3>
                 </a>
                 <p>{!! $product->description !!}</p>
+                <p>{{ $product->medium }}</p>
             </div>
         @endforeach
     </div>
