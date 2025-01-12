@@ -2,26 +2,25 @@
 @section('main_content')
 @include('admin.layout.sidebar')
 <main>
-  <h2>List of Categories</h2>
+  <header class="flex justify-between">
+    <h2>List of Categories</h2>
+    <a href="{{ route('admin_categories_create') }}">
+      Add New Category
+    </a>
+  </header>
   <table>
     <thead>
-      <th>S.N</th>
+      <th>S.N.</th>
       <th>Name</th>
       <th>Slug</th>
-      <th>Action/th>
+      <th>Action</th>
     </thead>
     <tbody>
       @foreach ($categories as $category)
         <tr>
           <td>{{ $loop->iteration }}</td>
-        </tr>   
-        <tr>
-          <td>{{ $category->name }}</td>
-        </tr>   
-        <tr>
+          <td>{{ $category->title }}</td>
           <td>{{ $category->slug }}</td>
-        </tr>   
-        <tr>
           <td>
             <a href="#">Edit</a>
           </td>

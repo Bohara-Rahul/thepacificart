@@ -1,5 +1,4 @@
-<div class="main-sidebar">
-  <aside id="sidebar-wrapper">
+<aside class="border-2 border-red-300 p-2">
       {{-- <div class="sidebar-brand">
           <a href="{{ route('admin_dashboard') }}">Admin Panel</a>
       </div>
@@ -8,10 +7,18 @@
       </div> --}}
 
       <ul>
-        <li class="{{ Request::is('admin/dashboard/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+        <li class="{{ Request::is('admin/dashboard/*') ? 'font-bold' : '' }} mb-2"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-        <li class="{{ Request::is('admin/products/*') ? 'active' : '' }}">
-          <a href="{{ route('admin_products') }}"><i class="fas fa-hand-point-right"></i> <span>Products</span></a>
+        <li class="{{ Request::is('admin/products/*') ? 'text-red-500' : '' }} mb-2">
+          <a href="{{ route('admin_products') }}">
+            <i class="fas fa-hand-point-right"></i> <span>Arts</span>
+          </a>
+        </li>
+
+        <li class="{{ Request::is('admin/categories/*') ? 'text-red-500' : '' }}">
+            <a href="{{ route('admin_categories') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Categories</span>
+            </a>
         </li>
       </ul>
 
@@ -80,9 +87,4 @@
           <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
 
       </ul> --}}
-      <ul>
-        <li></li>
-        <li></li>
-      </ul>
-  </aside>
-</div>
+</aside>

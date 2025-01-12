@@ -8,8 +8,8 @@
 
   @vite('resources/css/app.css')
 </head>
-<body>
-  <nav class="flex flex-row">
+<body class="max-w-6xl mx-auto">
+  <nav class="flex justify-between py-5">
     <h2>Hello {{ auth()->user()->name }}</h2>
     <a href="{{ route('front.home') }}">Front End</a>
   </nav>
@@ -30,7 +30,7 @@
     </div>    
   @endif
 
-  <main>
+  <main class="flex space-x-5">
     @yield("main_content")
   </main>
 </body>

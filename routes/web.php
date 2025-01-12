@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Front\FrontController;
@@ -26,8 +27,7 @@ Route::post("/login", [UserController::class, 'login_submit'])->name('user.login
 Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLoggedIn');
 Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
 
-
-// Admin Controller related routes
+// Admin Auth Controller related routes
 Route::prefix('admin')->group(function () {
   Route::get('/', function () {
     return redirect('/admin/login');
@@ -36,10 +36,17 @@ Route::prefix('admin')->group(function () {
   Route::post("/login", [AdminAuthController::class, 'login_submit'])->name('admin_login_submit');
 });
 
-
+// Admin Dashboard Controller 
 Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get("/dashboard", [AdminDashboardController::class, 'index'])->name('admin_dashboard');
+
+  // Product Related Routes
   Route::get("/products", [AdminProductController::class, 'index'])->name('admin_products');
   Route::get("/products/create", [AdminProductController::class, 'create'])->name('admin_products_create');
   Route::post("/products/create", [AdminProductController::class, 'create_submit'])->name('admin_products_create_submit');
+
+  // Category Related Routes
+  Route::get("/categories", [AdminCategoryController::class, 'index'])->name('admin_categories');
+  Route::get("/categories/create", [AdminCategoryController::class, 'create'])->name('admin_categories_create');
+  Route::post("/categories/create", [AdminCategoryController::class, 'create_submit'])->name('admin_categories_create_submit');
 });

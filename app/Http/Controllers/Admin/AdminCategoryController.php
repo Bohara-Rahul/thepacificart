@@ -22,19 +22,13 @@ class AdminCategoryController extends Controller
     public function create_submit(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'slug' => 'required|string|unique'
+            'title' => 'required|string',
         ]);
 
         $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $created = $category->save();
+        $category->title = $request->title;
+        $category->save();
 
-        if ($created) {
-            return redirect()->route('category.index')->with('success', 'Category created successfully');
-        } else {
-            return redirect()->route('category.create')->with('failure', 'Failure to create Category');
-        }
+        return redirect()->route('admin_categories')->with('success', 'New Category created');
     }
 }

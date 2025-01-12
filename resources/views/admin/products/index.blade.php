@@ -1,11 +1,15 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
 @include('admin.layout.sidebar')
-  <h2>List of Products</h2>
+<section>
+  <header class="flex justify-between mb-5">
+    <h2>List of Arts</h2>
+    <a href="#">Create New Art</a>
+  </header>
   <table>
     <thead>
       <tr>
-        <th>SN</th>
+        <th>S.N</th>
         <th>Title</th>
         <th>Slug</th>
         <th>Actions</th>
@@ -23,6 +27,6 @@
       @endforeach
     </tbody>
   </table>
-  <a href="{{ route('admin_products_create') }}">Add New Art</a>
+</section>
 @endsection
 
