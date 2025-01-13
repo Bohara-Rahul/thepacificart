@@ -22,10 +22,10 @@
           <td>{{ $artist->name }}</td>
           <td>{{ $artist->location }}</td>
           <td>
-            <a href="#">Edit</a>
+            <a href="{{ route('admin_artist_edit', $artist->id) }}">Edit</a>
           </td>
           <td>
-            <a href="#">Delete</a>
+            <a href="{{ route('admin_artist_delete', $artist->id) }}" onclick="return confirm('Are you sure?');">Delete</a>
           </td>
         </tr>   
       @endforeach

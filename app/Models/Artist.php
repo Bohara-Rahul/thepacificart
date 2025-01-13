@@ -10,7 +10,7 @@ class Artist extends Model
         'name',
         'location',
         'bio',
-        'artist_id',
+        'photo'
     ];
 
     public function products()

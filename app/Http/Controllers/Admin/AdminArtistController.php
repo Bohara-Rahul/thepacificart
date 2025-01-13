@@ -29,16 +29,14 @@ class AdminArtistController extends Controller
 
         $artist = new Artist();
 
-        if ($request->photo) {
+        if ($request->hasFile('photo')) {
             $request->validate([
-                'photo' => 'string|mimes:jpg,jpeg,png,svg,webp|max:2048'
+                'photo' => 'image|mimes:jpg,jpeg,png,svg,webp|max:2048'
             ]);
 
-            $filename = $request->name.'_'.time().'.'.$request->photo->extension();                 
-            $request->photo->move(public_path('uploads', $filename));
+            $filename = 'artist_'.time().'.'.$request->photo->extension();                 
+            $request->photo->move(public_path('uploads'), $filename);
             $artist->photo = $filename;
-        } else {
-            $artist->photo = "fallback-avatar.jpg";
         }
 
         $artist->name = $request->name;
@@ -48,5 +46,55 @@ class AdminArtistController extends Controller
 
         return redirect()->route('admin_artists')->with('success', 'New Artist Added successfully');
 
+    }
+
+    public function edit($id)
+    {
+        $artist = Artist::where('id', $id)->first();
+        return view('admin.artist.edit', compact('artist'));
+    }
+
+    public function edit_submit(Request $request, $id)
+    {
+        $artist = Artist::where('id', $id)->first();
+
+        $request->validate([
+            'name' => 'required|string',
+            'bio' => 'required|string',
+            'location' => 'required|string'
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,svg,webp|max:2048'
+            ]);
+
+            if ($artist->photo != '') {
+                unlink(public_path('uploads/'.$artist->photo));
+            }
+
+            $filename = 'artist_'.time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('uploads'), $filename);
+            $artist->photo = $request->photo;
+        } else {
+            $artist->photo = 'uploads/fallback-avatar.jpg';
+        }
+
+        $artist->name = $request->name;
+        $artist->location = $request->location;
+        $artist->bio = $request->bio;
+        $artist->save();
+
+        return redirect()->route('admin_artists')->with('success', 'Artist updated successfully');
+    }
+
+    public function delete($id)
+    {
+        $artist = Artist::where('id', $id)->first();
+        if ($artist->photo != '') {
+            unlink(public_path('uploads/'.$artist->photo));
+        }
+        $artist->delete();
+        return redirect()->route('admin_artists')->with('success', 'Artist deleted successfully!!!');
     }
 }

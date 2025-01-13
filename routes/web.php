@@ -55,4 +55,7 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get('/artists', [AdminArtistController::class, 'index'])->name('admin_artists');
   Route::get('/artists/create', [AdminArtistController::class, 'create'])->name('admin_artist_create');
   Route::post('/artists/create', [AdminArtistController::class, 'create_submit'])->name('admin_artist_create_submit');
+  Route::get('/artists/edit/{id}', [AdminArtistController::class, 'edit'])->name('admin_artist_edit');
+  Route::post('/artists/edit/{id}', [AdminArtistController::class, 'edit_submit'])->name('admin_artist_edit_submit');
+  Route::get('/artists/delete/{id}', [AdminArtistController::class, 'delete'])->name('admin_artist_delete');
 });

@@ -20,6 +20,12 @@
                 <i class="fas fa-hand-point-right"></i> <span>Categories</span>
             </a>
         </li>
+
+        <li class="{{ Request::is('admin/artists*') ? 'text-red-500' : '' }}">
+            <a href="{{ route('admin_artists') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Artists</span>
+            </a>
+        </li>
       </ul>
 
       {{-- <ul class="sidebar-menu">
