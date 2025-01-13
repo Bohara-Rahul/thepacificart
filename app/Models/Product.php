@@ -31,6 +31,11 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function artist()
+    {
+        return $this->belongsTo(Artist::class);
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
