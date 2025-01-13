@@ -3,8 +3,21 @@
 @include('admin.layout.sidebar')
 <section>
   <h2>Edit Artist</h2>
-  <form action="{{ route('admin_artist_edit_submit') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('admin_artist_edit_submit', $artist->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    <div>
+      <label>Current Photo:</label>
+      <img src="{{ asset('uploads/'.$artist->photo) }}" alt="{{ $artist->name }}" />
+    </div>
+    <div>
+      <label for="photo">Change Photo:</label>
+      <input 
+        type="file" 
+        id="photo"
+        name="photo" 
+        value="{{ $artist->photo }}" 
+      />
+    </div>
     <div>
       <label for="name">Name:</label>
       <input 
@@ -33,16 +46,7 @@
         {{ $artist->bio }}
       </textarea>
     </div>
-    <div>
-      <label for="photo">Photo:</label>
-      <input 
-        type="file" 
-        id="photo"
-        name="photo" 
-        value="{{ $artist->photo }}" 
-      />
-    </div>
-    <button type="submit">Update/button>
+    <button type="submit">Update</button>
   </form>
 </section>
 @endsection
