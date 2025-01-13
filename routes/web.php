@@ -50,6 +50,9 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get("/categories", [AdminCategoryController::class, 'index'])->name('admin_categories');
   Route::get("/categories/create", [AdminCategoryController::class, 'create'])->name('admin_categories_create');
   Route::post("/categories/create", [AdminCategoryController::class, 'create_submit'])->name('admin_categories_create_submit');
+  Route::get('/categories/edit/{id}', [AdminCategoryController::class, 'edit'])->name('admin_categories_edit');
+  Route::post('/categories/edit/{id}', [AdminCategoryController::class, 'edit_submit'])->name('admin_categories_edit_submit');
+  Route::get('/categories/delete/{id}', [AdminCategoryController::class, 'delete'])->name('admin_categories_delete');
 
   // Artist Related Routes
   Route::get('/artists', [AdminArtistController::class, 'index'])->name('admin_artists');

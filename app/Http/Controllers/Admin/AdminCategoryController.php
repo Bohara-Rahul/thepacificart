@@ -31,4 +31,30 @@ class AdminCategoryController extends Controller
 
         return redirect()->route('admin_categories')->with('success', 'New Category created');
     }
+
+    public function edit($id)
+    {
+        $category = Category::where('id', $id)->first();
+        return view('admin.category.edit', compact('category'));
+    }
+
+    public function edit_submit(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            // 'slug' => 'required|string|alpha_dash|unique:categories,slug,'.$id,
+        ]);
+
+        $category = Category::where('id', $id)->first();
+        $category->title = $request->title;
+        $category->save();
+        return redirect()->route('admin_categories')->with('success', 'Category updadted successfully');
+    }
+
+    public function delete($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $category->delete();
+        return redirect()->route('admin_categories')->with('success', 'Category deleted successfully');
+    }
 }

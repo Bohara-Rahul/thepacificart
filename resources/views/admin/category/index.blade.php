@@ -22,10 +22,10 @@
           <td>{{ $category->title }}</td>
           <td>{{ $category->slug }}</td>
           <td>
-            <a href="#">Edit</a>
+            <a href="{{ route('admin_categories_edit', $category->id) }}">Edit</a>
           </td>
           <td>
-            <a href="#">Delete</a>
+            <a href="{{ route('admin_categories_delete', $category->id) }}" onclick="return confirm('Are you sure?')">Delete</a>
           </td>
         </tr>   
       @endforeach
