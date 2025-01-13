@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminArtistController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
@@ -49,4 +50,9 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get("/categories", [AdminCategoryController::class, 'index'])->name('admin_categories');
   Route::get("/categories/create", [AdminCategoryController::class, 'create'])->name('admin_categories_create');
   Route::post("/categories/create", [AdminCategoryController::class, 'create_submit'])->name('admin_categories_create_submit');
+
+  // Artist Related Routes
+  Route::get('/artists', [AdminArtistController::class, 'index'])->name('admin_artists');
+  Route::get('/artists/create', [AdminArtistController::class, 'create'])->name('admin_artist_create');
+  Route::post('/artists/create', [AdminArtistController::class, 'create_submit'])->name('admin_artist_create_submit');
 });
