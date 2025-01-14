@@ -45,6 +45,9 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get("/products", [AdminProductController::class, 'index'])->name('admin_products');
   Route::get("/products/create", [AdminProductController::class, 'create'])->name('admin_products_create');
   Route::post("/products/create", [AdminProductController::class, 'create_submit'])->name('admin_products_create_submit');
+  Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('admin_products_edit');
+  Route::post('/products/edit/{id}', [AdminProductController::class, 'edit_submit'])->name('admin_products_edit_submit');
+  Route::get('/products/delete/{id}', [AdminProductController::class, 'delete'])->name('admin_products_delete');
 
   // Category Related Routes
   Route::get("/categories", [AdminCategoryController::class, 'index'])->name('admin_categories');

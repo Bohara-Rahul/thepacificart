@@ -8,13 +8,28 @@
       <input type="text" name="title" value="{{ old('title') }}" required />
     </div>
     <div>
+      <label for="artist_id">Artist</label>
+      <select name="artist_id" id="artist_id" required>
+        <option value="" disabled selected>
+          Select an artist
+        </option>
+        @foreach ($artists as $artist)
+          <option value="{{ $artist->id }}">
+            {{ $artist->name }}
+          </option>  
+        @endforeach
+      </select>
+    </div>
+    <div>
       <label for="category_id">Category</label>
       <select id="category_id" name="category_id" required>
         <option value="" disabled selected>
           Select a category
         </option>
         @foreach ($categories as $category)
-          <option value="{{ $category->id }}">{{ $category->title }}</option>   
+          <option value="{{ $category->id }}">
+            {{ $category->title }}
+          </option>   
         @endforeach
       </select>
     </div>

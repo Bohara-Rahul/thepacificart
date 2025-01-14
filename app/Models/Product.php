@@ -19,6 +19,7 @@ class Product extends Model
         "stock",
         "size",
         "category_id",
+        "artist_id",
     ];
 
     // public function photos() 

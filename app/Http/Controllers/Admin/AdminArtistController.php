@@ -76,9 +76,7 @@ class AdminArtistController extends Controller
             $filename = 'artist_'.time().'.'.$request->photo->extension();
             $request->photo->move(public_path('uploads'), $filename);
             $artist->photo = $request->photo;
-        } else {
-            $artist->photo = 'uploads/fallback-avatar.jpg';
-        }
+        } 
 
         $artist->name = $request->name;
         $artist->location = $request->location;

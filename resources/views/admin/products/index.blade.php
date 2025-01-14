@@ -21,8 +21,10 @@
           <td>{{ $loop->iteration }}</td>
           <td>{{ $product->title }}</td>
           <td>{{ $product->slug }}</td>
-          <td>Edit</td>
-          <td>Delete</td>
+          <td>
+            <a href="{{ route('admin_products_edit', $product->id) }}">Edit</a>
+            <a href="{{ route('admin_products_delete', $product->id) }}" onclick="return confirm('Are you sure?');">Delete</a>
+          </td>
         </tr>
       @endforeach
     </tbody>
