@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,12 +19,13 @@ class Product extends Model
         "size",
         "category_id",
         "artist_id",
+        "files"
     ];
 
-    // public function photos() 
-    // {
-    //     $this->hasMany(Photo::class);
-    // }
+    public function photos() 
+    {
+        return $this->hasMany(Photo::class);
+    }
 
     public function category()
     {

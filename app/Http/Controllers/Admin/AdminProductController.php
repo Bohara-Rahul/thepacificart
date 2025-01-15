@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
 use App\Models\Category;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
@@ -35,21 +36,43 @@ class AdminProductController extends Controller
             'stock' => 'required',
             'size' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'artist_id' => 'required|exists:artists,id'
+            'artist_id' => 'required|exists:artists,id',
         ]);
 
         $validated['price'] = $validated['price'] * 100;
 
-        Product::create($validated);
+        $product = Product::create($validated);
+
+        if ($request->hasFile('files')) {
+            $request->validate([
+                'files.*' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
+            ]);
+
+            foreach($request->file('files') as $file) {
+                $filename = 'photo_'.time().'.'.$file->extension();
+                $file->move(public_path('uploads'), $filename);
+
+                Photo::create([
+                    'name' => $filename,
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
 
         return redirect()->route('admin_products')->with('success', 'New Art added successfully');
     }
 
     public function edit($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::with('photos')->find($id);
+
+        if (!$product) {
+            return redirect()->back()->with('failure', 'Product Not Found!!!');
+        }
+
         $categories = Category::all();
         $artists = Artist::all();
+
         return view('admin.products.edit', compact('product', 'categories', 'artists'));
     }
 

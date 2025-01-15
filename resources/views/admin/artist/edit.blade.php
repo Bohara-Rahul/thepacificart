@@ -5,19 +5,32 @@
   <h2>Edit Artist</h2>
   <form action="{{ route('admin_artist_edit_submit', $artist->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div>
-      <label>Current Photo:</label>
-      <img src="{{ asset('uploads/'.$artist->photo) }}" alt="{{ $artist->name }}" />
-    </div>
-    <div>
-      <label for="photo">Change Photo:</label>
-      <input 
-        type="file" 
-        id="photo"
-        name="photo" 
-        value="{{ $artist->photo }}" 
-      />
-    </div>
+    @if ($artist->photo == '')
+      <p>No photo uploaded</p>
+      <div>
+        <label for="photo">Add Photo:</label>
+        <input 
+          type="file" 
+          id="photo"
+          name="photo" 
+        />
+      </div>  
+    @else
+      <div>
+        <label>Current Photo:</label>
+        <img src="{{ asset('uploads/'.$artist->photo) }}" alt="{{ $artist->name }}" />
+      </div>
+      <div>
+        <label for="photo">Change Photo:</label>
+        <input 
+          type="file" 
+          id="photo"
+          name="photo" 
+          value="{{ $artist->photo }}" 
+        />
+      </div>  
+    @endif
+    
     <div>
       <label for="name">Name:</label>
       <input 

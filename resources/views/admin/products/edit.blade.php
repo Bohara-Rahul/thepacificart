@@ -6,6 +6,16 @@
   <form action="{{ route('admin_products_edit_submit', $product->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
+      <p>Current Photos</p>
+      @foreach($product->photos as $photo)
+        <img 
+          src="{{ asset('uploads/'.$photo->name) }}" 
+          alt="{{ $product->title }}" 
+          style="width: 200px; height: auto;"
+        />
+      @endforeach
+    </div>
+    <div>
       <label for="name">Title:</label>
       <input 
         type="text" 

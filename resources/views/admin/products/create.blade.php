@@ -1,7 +1,7 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
 @include('admin.layout.sidebar')
-  <form action="{{ route('admin_products_create_submit') }}" method="POST">
+  <form action="{{ route('admin_products_create_submit') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
       <label for="title">Title</label>
@@ -60,6 +60,16 @@
     <div>
       <label for="year_of_creation">Year of Creation</label>
       <input type="text" name="year_of_creation" value="{{ old('year_of_creation') }}" required />
+    </div>
+    <div>
+      <label for="files">Choose photos</label>
+      <input 
+        type="file" 
+        id="files" 
+        name="files[]" 
+        accept="image/*" 
+        multiple 
+      /> 
     </div>
     <button type="submit">Create</button>
   </form>
