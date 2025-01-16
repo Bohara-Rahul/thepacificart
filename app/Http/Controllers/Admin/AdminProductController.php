@@ -59,7 +59,9 @@ class AdminProductController extends Controller
             }
         }
 
-        return redirect()->route('admin_products')->with('success', 'New Art added successfully');
+        return redirect()
+            ->route('admin_products')
+            ->with('success', 'New Art added successfully');
     }
 
     public function edit($id)

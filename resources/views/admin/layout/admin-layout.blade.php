@@ -8,7 +8,7 @@
 
   @vite('resources/css/app.css')
 </head>
-<body class="max-w-6xl mx-auto">
+<body class="container">
   <nav class="flex justify-between py-5">
     <h2>Hello {{ auth()->user()->name }}</h2>
     <a href="{{ route('front.home') }}">Front End</a>

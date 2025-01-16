@@ -10,7 +10,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with(['photos', 'category', 'artist'])->get();
         return view("front.index", compact('products'));
     }
 
