@@ -33,40 +33,12 @@
           class="logo" 
         />
       </section>
-      <header>  
-        <nav>
-          <ul class="flex justify-between space-x-2">
-            <li>
-              <a href="{{ route('front.home') }}">Home</a>
-            </li>
-            <li>
-              <a href="{{ route('front.arts') }}">Arts</a>
-            </li>
-            <li>
-              <a href="{{ route('front.about') }}">About</a>
-            </li>
-            <li>
-              <a href="{{ route('front.gallery') }}">Gallery</a>
-            </li>
-            <li>
-              <a href="{{ route('front.blog') }}">Blog</a>
-            </li>
-          </ul>
-        </nav>
-        <section class="container flex gap-5">
-          <aside>
-            <h2>Slogan goes here</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum.</p>
-            <button class="btn">Learn More</button>
-          </aside>
-          <img src="" alt="art picture" />
-        </section>
-      </header>
+      @include('front.components.nav')
 
       <main class="container">
         @yield("main_content")
       </main>
 
-      <footer class="mt-auto">All rights reserved with &copy; {{ date('Y') }}</footer>
+      <footer class="container text-center">All rights reserved with &copy; {{ date('Y') }}</footer>
     </body>
 </html>

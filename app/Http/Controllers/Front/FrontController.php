@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Artist;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -24,9 +25,10 @@ class FrontController extends Controller
         return view("front.gallery");
     }
     
-    public function arts()
+    public function artists()
     {
-        return view("front.arts");
+        $artists = Artist::all();
+        return view("front.artists", compact('artists'));
     }
     public function blog()
     {

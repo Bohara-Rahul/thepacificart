@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 // Front Contoller related routes
 Route::get("/", [FrontController::class, 'index'])->name('front.home');
 Route::get("/about", [FrontController::class, 'about'])->name("front.about");
-Route::get("/arts", [FrontController::class, 'arts'])->name("front.arts");
+Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
 Route::get("/gallery", [FrontController::class, 'gallery'])->name("front.gallery");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
 

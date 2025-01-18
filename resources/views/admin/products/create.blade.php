@@ -112,7 +112,6 @@
         type="file" 
         id="files" 
         name="files[]" 
-        accept="image/*" 
         multiple 
       /> 
     </div>

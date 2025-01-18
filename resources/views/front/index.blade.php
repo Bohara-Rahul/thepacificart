@@ -1,6 +1,6 @@
 @extends("layouts.front")
-
 @section("main_content")
+@include('front.components.hero-section')
     <section class="mt-10">
         <h2 class="font-bold text-3xl">Featured Products</h2>
         <article 
@@ -8,24 +8,27 @@
         >
             @foreach ($products as $product)
                     <x-card>
-                        <div>
-                            <a href="{{ route('product_detail', $product->slug) }}">
-                                <h3 class="text-center">
-                                    {{ $product->title }}
-                                </h3>
+                        <section>
+                            <a 
+                                href="{{ route('product_detail', $product->slug) }}"
+                            >
+                                <h3 class="text-2xl">{{ $product->title }}</h3>
+                  
                             </a>
                             @if ($product->photos)
-                                @foreach ($product->photos as $photo)
+                            <article style="width: 320px; height: 300px;">
                                 <img 
-                                    src="{{ asset('uploads/'.$photo->name) }}"
-                                    alt="product image" 
-                                />   
-                                @endforeach
-                            @else
-                                
+                                src="{{ asset('uploads/'.$product->photos[0]->name) }}"
+                                alt="product image"
+                                class="product-image" 
+                            />
+                            </article>                                 
                             @endif
-                            <p>{{ $product->category->title }}</p>
-                        </div>
+                            <article class="flex justify-between items-center mt-2">
+                                <a href="#"><p>ADD TO WISHLIST</p></a>
+                                <a href="#"><p>ADD TO CART</p></a>
+                            <article>
+                        </section>
                     </x-card>
             @endforeach
         </article>
