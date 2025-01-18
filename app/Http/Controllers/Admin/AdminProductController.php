@@ -8,6 +8,7 @@ use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class AdminProductController extends Controller
 {

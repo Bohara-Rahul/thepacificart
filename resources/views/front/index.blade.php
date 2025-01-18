@@ -16,7 +16,7 @@
                   
                             </a>
                             @if ($product->photos)
-                            <article style="width: 320px; height: 300px;">
+                            <article>
                                 <img 
                                 src="{{ asset('uploads/'.$product->photos[0]->name) }}"
                                 alt="product image"
