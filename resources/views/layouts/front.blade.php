@@ -25,14 +25,6 @@
           </div>
         </div>    
       @endif
-
-      <section class="banner">
-        <img 
-          src="{{ asset('logo.png') }}" 
-          alt="pacificart logo"
-          class="logo" 
-        />
-      </section>
       @include('front.components.nav')
 
       <main class="container">

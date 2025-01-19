@@ -1,8 +1,13 @@
-<section class="container flex justify-between gap-5 mt-5">
-  <aside>
+<section class="flex justify-between gap-2 mt-5">
+  <aside class="flex flex-col justify-center">
     <h2>Slogan goes here</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum.</p>
-    <button class="btn">Learn More</button>
+    <p class="max-w-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum. <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestias expedita est laboriosam sequi odit nostrum nulla quod at officia.</p>
+    <a class="btn mt-5 w-[150px] text-center">Learn More</a>
   </aside>
-  <img style="width: 500px;" src="{{ asset('uploads/hero-img.png') }}" alt="hero image" />
+    <img 
+      src="{{ asset('uploads/hero-img.jpg') }}" 
+      alt="hero image" 
+      class="h-[700px] w-[600px] object-cover rounded-md"
+    />
+  
 </section>

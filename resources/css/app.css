@@ -32,9 +32,9 @@ p {
     @apply top-0 left-0 right-0 fixed;
 } */
 
-nav {
+/* nav {
     @apply flex justify-center items-center gap-10 max-w-screen-lg mx-auto text-2xl mt-20;
-}
+} */
 
 h1 {
     @apply mr-auto;
