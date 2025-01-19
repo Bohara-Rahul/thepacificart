@@ -6,8 +6,10 @@
     <li>Artists</li>
     <li>Gallery</li>
   </ul>
-  <img src="{{ asset('modern_logo_4.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
-  <ul class="flex justify-between gap-5 items-center">
+  <div>
+    <img src="{{ asset('modern_logo_4.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
+  </div>
+  <ul class="flex justify-between gap-5 items-center text-xl">
     <form>
       <input class="outline-none" type="text" placeholder="Search here....." />
       

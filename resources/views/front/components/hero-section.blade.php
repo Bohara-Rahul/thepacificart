@@ -5,9 +5,9 @@
     <a class="btn mt-5 w-[150px] text-center">Learn More</a>
   </aside>
     <img 
-      src="{{ asset('uploads/hero-img.jpg') }}" 
+      src="{{ asset('hero-img.jpg') }}" 
       alt="hero image" 
-      class="h-[700px] w-[600px] object-cover rounded-md"
+      class="h-[650px] w-[550px] object-cover rounded-md"
     />
   
 </section>
