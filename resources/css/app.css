@@ -41,12 +41,7 @@ h1 {
 }
 
 /* logo */
-.logo {
-    height: 100px;
-    width: 100vw;
-    /* object-fit: fill;
-    object-fit: cover; */
-}
+
 
 /* form elements */
 form {

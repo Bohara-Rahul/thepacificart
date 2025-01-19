@@ -1,4 +1,4 @@
-<section class="flex justify-between gap-2 mt-5">
+<section class="flex justify-between gap-2" style="margin-top: 160px;">
   <aside class="flex flex-col justify-center">
     <h2>Slogan goes here</h2>
     <p class="max-w-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum. <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestias expedita est laboriosam sequi odit nostrum nulla quod at officia.</p>
