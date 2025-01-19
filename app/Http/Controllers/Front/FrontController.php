@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -12,7 +13,8 @@ class FrontController extends Controller
     public function index()
     {
         $products = Product::with(['photos', 'category', 'artist'])->get();
-        return view("front.index", compact('products'));
+        $sliders = Slider::get();
+        return view('front.index', compact('products', 'sliders'));
     }
 
     public function about()

@@ -3,20 +3,48 @@
 @include('admin.layout.sidebar')
 <section>
   <h2>Edit Product</h2>
-  <form action="{{ route('admin_products_edit_submit', $product->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div>
+  <div class="flex gap-2">
+    @if ($product->photos->count() > 0)
       <p>Current Photos</p>
       @foreach($product->photos as $photo)
-        <img 
-          src="{{ asset('uploads/'.$photo->name) }}" 
-          alt="{{ $product->title }}" 
-          style="width: 200px; height: auto;"
-        />
-      @endforeach
-    </div>
+      <article>
+        <img
+            src="{{ asset('uploads/'.$photo->name) }}" 
+            alt="{{ $product->title }}" 
+            style="width: 200px; height: auto;"
+          />
+        <form 
+          action="{{ route('admin_photo_delete', $photo) }}" 
+          method="POST" 
+        >  
+          @csrf
+          @method('DELETE')     
+          <button class="bg-red-300 p-2" type="submit">Delete</button>
+        </form>
+      </article>
+      @endforeach  
+    @endif
+    
+  </div>
+  <form 
+    action="{{ route('admin_products_edit_submit', $product->id) }}" 
+    method="POST" 
+    enctype="multipart/form-data"
+  >
+    @csrf
+    @method('PUT')
     <div>
-      <label for="name">Title:</label>
+      <label for="files">Add photo:</label>
+      <input 
+        type="file" 
+        id="files"
+        name="files[]" 
+        multiple
+      />
+    </div>
+    
+    <div>
+      <label for="title">Title:</label>
       <input 
         type="text" 
         id="title"
@@ -31,7 +59,10 @@
           Select an artist
         </option>
         @foreach ($artists as $artist)
-          <option value="{{ $artist->id }}">
+          <option 
+            value="{{ $artist->id }}"
+            {{ $artist->id == $product->id ? 'selected' : '' }}
+          >
             {{ $artist->name }}
           </option>  
         @endforeach
@@ -44,7 +75,10 @@
           Select a category
         </option>
         @foreach ($categories as $category)
-          <option value="{{ $category->id }}">
+          <option 
+            value="{{ $category->id }}"
+            {{ $category->id == $product->category_id ? 'selected' : '' }}
+          >
             {{ $category->title }}
           </option>   
         @endforeach
@@ -102,6 +136,15 @@
           id="size"
           name="size" 
           value="{{ $product->size }}" 
+        />
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input 
+          type="number" 
+          id="price"
+          name="price" 
+          value="{{ $product->price }}" 
         />
       </div>
     <button type="submit">Update</button>

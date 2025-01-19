@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('product_id')->references('id')->on('products');
             $table->string('name');
             $table->timestamps();
         });

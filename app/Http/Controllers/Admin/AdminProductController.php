@@ -80,10 +80,10 @@ class AdminProductController extends Controller
     }
 
     public function edit_submit(Request $request, $id)
-    {
+    {     
         $product = Product::where('id', $id)->first();
-        
-        $request->validate([
+ 
+        $validated = $request->validate([
             'title' => 'string|required',
             'description' => 'string|required',
             'price' => 'required',
@@ -96,17 +96,23 @@ class AdminProductController extends Controller
             'artist_id' => 'required|exists:artists,id'
         ]); 
 
-        $product->title = $request->title;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->medium = $request->medium;
-        $product->surface = $request->surface;
-        $product->year_of_creation = $request->year_of_creation;
-        $product->stock = $request->stock;
-        $product->size = $request->size;
-        $product->category_id = $request->category_id;
-        $product->artist_id = $request->artist_id;
-        $product->save();
+        $product->update($validated);
+
+        if ($request->hasFile("files")) {
+            $request->validate([
+                "files.*" => 'image|mimes:jpeg,jpg,png,svg,webp'
+            ]);
+
+            foreach($request->file('files') as $file) {
+                $filename = 'photo_'.time().'.'.$file->extension();
+                $file->move(public_path('uploads'), $filename);
+
+                Photo::create([
+                    'name' => $filename,
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
 
         return redirect()->route('admin_products')->with('success', 'Art updated successfully');
     }

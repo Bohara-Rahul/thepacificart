@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminSlidersController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Product\PhotoController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +48,17 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get("/products/create", [AdminProductController::class, 'create'])->name('admin_products_create');
   Route::post("/products/create", [AdminProductController::class, 'create_submit'])->name('admin_products_create_submit');
   Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('admin_products_edit');
-  Route::post('/products/edit/{id}', [AdminProductController::class, 'edit_submit'])->name('admin_products_edit_submit');
+  Route::put('/products/edit/{id}', [AdminProductController::class, 'edit_submit'])->name('admin_products_edit_submit');
   Route::get('/products/delete/{id}', [AdminProductController::class, 'delete'])->name('admin_products_delete');
+
+  // Slider related routes
+  // Route::get('/sliders', [AdminSlidersController::class, 'index'])->name('admin_sliders_index');
+  // Route::get('/sliders/create', [AdminSlidersController::class, 'create'])->name('admin_sliders_create');
+  // Route::post('/sliders/create', [AdminSlidersController::class, 'create_submit'])->name('admin_sliders_create_submit');
+  // Route::get('/sliders/delete/{id}', [AdminSlidersController::class, 'delete'])->name('admin_sliders_delete');
+
+  // Photo related routes
+  Route::delete("/photos/{photo}/delete", [PhotoController::class, 'delete'])->name('admin_photo_delete');
 
   // Category Related Routes
   Route::get("/categories", [AdminCategoryController::class, 'index'])->name('admin_categories');

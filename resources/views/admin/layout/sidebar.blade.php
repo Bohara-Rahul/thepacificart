@@ -1,13 +1,10 @@
 <aside class="border-2 border-red-300 p-2">
-      {{-- <div class="sidebar-brand">
-          <a href="{{ route('admin_dashboard') }}">Admin Panel</a>
-      </div>
-      <div class="sidebar-brand sidebar-brand-sm">
-          <a href="{{ route('admin_dashboard') }}"></a>
-      </div> --}}
-
       <ul>
         <li class="{{ Request::is('admin/dashboard*') ? 'font-bold' : '' }} mb-2"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+
+        {{-- <li class="{{ Request::is('admin/sliders*') ? 'font-bold' : '' }} mb-2">
+            <a class="" href="{{ route('admin_sliders_index') }}"><i class="fas fa-hand-point-right"></i> <span>Sliders</span></a> 
+        </li> --}}
 
         <li class="{{ Request::is('admin/products*') ? 'text-red-500' : '' }} mb-2">
           <a href="{{ route('admin_products') }}">
