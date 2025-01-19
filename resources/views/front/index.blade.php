@@ -2,7 +2,7 @@
 @section("main_content")
 @include('front.components.hero-section')
     <section class="mt-10">
-        <h2 class="font-bold text-3xl">Featured Products</h2>
+        <h2 class="font-extrabold text-4xl">Featured Products</h2>
         <article 
             class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5"
         >

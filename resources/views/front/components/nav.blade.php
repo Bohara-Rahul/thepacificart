@@ -11,8 +11,7 @@
   </div>
   <ul class="flex justify-between gap-5 items-center text-xl">
     <form>
-      <input class="outline-none" type="text" placeholder="Search here....." />
-      
+      <input class="outline-none; border-spacing-2 border-gray-100" type="text" placeholder="Search here....." />
     </form>
     <li>Wish List</li>
     <li><a href="">Cart</a></li>
