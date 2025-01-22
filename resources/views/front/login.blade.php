@@ -1,6 +1,7 @@
 <main>
   <form 
-    action="{{ route('user.login_submit') }}" method="POST"
+    action="{{ route('user.login_submit') }}" 
+    method="POST"
   >
     @csrf
     <div>
@@ -25,5 +26,5 @@
     </div>
     <button type="submit">Login</button>   
   </form>
-  <p>No account</p> <span><a href="{{ route('user.register') }}">Sign up here</a></span>
+  <p>No account <span><a href="{{ route('user.register') }}">Sign up here</a></span></p> 
 </main>

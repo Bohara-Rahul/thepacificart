@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
             $user->photo = $filename;
         }
         else {
-            $user->photo = public_path('uploads/'.'fallback-avatar.jpg');
+            $user->photo = public_path('uploads/'.'user-pic.jpg');
         }
         
         $user->name = $request->name;
@@ -46,7 +47,27 @@ class UserController extends Controller
         $user->isAdmin = 0;
         $user->save();
 
-        return redirect()->route('user.login');
+        $verification_link = url('register-verify/'.$token.'/'.$request->email);
+        $subject = 'Registration Verification';
+        $message = 'To complete registration, please click on the link below:<br>';
+        $message .= '<a href="'.$verification_link.'">Click Here</a>';
+
+        return redirect()->back()->with('success', 'Your registration is completed. Please check your email for verification. If you do not find email in your inbox, please check your spam folder.');
+    }
+
+    public function register_verify($token, $email)
+    {
+        $user = User::where('email', $email)->where('token', $token)->first();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        
+
+        $user->token = '';
+        $user->update();
+
+        return redirect()->route('login')->with('success', 'Your email is verified. You can login now');
     }
 
     public function login()
@@ -61,12 +82,24 @@ class UserController extends Controller
             'password' => 'string|required'
         ]);
 
-        if (auth()->attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-            return redirect()->route('user.dashboard');
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+            $request->session()->regenerate();
+            return redirect()
+                ->route('user.dashboard')
+                ->with('success', 'Logged in successfully!!!');
         }
-        else {
-            return redirect()->route('user.login')->withInput();
-        }
+
+        throw ValidationException::withMessages([
+            'credentials' => 'Invalid credentials'
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('user.login')->with('success', 'Loggedd out successfully');
     }
 
     public function dashboard()

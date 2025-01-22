@@ -1,13 +1,13 @@
-<section class="flex justify-between" style="margin-top: 160px;">
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center" style="margin-top: 160px;">
   <aside class="flex flex-col justify-center text-2xl">
-    <h2>Slogan goes here</h2>
-    <p class="max-w-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum. <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestias expedita est laboriosam sequi odit nostrum nulla quod at officia.</p>
-    <a class="btn mt-5 w-[150px] text-center">Learn More</a>
+    <h1 class="max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl">Slogan goes here</h1>
+    <p class="mt-8 max-w-xl text-lg leading-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>Voluptas vero totam exercitationem ex nesciunt debitis earum, illo explicabo beatae eum. <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem molestias expedita est laboriosam sequi odit nostrum nulla quod at officia.</p>
+    <a class="btn mt-8 w-[150px] text-center">Learn More</a>
   </aside>
     <img 
       src="{{ asset('hero-img.jpg') }}" 
       alt="hero image" 
-      class="h-[650px] w-[550px] object-cover rounded-md"
+      class="w-full h-[32rem] rounded-md object-cover"
     />
   
 </section>

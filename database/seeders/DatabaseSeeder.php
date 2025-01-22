@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,7 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([AdminSeeder::class, CategorySeeder
-    ::class, ArtistSeeder::class]);
+    //     $this->call([AdminSeeder::class, CategorySeeder
+    // ::class, ArtistSeeder::class]);
+    $this->call(HeroSectionSeeder::class);
     }
 }

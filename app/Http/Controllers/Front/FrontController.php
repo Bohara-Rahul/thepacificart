@@ -17,9 +17,9 @@ class FrontController extends Controller
         return view('front.index', compact('products', 'sliders'));
     }
 
-    public function about()
+    public function arts()
     {
-        return view("front.about");
+        return view("front.arts");
     }
     
     public function gallery()

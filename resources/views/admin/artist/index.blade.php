@@ -2,7 +2,7 @@
 @section('main_content')
 @include('admin.layout.sidebar')
 <main>
-  <header class="flex justify-between">
+  <header class="flex justify-between items-center">
     <h2>List of Artists</h2>
     <a href="{{ route('admin_artist_create') }}">
       Add New Artist

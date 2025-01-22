@@ -2,7 +2,7 @@
 @section('main_content')
 @include('admin.layout.sidebar')
 <section>
-  <header class="flex justify-between mb-5">
+  <header class="flex justify-between items-center">
     <h2>List of Arts</h2>
     <a href="{{ route('admin_products_create') }}">Create New Art</a>
   </header>

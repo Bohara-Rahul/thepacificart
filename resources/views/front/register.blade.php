@@ -1,6 +1,7 @@
-<main>
+<x-form>
   <form 
-    action="{{ route('user.register_submit') }}" method="POST"
+    action="{{ route('user.register_submit') }}" 
+    method="POST"
     enctype="multipart/form-data"
   >
     @csrf
@@ -26,5 +27,9 @@
     </div>
     <button type="submit">Sign up</button>   
   </form>
-  <p>Already have an account</p> <span><a href="{{ route('user.login') }}">Login</a></span>
-</main>
+  <p>Already have an account 
+    <span>
+      <a href="{{ route('user.login') }}">Login</a>
+    </span>
+  </p> 
+</x-form>

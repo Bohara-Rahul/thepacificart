@@ -4,32 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+
+  @vite('resources/css/app.css')
+
+  <title>Admin | Login</title>
 </head>
 <body>
-  <form action="{{ route('admin_login_submit') }}" method="POST">
-    @csrf
-    <div>
-      <label for="email">Email:</label>
-      <input 
-        id="email"
-        type="email" 
-        name="email"
-        placeholder="Enter your email here" 
-        value='{{ old("email") }}'
-      />
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input
-        id="password"
-        type="password"
-        name="password"
-        placeholder="Enter your passsword here"
-        value='{{ old("password") }}'
-      />
-    </div>
-    <button type="submit">Login</button>
-  </form>
+  <section class="container flex flex-col justify-center items-center">
+    <h2>Admin Login</h2>
+    <form action="{{ route('admin_login_submit') }}" method="POST">
+      @csrf
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          type="email" 
+          name="email"
+          placeholder="Enter your email here" 
+          value='{{ old("email") }}'
+        />
+
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter your passsword here"
+          value='{{ old("password") }}'
+        />
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+  </section> 
 </body>
 </html>
+  
+
+

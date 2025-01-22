@@ -1,26 +1,38 @@
-<aside class="border-2 border-red-300 p-2">
-      <ul>
-        <li class="{{ Request::is('admin/dashboard*') ? 'font-bold' : '' }} mb-2"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+<aside class="border-2 border-gray-200">
+      <ul class="p-10">
+        <li class="{{ Request::is('admin/dashboard*') ? 'nav-active' : '' }} w-full capitalize font-normal justify-start mb-5"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
         {{-- <li class="{{ Request::is('admin/sliders*') ? 'font-bold' : '' }} mb-2">
             <a class="" href="{{ route('admin_sliders_index') }}"><i class="fas fa-hand-point-right"></i> <span>Sliders</span></a> 
         </li> --}}
 
-        <li class="{{ Request::is('admin/products*') ? 'text-red-500' : '' }} mb-2">
+        <li class="{{ Request::is('admin/products*') ? 'nav-active' : '' }} mb-5">
           <a href="{{ route('admin_products') }}">
             <i class="fas fa-hand-point-right"></i> <span>Arts</span>
           </a>
         </li>
 
-        <li class="{{ Request::is('admin/categories*') ? 'text-red-500' : '' }}">
+        <li class="{{ Request::is('admin/categories*') ? 'nav-active' : '' }} mb-5">
             <a href="{{ route('admin_categories') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Categories</span>
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/artists*') ? 'text-red-500' : '' }}">
+        <li class="{{ Request::is('admin/artists*') ? 'nav-active' : '' }} mb-5">
             <a href="{{ route('admin_artists') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Artists</span>
+            </a>
+        </li>
+
+        <li class="{{ Request::is('admin/sliders*') ? 'nav-active' : '' }}">
+            <a href="{{ route('admin_sliders_index') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Sliders</span>
+            </a>
+        </li>
+
+        <li class="{{ Request::is('admin/hero*') ? 'nav-active' : '' }}">
+            <a href="{{ route('admin_hero_index') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Hero</span>
             </a>
         </li>
       </ul>

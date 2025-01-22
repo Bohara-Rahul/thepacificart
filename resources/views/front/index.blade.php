@@ -33,4 +33,5 @@
             @endforeach
         </article>
     </section>
+@include("front.components.testimonials")
 @endsection

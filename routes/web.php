@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminHeroController;
 use App\Http\Controllers\Admin\AdminArtistController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCategoryController;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Front Contoller related routes
 Route::get("/", [FrontController::class, 'index'])->name('front.home');
-Route::get("/about", [FrontController::class, 'about'])->name("front.about");
+Route::get("/arts", [FrontController::class, 'arts'])->name("front.arts");
 Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
 Route::get("/gallery", [FrontController::class, 'gallery'])->name("front.gallery");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
@@ -25,9 +26,10 @@ Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->na
 // User Controller related routes
 Route::get('/register', [UserController::class, 'register'])->name('user.register');
 Route::post('/register', [UserController::class, 'register_submit'])->name('user.register_submit');
+Route::get('register-verify/{token}/{email}', [UserController::class, 'register_verify'])->name('user.register-verify');
 Route::get("/login", [UserController::class, 'login'])->name('user.login');
 Route::post("/login", [UserController::class, 'login_submit'])->name('user.login_submit');
-Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLoggedIn');
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('mustBeLoggedIn');
 Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
 
 // Admin Auth Controller related routes
@@ -37,6 +39,7 @@ Route::prefix('admin')->group(function () {
   });
   Route::get("/login", [AdminAuthController::class, 'login'])->name('admin_login');
   Route::post("/login", [AdminAuthController::class, 'login_submit'])->name('admin_login_submit');
+  Route::post("/logout", [AdminAuthController::class, 'logout'])->name('admin_logout');
 });
 
 // Admin Dashboard Controller 
@@ -52,10 +55,14 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get('/products/delete/{id}', [AdminProductController::class, 'delete'])->name('admin_products_delete');
 
   // Slider related routes
-  // Route::get('/sliders', [AdminSlidersController::class, 'index'])->name('admin_sliders_index');
-  // Route::get('/sliders/create', [AdminSlidersController::class, 'create'])->name('admin_sliders_create');
-  // Route::post('/sliders/create', [AdminSlidersController::class, 'create_submit'])->name('admin_sliders_create_submit');
-  // Route::get('/sliders/delete/{id}', [AdminSlidersController::class, 'delete'])->name('admin_sliders_delete');
+  Route::get('/sliders', [AdminSlidersController::class, 'index'])->name('admin_sliders_index');
+  Route::get('/sliders/create', [AdminSlidersController::class, 'create'])->name('admin_sliders_create');
+  Route::post('/sliders/create', [AdminSlidersController::class, 'create_submit'])->name('admin_sliders_create_submit');
+  Route::get('/sliders/delete/{id}', [AdminSlidersController::class, 'delete'])->name('admin_sliders_delete');
+
+  // Hero Section related routes
+  Route::get("/hero", [AdminHeroController::class, 'index'])->name('admin_hero_index');
+  Route::put("/hero/{id}/update", [AdminHeroController::class, 'edit_submit'])->name('admin_hero_edit_submit');
 
   // Photo related routes
   Route::delete("/photos/{photo}/delete", [PhotoController::class, 'delete'])->name('admin_photo_delete');

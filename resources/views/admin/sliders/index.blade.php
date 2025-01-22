@@ -2,7 +2,7 @@
 @section('main_content')
 @include('admin.layout.sidebar')
 <section>
-  <header class="flex justify-between mb-5">
+  <header class="flex justify-between items-center">
     <h2>List of Sliders</h2>
     <a href="{{ route('admin_sliders_create') }}">Create New Slider</a>
   </header>
@@ -19,9 +19,9 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $slider->image_path }}</td>
-          {{-- <td>
+          <td>
             <a href="{{ route('admin_sliders_delete', $slider->id) }}" onclick="return confirm('Are you sure?');">Delete</a>
-          </td> --}}
+          </td>
         </tr>
       @endforeach
     </tbody>
