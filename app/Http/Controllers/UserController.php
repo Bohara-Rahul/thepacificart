@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -17,11 +19,10 @@ class UserController extends Controller
 
     public function register_submit(Request $request) 
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'string|required',
             'email' => 'string|required|email',
-            'password' => 'string|required',
-            'retype_password' => 'string|required|same:password'
+            'password' => 'string|required|confirmed',
         ]);
 
         $user = new User();
@@ -52,6 +53,8 @@ class UserController extends Controller
         $message = 'To complete registration, please click on the link below:<br>';
         $message .= '<a href="'.$verification_link.'">Click Here</a>';
 
+        Mail::to($request->email)->send(new EmailVerification($subject, $message));
+
         return redirect()->back()->with('success', 'Your registration is completed. Please check your email for verification. If you do not find email in your inbox, please check your spam folder.');
     }
 
@@ -59,15 +62,13 @@ class UserController extends Controller
     {
         $user = User::where('email', $email)->where('token', $token)->first();
         if (!$user) {
-            return redirect()->route('login');
+            return redirect()->route('user.login');
         }
-
-        
 
         $user->token = '';
         $user->update();
 
-        return redirect()->route('login')->with('success', 'Your email is verified. You can login now');
+        return redirect()->route('user.login')->with('success', 'Your email is verified. You can login now');
     }
 
     public function login()

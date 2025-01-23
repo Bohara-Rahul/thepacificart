@@ -23,7 +23,7 @@
     </div>
     <div>
       <label for="confirm_password">Confirm Password:</label>
-      <input type="password" name="retype_password" id="confirm_password" />
+      <input type="password" name="password_confirmation" id="confirm_password" />
     </div>
     <button type="submit">Sign up</button>   
   </form>
