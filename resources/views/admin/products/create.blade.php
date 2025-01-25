@@ -108,7 +108,8 @@
     </div>
     <div>
       <label for="files">Choose photos</label>
-      <input 
+      <input
+        required 
         type="file" 
         id="files" 
         name="files[]" 
