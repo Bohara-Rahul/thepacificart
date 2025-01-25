@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0">
+<header>
 <nav class="container flex justify-between items-center text-xl">
   <ul class="flex justify-between gap-5">
     <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
