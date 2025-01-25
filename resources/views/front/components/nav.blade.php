@@ -10,6 +10,9 @@
     <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
       <a href="{{ route('front.artists') }}">Artists</a>
     </li>
+    <li class="{{ Request::is('/about-us') ? 'nav-active' : '' }}">
+      <a href="{{ route('front.about-us') }}">About Us</a>
+    </li>
   </ul>
     <a href="/">
       <img src="{{ asset('logo.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />

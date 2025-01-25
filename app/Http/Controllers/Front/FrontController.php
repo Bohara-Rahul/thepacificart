@@ -30,6 +30,12 @@ class FrontController extends Controller
         $artists = Artist::all();
         return view("front.artists", compact('artists'));
     }
+
+    public function about()
+    {
+        return view("front.about-us");
+    }
+
     public function blog()
     {
         return view("front.blog");
