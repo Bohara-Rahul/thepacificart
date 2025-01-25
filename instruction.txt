@@ -3,3 +3,9 @@ Follow these instructions in order:
 2. In the terminal run: npm install
 3. In the terminal run: npm run dev
 4. View the project in browser and login to admin site at url: localhost:8000/admin or thepacificart.test/admin and You can create new category now
+
+
+// pushing to github
+git add .
+git commit -m 'Your message here'
+git push origin main

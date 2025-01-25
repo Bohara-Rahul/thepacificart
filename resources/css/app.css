@@ -10,11 +10,11 @@
 body {
     @apply min-h-screen text-white;
     font-family: "Lato";
-    background-image: linear-gradient(to right, black, gray);
+    background-image: linear-gradient(to right, Black  , gray);
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
-    color: #0cc0df;
+    color: #B57E00;
 }
 h2 {
     @apply text-xl font-bold my-4;
