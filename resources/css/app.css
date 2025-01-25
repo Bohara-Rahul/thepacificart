@@ -7,6 +7,16 @@
     src: url("../../public/Lato/Lato-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Prompt";
+    src: url("../../public/Prompt/Prompt-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("../../public/Quicksand/static/Quicksand-SemiBold.ttf");
+}
+
 body {
     @apply min-h-screen text-white;
     font-family: "Lato";
@@ -14,7 +24,8 @@ body {
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
-    color: #B57E00;
+    font-family: "Quicksand";
+    color: #b57e00;
 }
 h2 {
     @apply text-xl font-bold my-4;
@@ -91,18 +102,29 @@ textarea {
     /* background-image: linear-gradient(to right, black, gray); */
 }
 
+.section-heading {
+    @apply font-extrabold text-4xl;
+    color: #b57e00;
+}
+
 .btn {
-    @apply rounded px-3 py-2 bg-teal-700 hover:bg-teal-600 text-white;
+    @apply rounded px-3 py-2 text-white;
+    background: #b57e00;
+}
+
+.btn:hover {
+    @apply bg-yellow-600 cursor-pointer;
 }
 
 .nav-active {
     @apply font-bold;
-    color: #0cc0df;
+    color: #b57e00;
 }
 
 .slogan {
-    @apply text-3xl;
-    color: #0cc0df;
+    @apply text-2xl;
+    color: #b57e00;
+    letter-spacing: 30px;
 }
 
 .product-image {

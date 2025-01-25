@@ -1,4 +1,4 @@
-<h2>Testimonials</h2>
+<h2 class="section-heading mt-20">Testimonials</h2>
 <section class="grid grid-cols-3">
   <x-card>
     <article class="flex flex-col justify-center items-center p-5">

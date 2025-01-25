@@ -1,10 +1,29 @@
 @extends("layouts.front")
 @section("main_content")
 @include('front.components.hero-section')
-    <section class="mt-10">
-        <h2 class="font-extrabold text-4xl">Featured Products</h2>
+    <section class="mt-32 bg-slate-100 ml-0 mr-0 h-40 text-black p-5">
+        <h3 class="text-center text-3xl text-yellow-600 font-extrabold underline">
+            Why Choose Us?
+        </h3>
+        <ul class="grid grid-cols-1 md:grid-cols-3 place-items-center text-xl text-gray-900 font-bold gap-2">
+            <li>
+                <i class="fa-solid fa-star"></i>
+                Premium Arts
+            </li>
+            <li>
+                <i class="fa-solid fa-truck"></i>
+                Faster Delivery
+            </li>
+            <li>
+                <i class="fa-solid fa-phone"></i>
+                24x7 support
+            </li>
+        </ul>
+    </section>
+    <section class="mt-28">
+        <h2 class="section-heading">Featured Products</h2>
         <article 
-            class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5"
+            class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-5"
         >
             @foreach ($products as $product)
                 <x-card>
@@ -17,7 +36,6 @@
                         </a>
                         @if ($product->photos)
                             <article>
-                                The photos should come here
                                 <img 
                                 src="{{ asset('uploads/'.$product->photos[0]->name) }}"
                                 alt="product image"
