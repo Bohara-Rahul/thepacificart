@@ -2,7 +2,7 @@
 @section("main_content")
 @include('front.components.hero-section')
     <section class="mt-32 bg-slate-100 ml-0 mr-0 h-40 text-black p-5">
-        <h3 class="text-center text-3xl text-yellow-600 font-extrabold underline">
+        <h3 class="section-heading">
             Why Choose Us?
         </h3>
         <ul class="grid grid-cols-1 md:grid-cols-3 place-items-center text-xl text-gray-900 font-bold gap-2">
@@ -21,7 +21,7 @@
         </ul>
     </section>
     <section class="mt-28">
-        <h2 class="section-heading">Featured Products</h2>
+        <h2 class="section-heading mb-10">Featured Products</h2>
         <article 
             class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-5"
         >

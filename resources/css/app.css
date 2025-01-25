@@ -103,7 +103,7 @@ textarea {
 }
 
 .section-heading {
-    @apply font-extrabold text-4xl;
+    @apply font-extrabold text-4xl text-center;
     color: #b57e00;
 }
 
