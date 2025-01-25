@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminSlidersController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Product\PhotoController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Product\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
 
 // Product related routes
 Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
+Route::get('/categories/{slug}', [CategoryController::class, 'category_detail'])->name('category_detail');
 
 // User Controller related routes
 Route::get('/register', [UserController::class, 'register'])->name('user.register');

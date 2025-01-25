@@ -15,7 +15,7 @@
     </li>
   </ul>
     <a href="/">
-      <img src="{{ asset('logo.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
+      <img src="{{ asset('logo.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
     </a>
   <ul class="flex justify-between gap-5 items-center text-xl">
     <form>
