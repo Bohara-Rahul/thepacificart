@@ -18,14 +18,14 @@
 }
 
 body {
-    @apply min-h-screen text-white;
+    @apply min-h-screen text-black;
     font-family: "Lato";
-    background-image: linear-gradient(to right, Black, gray);
+    background-image: linear-gradient(to right, #78767677, #FFFFFF));
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
     font-family: "Quicksand";
-    color: #b57e00;
+    color: #13292a;
 }
 h2 {
     @apply text-xl font-bold my-4;
@@ -104,12 +104,12 @@ textarea {
 
 .section-heading {
     @apply font-extrabold text-4xl text-center;
-    color: #b57e00;
+    color: #13292a;
 }
 
 .btn {
     @apply rounded px-3 py-2 text-white;
-    background: #b57e00;
+    background: #13292a;
 }
 
 .btn:hover {
@@ -118,12 +118,12 @@ textarea {
 
 .nav-active {
     @apply font-bold;
-    color: #b57e00;
+    color: #13292a;
 }
 
 .slogan {
     @apply text-2xl;
-    color: #b57e00;
+    color:#13292a   ;
     letter-spacing: 30px;
 }
 

@@ -2,3 +2,7 @@ Welcome to a world where art transcends borders. We specialize in curating exqui
 
 Before Featured Products, Section for different Art etc. 
 
+Create Art is not working properly. Feature required, once photo is uploaded, then click 'Create' to ensure that photo is completely uploaded 
+
+I have changed the color schemas and its final now, few changes are required 
+
