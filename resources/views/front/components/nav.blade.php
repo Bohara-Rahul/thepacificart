@@ -13,7 +13,7 @@
   </ul>
   <div>
     <a href="/">
-      <img src="{{ asset('logo.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
+      <img src="{{ asset('logo_transparent.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
     </a>
   </div>
   <ul class="flex justify-between gap-5 items-center text-xl">
