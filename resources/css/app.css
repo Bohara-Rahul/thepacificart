@@ -13,7 +13,8 @@ body {
     background-image: linear-gradient(to right, black, gray);
 }
 h1 {
-    @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl text-teal-600;
+    @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
+    color: #0cc0df;
 }
 h2 {
     @apply text-xl font-bold my-4;
@@ -94,11 +95,13 @@ textarea {
 }
 
 .nav-active {
-    @apply text-teal-600 font-bold;
+    @apply font-bold;
+    color: #0cc0df;
 }
 
 .slogan {
-    @apply text-3xl text-teal-600;
+    @apply text-3xl;
+    color: #0cc0df;
 }
 
 .product-image {
