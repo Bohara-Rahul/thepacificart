@@ -1,5 +1,4 @@
-@extends("layouts.front")
-
-@section("main_content")
-  <h1>This is the About Us Page</h1>
+@extends('layouts.front')
+@section('main_content')
+  <h2>This is About Us Page</h2>
 @endsection
