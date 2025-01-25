@@ -11,11 +11,9 @@
       <a href="{{ route('front.artists') }}">Artists</a>
     </li>
   </ul>
-  <div>
     <a href="/">
       <img src="{{ asset('logo_transparent.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
     </a>
-  </div>
   <ul class="flex justify-between gap-5 items-center text-xl">
     <form>
       <div class="flex justify-center items-center">
