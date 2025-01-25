@@ -78,7 +78,7 @@ form {
 input,
 select,
 textarea {
-    @apply block w-full mt-2 mb-4 p-2;
+    @apply block w-full mt-2 mb-4 p-2 text-black;
 }
 
 /* custom classes */
