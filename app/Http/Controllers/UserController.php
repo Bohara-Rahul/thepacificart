@@ -37,7 +37,7 @@ class UserController extends Controller
             $user->photo = $filename;
         }
         else {
-            $user->photo = public_path('uploads/'.'user-pic.jpg');
+            $user->photo = 'user-pic.jpg';
         }
         
         $user->name = $request->name;
@@ -105,6 +105,7 @@ class UserController extends Controller
 
     public function dashboard()
     {
+        
         return view('user.dashboard');
     }
 }

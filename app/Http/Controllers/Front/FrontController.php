@@ -19,12 +19,10 @@ class FrontController extends Controller
 
     public function arts()
     {
-        return view("front.arts");
-    }
-    
-    public function gallery()
-    {
-        return view("front.gallery");
+        $arts = Product::all();
+        return view("front.arts", [
+            'arts' => $arts
+        ]);
     }
     
     public function artists()

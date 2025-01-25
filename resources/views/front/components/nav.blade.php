@@ -1,21 +1,20 @@
-<header class="bg-white fixed top-0 left-0 right-0">
+<header class="fixed top-0 left-0 right-0">
 <nav class="container flex justify-between items-center text-xl">
   <ul class="flex justify-between gap-5">
-    <li>
+    <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
       <a href="{{ route('front.home') }}">Home</a>
     </li>
-    <li>
+    <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
       <a href="{{ route('front.arts') }}">Arts</a>
     </li>
-    <li>
+    <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
       <a href="{{ route('front.artists') }}">Artists</a>
-    </li>
-    <li>
-      <a href="{{ route('front.gallery') }}">Gallery</a>
     </li>
   </ul>
   <div>
-    <img src="{{ asset('logo.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
+    <a href="/">
+      <img src="{{ asset('logo.png') }}" alt="logo" style="height: 140px; object-fit: cover;" />
+    </a>
   </div>
   <ul class="flex justify-between gap-5 items-center text-xl">
     <form>
