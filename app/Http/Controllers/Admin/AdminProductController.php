@@ -53,10 +53,12 @@ class AdminProductController extends Controller
                 $filename = 'photo_'.time().'.'.$file->extension();
                 $file->move(public_path('uploads'), $filename);
 
-                Photo::create([
+                $photo = Photo::create([
                     'name' => $filename,
                     'product_id' => $product->id,
                 ]);
+
+                dd($photo);
             }
         }
 
