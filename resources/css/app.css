@@ -87,7 +87,8 @@ textarea {
 }
 
 .card {
-    @apply bg-white rounded text-black border border-gray-200 px-3 py-3 my-2 flex;
+    @apply text-white rounded px-3 py-3 my-2 flex;
+    /* background-image: linear-gradient(to right, black, gray); */
 }
 
 .btn {
