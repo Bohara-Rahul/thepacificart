@@ -121,6 +121,17 @@ textarea {
     color: #13292a;
 }
 
+.collection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.collection-1 {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
 .slogan {
     @apply text-2xl;
     color: #13292a;

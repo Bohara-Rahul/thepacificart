@@ -56,9 +56,9 @@
         <h3 class="section-heading">
             Our Collections
         </h3>
-        <ul class="flex flex-wrap place-content-center">
+        <ul class="collection">
             @foreach ($images as $image)
-                <article>
+                <article class="collection-{{ $loop->iteration }}">
                     <img 
                         src="{{ asset('uploads/'.$image->name) }}"
                         alt="product image"
