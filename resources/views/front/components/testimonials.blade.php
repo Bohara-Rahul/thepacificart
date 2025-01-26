@@ -1,5 +1,5 @@
 <h2 class="section-heading mt-20">Testimonials</h2>
-<section class="grid grid-cols-3">
+<section class="grid grid-cols-1 md:grid-cols-3">
   <x-card>
     <article class="flex flex-col justify-center items-center p-5 text-black">
       <img 
