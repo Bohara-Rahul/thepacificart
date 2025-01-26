@@ -21,7 +21,7 @@
         </ul>
     </section>
     <section class="mt-28">
-        <h2 class="section-heading mb-10">Featured Products</h2>
+        <h2 class="section-heading mb-10">Best Sellers</h2>
         <article 
             class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-5"
         >
@@ -54,17 +54,23 @@
     </section>
     <section class="mt-32 bg-slate-100 text-black p-5">
         <h3 class="section-heading">
-            Browse more categories
+            Our Collections
         </h3>
         <ul class="flex flex-wrap place-content-center">
-            @foreach ($categories as $category)
-                <a href="{{ route('category_detail', $category->slug) }}">
-                    <li class="bg-gray-600 text-white p-2 border-2 rounded-lg">
-                        {{ $category->title }}
-                    </li>
-                </a>
+            @foreach ($images as $image)
+                <article>
+                    <img 
+                        src="{{ asset('uploads/'.$image->name) }}"
+                        alt="product image"
+                        class="w-40 h-40 object-cover"
+                    />
+                </article>                                 
             @endforeach
         </ul>
+        <div class="flex place-content-center mt-5">
+            <a href="{{ route('front.arts') }}" class="btn">Browse More</a>
+        </div>
+        
     </section>
 @include("front.components.testimonials")
 @endsection

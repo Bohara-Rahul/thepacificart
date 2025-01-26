@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Photo;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Slider;
@@ -16,7 +17,8 @@ class FrontController extends Controller
         $products = Product::with(['photos', 'category', 'artist'])->get();
         $categories = Category::all();
         $sliders = Slider::get();
-        return view('front.index', compact('products', 'sliders', 'categories'));
+        $images = Photo::all();
+        return view('front.index', compact('products', 'sliders', 'categories', 'images'));
     }
 
     public function arts()
