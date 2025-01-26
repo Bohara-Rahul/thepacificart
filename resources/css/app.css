@@ -17,6 +17,10 @@
     src: url("../../public/Quicksand/static/Quicksand-SemiBold.ttf");
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     @apply min-h-screen text-black;
     font-family: "Lato";

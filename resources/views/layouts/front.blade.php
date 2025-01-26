@@ -32,5 +32,7 @@
       </main>
 
       <footer class="container text-center">All rights reserved with &copy; {{ date('Y') }}</footer>
+
+      @vite('resources/js/app.js')
     </body>
 </html>
