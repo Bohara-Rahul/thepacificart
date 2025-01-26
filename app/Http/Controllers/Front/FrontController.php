@@ -44,4 +44,9 @@ class FrontController extends Controller
     {
         return view("front.blog");
     }
+
+    public function custom_art()
+    {
+        return view('front.custom-art');
+    }
 }

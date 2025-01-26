@@ -13,3 +13,9 @@ Featured Products to be renamed as Best Sellers
 As we scroll up , Logo should go on left, then  search in the middle and Wish list/ Cart on right, reference website wayfair.com
 
 Short loop vide on landing page 
+
+Testimonials must be in the white BG likewise Collections etc. Wider span 
+
+Add to wish list and cart text should be in black , little description of Best sellers are required too under the paiting, one liner description of the art etc. 
+
+

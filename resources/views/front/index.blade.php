@@ -32,11 +32,11 @@
                         <a 
                             href="{{ route('product_detail', $product->slug) }}"
                         >
-                            <h3 class="text-2xl">{{ $product->title }}</h3>
+                            <h3 class="text-2xl text-[#13292a]">{{ $product->title }}</h3>
                   
                         </a>
                         @if ($product->photos)
-                            <article>
+                            <article class="shadow-lg">
                                 <img 
                                 src="{{ asset('uploads/'.$product->photos[0]->name) }}"
                                 alt="product image"
@@ -57,21 +57,55 @@
         <h3 class="section-heading">
             Our Collections
         </h3>
-        <ul class="collection">
-            @foreach ($images as $image)
-                <article class="collection-{{ $loop->iteration }}">
-                    <img 
-                        src="{{ asset('uploads/'.$image->name) }}"
-                        alt="product image"
-                        class="w-40 h-40 object-cover"
-                    />
-                </article>                                 
-            @endforeach
-        </ul>
-        <div class="flex place-content-center mt-5">
-            <a href="{{ route('front.arts') }}" class="btn">Browse More</a>
-        </div>
+
+            <ul class="flex flex-wrap justify-center text-2xl">
+                @foreach ($categories as $category)
+                <a href="{{ route('category_detail', $category->slug) }}">
+                    <li><p class="collection-item">{{ $category->title }}</p></li>
+                </a>
+                @endforeach
+            </ul>
         
     </section>
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+    <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;"> 
+      <img 
+        src="{{ asset('Portrait02.png') }}" 
+        alt="portrait image" 
+        class="object-contain"
+      />
+    </div>
+  <aside class="flex flex-col max-w-xl justify-center text-2xl">
+    <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Gabo</h1>
+    <p class="mt-8 text-lg leading-8">The painting by Gabo depicts a powerful horse galloping through a river, its muscles and motion captured in dynamic detail. The water splashes around the horse’s legs, reflecting its energy and freedom. The surrounding landscape is lush and vibrant, blending harmoniously with the subject. The scene conveys a sense of strength and vitality, with the horse moving fluidly through the river’s current. Rich tones of brown, white, blue, and green dominate the composition, enhancing the natural beauty and intensity of the moment.</p>
+    <a class="btn mt-8 w-[150px] text-center">Learn More</a>
+  </aside>
+   
+  
+</section>
 @include("front.components.testimonials")
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+    
+  <aside class="flex flex-col max-w-xl justify-center text-2xl">
+    <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Miguel G</h1>
+    <p class="mt-8 text-lg leading-8">This painting of María, Madre de Jesús Crying captures a powerful moment of sorrow, depicting Mary’s profound grief as the mother of Christ. Her tear-streaked face, framed by a flowing mantle of deep blue and white, reflects her purity and divine connection. Her eyes, filled with anguish and compassion, gaze downward, mourning her son’s suffering. <br/> <br/> The subtle background and soft lighting highlight her emotional strength and vulnerability, evoking themes of love, loss, and resilience. This evocative piece offers a timeless portrayal of Mary as both a mother and a symbol of enduring faith.</p>
+    <a class="btn mt-8 w-[150px] text-center">Learn More</a>
+  </aside>
+   
+  <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;"> 
+      <img 
+        src="{{ asset('Portrait01.png') }}" 
+        alt="portrait image" 
+        class="object-contain"
+      />
+    </div>
+  
+</section>
+
+<section>
+    <h2>blaha bkahahahh</h2>
+    <a href="{{ route('front.custom_art') }}">
+        Click this links
+    </form>
+</section>
 @endsection

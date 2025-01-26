@@ -150,15 +150,15 @@ textarea {
     color: #13292a;
 }
 
-.collection {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+.collection-item {
+    font-family: "Quicksand";
+    font-size: xx-large;
+    padding: 2rem;
 }
 
-.collection-1 {
-    grid-column: 1;
-    grid-row: 1 / 3;
+.collection-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .slogan {
@@ -171,4 +171,11 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.footer {
+    background-color: #092933;
+    color: #ffffff;
+    margin-top: 2rem;
+
 }

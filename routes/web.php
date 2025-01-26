@@ -20,6 +20,7 @@ Route::get("/arts", [FrontController::class, 'arts'])->name("front.arts");
 Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
 Route::get("/about-us", [FrontController::class, 'about'])->name("front.about-us");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
+Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.custom_art");
 
 // Product related routes
 Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
