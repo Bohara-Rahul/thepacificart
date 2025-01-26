@@ -20,7 +20,7 @@
 body {
     @apply min-h-screen text-black;
     font-family: "Lato";
-    background-image: linear-gradient(to right, #78767677, #FFFFFF));
+    background-image: linear-gradient(to right, #78767677, #ffffff);
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
@@ -123,7 +123,7 @@ textarea {
 
 .slogan {
     @apply text-2xl;
-    color:#13292a   ;
+    color: #13292a;
     letter-spacing: 30px;
 }
 

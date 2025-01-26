@@ -42,4 +42,9 @@ class Product extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function getPriceAttribute($value)
+    {
+        return $this->attributes['price'] = $value / 100;
+    }
 }

@@ -7,7 +7,7 @@
     @foreach ($products as $product)
       <article>
           <h4>{{ $product->title }}</h4>
-          <p>{{ $product->price }}</p>
+          <p>${{ $product->price }}</p>
       </article> 
     @endforeach
   </section>
