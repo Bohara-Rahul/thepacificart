@@ -6,3 +6,10 @@ Create Art is not working properly. Feature required, once photo is uploaded, th
 
 I have changed the color schemas and its final now, few changes are required 
 
+Featured Products to be renamed as Best Sellers 
+
+'Browse More categories' require Collection of photos 
+
+As we scroll up , Logo should go on left, then  search in the middle and Wish list/ Cart on right, reference website wayfair.com
+
+Short loop vide on landing page 
