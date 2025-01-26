@@ -103,9 +103,9 @@
 </section>
 
 <section>
-    <h2>blaha bkahahahh</h2>
+    <h2>Want to bring Your Vision to Life with Custom Art?</h2>
     <a href="{{ route('front.custom_art') }}">
-        Click this links
+        Click here for more information 
     </form>
 </section>
 @endsection
