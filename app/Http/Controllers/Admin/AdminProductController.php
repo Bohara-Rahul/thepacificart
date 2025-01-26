@@ -38,23 +38,30 @@ class AdminProductController extends Controller
             'size' => 'required',
             'category_id' => 'required|exists:categories,id',
             'artist_id' => 'required|exists:artists,id',
-            'files.*' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
         ]);
 
         $validated['price'] = $validated['price'] * 100;
 
         $product = Product::create($validated);
 
-        foreach($request->file('files') as $file) {
-            $filename = 'photo_'.time().'.'.$file->extension();
-            $file->move(public_path('uploads'), $filename);
-
-            Photo::create([
-                'name' => $filename,
-                'product_id' => $product->id,
+        if ($request->hasFile('files')) {
+            $request->validate([
+                'files.*' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
             ]);
-            }
 
+            foreach($request->file('files') as $file) {
+                $filename = 'photo_'.time().'.'.$file->extension();
+                $file->move(public_path('uploads'), $filename);
+    
+                Photo::create([
+                    'name' => $filename,
+                    'product_id' => $product->id,
+                ]);
+            }
+    
+        }
+
+        
         return redirect()
             ->route('admin_products')
             ->with('success', 'New Art added successfully');
