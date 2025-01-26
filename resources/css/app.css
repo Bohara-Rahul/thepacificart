@@ -118,13 +118,10 @@ textarea {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    /* will-change: transform;
-    backface-visibility: hidden; */
-    /* filter: grayscale(10%); */
 }
 
 .header nav {
-    @apply container flex justify-between items-center text-xl;
+    @apply container flex justify-between items-center text-2xl text-white;
     position: relative;
     z-index: 1;
 }
