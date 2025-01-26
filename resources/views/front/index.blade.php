@@ -1,6 +1,7 @@
 @extends("layouts.front")
 @section("main_content")
 @include('front.components.hero-section')
+    
     <section class="mt-32 bg-slate-100 text-black p-5">
         <h3 class="section-heading">
             Why Choose Us?

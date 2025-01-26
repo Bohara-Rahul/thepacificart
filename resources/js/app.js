@@ -1,15 +1,28 @@
 import './bootstrap';
 
 const header = document.getElementById('header');
+const heroSection = ddocument.getElementById('hero-section');
 
-// When the user scrolls down 50px from the top of the document
-window.onscroll = function() {scrollFunction()};
+// Callback function
+const callback = (entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      header.style.background = 'red';
+      // entry.heroSection.classList.add("observed"); // Add class when in view
+      console.log("Element is in view!");
+    } 
+  });
+};
 
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    header.style.backgroundColor = "white";
-    header.style.borderBottom = "2px";
-  } else {
-    header.style.backgroundImage = 'linear-gradient(to right, #78767677, #ffffff)';
-  }
-}
+  // Observer options
+  const options = {
+    root: null, // Default is the viewport
+    threshold: 0.5 // 50% of the element must be visible to trigger
+  };
+
+  // Create the observer
+  const observer = new IntersectionObserver(callback, options);
+
+  // Observe the target element
+  observer.observe(heroSection);
+

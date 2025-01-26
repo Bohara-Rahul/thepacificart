@@ -1,5 +1,8 @@
-<header id="header" class="fixed top-0 left-0 right-0">
-  <nav class="container flex justify-between items-center text-xl" id="nav-bar">
+<header id="header" class="header">
+  <video muted poster="{{ asset('hero-img.png') }}" autoplay loop>
+    <source src="{{ asset('bg-video.MOV') }}" />
+  </video>
+  <nav id="nav-bar">
     <ul class="flex justify-between gap-5">
       <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
         <a href="{{ route('front.home') }}">Home</a>
