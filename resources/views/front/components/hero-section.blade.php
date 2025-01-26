@@ -4,10 +4,12 @@
     <p class="mt-8 text-lg leading-8">Welcome to a world where art transcends borders. We specialize in curating exquisite oil paintings that bring timeless elegance to your space, no matter where you are.<br/> Our carefully crafted collections are designed to inspire, elevate, and create lasting impressions. Explore our gallery and find the perfect masterpiece to make your home or office truly unforgettable</p>
     <a class="btn mt-8 w-[150px] text-center">Learn More</a>
   </aside>
-    <img 
-      src="{{ asset('hero-img.jpg') }}" 
-      alt="hero image" 
-      class="w-full h-[32rem] rounded-md object-cover"
-    />
+    <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;"> 
+      <img 
+        src="{{ asset('hero-img.png') }}" 
+        alt="hero image" 
+        class="object-contain"
+      />
+    </div>
   
 </section>
