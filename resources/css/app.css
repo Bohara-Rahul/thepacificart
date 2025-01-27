@@ -163,12 +163,11 @@ textarea {
 }
 
 .btn {
-    @apply rounded px-3 py-2 text-white;
-    background: #13292a;
+    @apply rounded px-3 py-2  bg-[#13292a] text-white;
 }
 
 .btn:hover {
-    @apply bg-yellow-600 cursor-pointer;
+    @apply bg-[#3d6571] cursor-pointer;
 }
 
 .nav-active {

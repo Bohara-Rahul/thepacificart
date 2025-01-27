@@ -24,17 +24,13 @@
     <section class="container mt-28">
         <h2 class="section-heading mb-10">Best Sellers</h2>
         <article 
-            class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-5"
+            class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-2"
         >
             @foreach ($products as $product)
                 <x-card>
-                    <section>
-                        <a 
-                            href="{{ route('product_detail', $product->slug) }}"
-                        >
-                            <h3 class="text-2xl text-[#13292a]">{{ $product->title }}</h3>
-                  
-                        </a>
+                    <section class="flex flex-col justify-start bg-gray-50 text-black p-5 rounded-sm">
+                        <h3 class="text-2xl text-[#13292a] capitalize">{{ $product->title }}</h3>
+                        
                         @if ($product->photos)
                             <article class="shadow-lg">
                                 <img 
@@ -44,12 +40,21 @@
                             />
                             </article>                                 
                         @endif
-                            <article class="flex justify-between items-center mt-2">
-                                <a href="#"><p>ADD TO WISHLIST</p></a>
-                                <a href="#"><p>ADD TO CART</p></a>
-                            <article>
-                        </section>
-                    </x-card>
+                           
+                        <p>{{ substr($product->description, 0, 150) }}</p>
+                            
+                        <article class="flex justify-between items-center mt-5">
+                            <a href="#"><p>ADD TO WISHLIST</p></a>
+                            <a href="#"><p>ADD TO CART</p></a>
+                        </article>
+                        
+                  
+                        <a class="btn text-center" href="{{ route('product_detail', $product->slug) }}">
+                            Learn More
+                        </a>   
+                         
+                    </section>
+                </x-card>
             @endforeach
         </article>
     </section>
