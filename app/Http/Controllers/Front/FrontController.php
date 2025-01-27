@@ -49,4 +49,9 @@ class FrontController extends Controller
     {
         return view('front.custom-art');
     }
+
+    public function artist_application()
+    {
+        return view('front.artist-application');
+    }
 }
