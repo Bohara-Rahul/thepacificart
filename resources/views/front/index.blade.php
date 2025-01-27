@@ -63,7 +63,7 @@
             @endforeach
         </article>
     </section>
-    <section class="mt-32 bg-slate-100 text-black p-5">
+    <section class="mt-20 bg-slate-100 text-black p-5">
         <h3 class="section-heading">
             Our Collections
         </h3>

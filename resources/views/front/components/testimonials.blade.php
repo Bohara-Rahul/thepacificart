@@ -1,5 +1,6 @@
-<h2 class="section-heading mt-20 mb-20">Testimonials</h2>
-<section class="grid grid-cols-1 md:grid-cols-3 bg-slate-100 p-10">
+<section class=" bg-slate-100 p-10 mt-20">
+  <h2 class="section-heading">Testimonials</h2>
+  <article class="grid grid-cols-1 md:grid-cols-3">
   <x-card>
     <article class="flex flex-col justify-center p-10 bg-slate-50 text-black rounded-md shadow-md">
       <p>I recently bought a painting of Colombian colonial art, which beautifully depicts an old colonial house surrounded by mountains. I absolutely love it! I placed it in my living room, and it has added such a relaxing, peaceful vibe to my space. Every time I look at it, it feels like I’m transported away from my daily work life. The painting brings me happiness and joy, and it always makes me feel at ease. It’s more than just art; it’s a little escape every day.</p>
@@ -43,6 +44,7 @@
       </div> 
     </article>
   </x-card>
-
+</article>
 </section>
+
 
