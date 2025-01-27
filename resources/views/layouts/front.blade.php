@@ -25,9 +25,10 @@
           </div>
         </div>    
       @endif
+
       @include('front.components.nav')
 
-      <main class="container">
+      <main>
         @yield("main_content")
       </main>
 

@@ -21,7 +21,7 @@
             </li>
         </ul>
     </section>
-    <section class="mt-28">
+    <section class="container mt-28">
         <h2 class="section-heading mb-10">Best Sellers</h2>
         <article 
             class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-5"
@@ -67,7 +67,7 @@
             </ul>
         
     </section>
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+    <section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
     <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;"> 
       <img 
         src="{{ asset('Portrait02.png') }}" 
@@ -84,7 +84,7 @@
   
 </section>
 @include("front.components.testimonials")
-<section class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+<section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
     
   <aside class="flex flex-col max-w-xl justify-center text-2xl">
     <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Miguel G</h1>
@@ -102,10 +102,13 @@
   
 </section>
 
-<section>
-    <h2>Want to bring Your Vision to Life with Custom Art?</h2>
-    <a href="{{ route('front.custom_art') }}">
-        Click here for more information 
-    </form>
-</section>
+    <section class="container text-center mt-20">
+        <h3 class="section-heading">
+            Want to bring Your Vision to Life with Custom Art?
+        </h3>
+
+        <a href="{{ route('front.custom_art') }}" class="text-lg">
+            Click here for more information 
+        </a>
+    </section>
 @endsection
