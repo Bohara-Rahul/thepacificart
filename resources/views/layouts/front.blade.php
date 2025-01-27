@@ -32,7 +32,7 @@
         @yield("main_content")
       </main>
 
-      <footer class="footer">
+      <footer class="footer p-5">
         <div class="container grid grid-cols-3">
           <ul class="flex flex-col gap-2">
           <p class="text-xl">Contact Us</p>

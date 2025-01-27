@@ -137,6 +137,19 @@ textarea {
 
 .navbar {
     @apply container flex justify-between items-center text-2xl text-white;
+    transition: 0.3s ease-in;
+}
+
+.left-navbar {
+    @apply container flex justify-between items-center text-2xl text-[#13292a] transition;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
 }
 
 .card {
