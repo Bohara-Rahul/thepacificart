@@ -107,6 +107,15 @@
       />
     </div>
     <div>
+      <label for="isBestSeller">Is BestSeller</label>
+      <input
+        required 
+        type="radio" 
+        id="isBestSeller" 
+        name="best_seller"
+      /> 
+    </div>
+    <div>
       <label for="files">Choose photos</label>
       <input
         required 

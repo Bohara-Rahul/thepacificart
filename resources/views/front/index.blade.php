@@ -38,7 +38,7 @@
                         @if ($product->photos)
                             <article class="shadow-lg">
                                 <img src="{{ asset('uploads/' . $product->photos[0]->name) }}" alt="product image"
-                                    class="product-image" />
+                                    class="product-image rounded-md" />
                             </article>
                         @endif
 

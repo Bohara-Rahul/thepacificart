@@ -18,4 +18,5 @@ Testimonials must be in the white BG likewise Collections etc. Wider span
 
 Add to wish list and cart text should be in black , little description of Best sellers are required too under the paiting, one liner description of the art etc. 
 
+When we click on Best Seller's paintings, the painting overflows on the page , needs to align 
 

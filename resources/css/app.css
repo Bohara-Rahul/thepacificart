@@ -4,19 +4,28 @@
 
 @font-face {
     font-family: "Lato";
-    src: url("../../public/Lato/Lato-Regular.ttf");
+    src: url("../../public/Fonts/Lato/Lato-Regular.ttf");
 }
 
 @font-face {
     font-family: "Prompt";
-    src: url("../../public/Prompt/Prompt-SemiBold.ttf");
+    src: url("../../public/Fonts/Prompt/Prompt-SemiBold.ttf");
 }
 
 @font-face {
     font-family: "Quicksand";
-    src: url("../../public/Quicksand/static/Quicksand-SemiBold.ttf");
+    src: url("../../public/Fonts/Quicksand/static/Quicksand-SemiBold.ttf");
 }
 
+@font-face {
+    font-family: "Adlery Pro";
+    src: url("../../public/Fonts/Adlery Pro/adlery-pro.regular.ttf");
+}
+
+@font-face {
+    font-family: "Playfair";
+    src: url("../../public/Fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf");
+}
 *,
 *::before,
 *::after {
@@ -32,11 +41,11 @@ html {
 body {
     @apply min-h-screen text-black;
     font-family: "Lato";
-    background-image: linear-gradient(to right, #78767677, #ffffff);
+    background-image: linear-gradient(50deg, rgb(250, 214, 214), rgb(249, 238, 220), rgb(252, 252, 226), rgb(227, 251, 227), rgb(223, 223, 249), rgb(238, 223, 248), rgb(251, 231, 251));
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
-    font-family: "Quicksand";
+    font-family: "Playfair";
     color: #13292a;
 }
 h2 {

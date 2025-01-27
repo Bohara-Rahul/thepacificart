@@ -19,6 +19,7 @@ class Product extends Model
         "size",
         "category_id",
         "artist_id",
+        "best_seller",
         "files"
     ];
 
