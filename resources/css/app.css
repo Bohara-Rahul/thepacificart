@@ -120,10 +120,23 @@ textarea {
     z-index: -1;
 }
 
-.header nav {
-    @apply container flex justify-between items-center text-2xl text-white;
+.navigation-container {
     position: relative;
-    z-index: 1;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.navigation-container.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 1px;
+}
+
+.navbar {
+    @apply container flex justify-between items-center text-2xl text-white;
 }
 
 .card {
@@ -177,5 +190,4 @@ textarea {
     background-color: #092933;
     color: #ffffff;
     margin-top: 2rem;
-
 }
