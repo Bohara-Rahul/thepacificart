@@ -29,7 +29,7 @@
     </div>
 
  <p class="text-center">
-  All rights reserved with &copy; {{ date('Y') }}
+  All rights reserved &copy; {{ date('Y') }}
  </p>
   
 </footer>
