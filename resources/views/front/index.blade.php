@@ -28,8 +28,13 @@
         >
             @foreach ($products as $product)
                 <x-card>
-                    <section class="flex flex-col justify-start bg-gray-50 text-black p-5 rounded-sm">
-                        <h3 class="text-2xl text-[#13292a] capitalize">{{ $product->title }}</h3>
+                    <section class="flex flex-col justify-start text-black p-5">
+                        <header class="flex justify-between items-center">
+                            <h3 class="text-2xl text-[#13292a] capitalize font-bold">
+                                {{ $product->title }}
+                            </h3>
+                            <span class="text-xl">by {{ $product->artist->name }}</span>
+                        </header>
                         
                         @if ($product->photos)
                             <article class="shadow-lg">
