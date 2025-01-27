@@ -135,9 +135,7 @@
 
     <section class="container flex flex-col justify-center items-center p-20">
         <h3 class="section-heading">Are you an artist?</h3>
-        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We present top emerging and mid-career artists from
-            around the world. We're passionate about our collection and our artists, and we are always looking for talented
-            artists with positive attitudes to join our community.</p>
+        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always eager to welcome artists with creativity and a positive spirit into our community.</p>
         <a href="{{ route('front.artist_application') }}" class="btn text-xl tracking-wide">Artist Application</a>
     </section>
 @endsection

@@ -22,6 +22,8 @@ Route::get("/about-us", [FrontController::class, 'about'])->name("front.about-us
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
 Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.custom_art");
 Route::get("/artist-application", [FrontController::class, 'artist_application'])->name("front.artist_application");
+Route::get("/refund-policy", [FrontController::class, 'refund_policy'])->name("front.refund_policy");
+Route::get("/terms-conditions", [FrontController::class, 'terms_conditions'])->name("front.terms_conditions");
 
 // Product related routes
 Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');

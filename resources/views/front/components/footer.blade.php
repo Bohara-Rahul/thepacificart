@@ -23,8 +23,13 @@
         </ul>
         
       <ul>
+      <a href="{{ route('front.terms_conditions') }}">
         <li>Terms and Conditions</li>
-        <li>Return Policy</li>
+        
+        <a href="{{ route('front.refund_policy') }}">
+          <li>Refund Policy</li>
+        </a>
+        
       </ul> 
     </div>
 
