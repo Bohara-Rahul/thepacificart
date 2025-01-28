@@ -15,7 +15,7 @@ window.addEventListener('scroll', function () {
     leftLogoNav.classList.add('show');
     leftLogoNav.classList.add('fixed');
     leftLogoNav.style.boxShadow = "2px";
-    navBar.style.color = "#13292a";
+    // navBar.style.color = "#13292a";
   } else { 
     leftLogoNav.classList.remove('show');  
     leftLogoNav.classList.remove('fixed'); 

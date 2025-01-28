@@ -150,6 +150,8 @@ textarea {
     position: relative;
     transition: all 0.3s ease-in-out;
     z-index: 10;
+    background: #092933;
+    color: #fff;
 }
 
 .navigation-container.fixed {
@@ -157,7 +159,6 @@ textarea {
     top: 0;
     left: 0;
     right: 0;
-    background: #fff;
     border-radius: 1px;
 }
 
@@ -167,7 +168,8 @@ textarea {
 }
 
 .left-navbar {
-    @apply container flex justify-between items-center text-2xl text-[#13292a] transition;
+    @apply container flex justify-between items-center text-2xl text-white;
+    transition: 0.3s ease-in;
 }
 
 .show {
@@ -185,17 +187,17 @@ textarea {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: relative;
-  }
+}
 
 .slider .images {
     display: flex;
     transition: transform 0.5s ease;
-  }
+}
 
 .slider img {
     width: 100%;
     flex-shrink: 0;
-  }
+}
 
 .card {
     @apply text-white rounded px-3 py-3 my-2 flex;
@@ -215,10 +217,10 @@ textarea {
     @apply bg-[#3d6571] cursor-pointer;
 }
 
-.nav-active {
+/* .nav-active {
     @apply font-bold;
     color: #13292a;
-}
+} */
 
 .collection-item {
     font-family: "Quicksand";
