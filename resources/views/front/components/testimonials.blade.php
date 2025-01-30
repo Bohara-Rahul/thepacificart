@@ -33,7 +33,7 @@
 
   <x-card>
     <article class="flex flex-col justify-center p-10 bg-slate-50 text-black rounded-md shadow-md">
-      <p>I recently purchased a stunning large Monsoon painting from The Pacific Art, and it has completely transformed my home. The painting depicts a couple walking hand in hand through tall trees with different colors of leaves. It’s a massive 90cm x 150cm, which perfectly fits in the wider walkway of my house. Every time someone walks in, they stop and ask about the painting before moving further. It really gives a special feeling to the entrance of my home, and I couldn’t be happier with it. It truly adds value to my life and makes my home feel even more welcoming</p>
+      <p>I recently purchased a stunning large Love in the Rain painting from The Pacific Art, and it has completely transformed my home. The painting depicts a couple walking hand in hand through tall trees with different colors of leaves. It’s a massive 90cm x 150cm, which perfectly fits in the wider walkway of my house. Every time someone walks in, they stop and ask about the painting before moving further. It really gives a special feeling to the entrance of my home, and I couldn’t be happier with it. It truly adds value to my life and makes my home feel even more welcoming</p>
       <div class="flex items-center space-x-5 mt-5">
         <img 
           src="{{ asset('user_pic.jpg') }}" 

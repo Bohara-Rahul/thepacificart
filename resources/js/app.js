@@ -15,7 +15,7 @@ window.addEventListener('scroll', function () {
     leftLogoNav.classList.add('show');
     leftLogoNav.classList.add('fixed');
     leftLogoNav.style.boxShadow = "2px";
-    navBar.style.color = "#13292a";
+    // navBar.style.color = "#13292a";
   } else { 
     leftLogoNav.classList.remove('show');  
     leftLogoNav.classList.remove('fixed'); 
@@ -24,4 +24,22 @@ window.addEventListener('scroll', function () {
     navContainer.classList.add('show');
   }
 });
+
+ // JavaScript for slider functionality
+ const imagesContainer = document.querySelector('.slider .images');
+ const images = document.querySelectorAll('.slider img');
+ let currentIndex = 0;
+
+ function showNextImage() {
+   // Calculate the new translateX value
+   currentIndex = (currentIndex + 1) % images.length;
+   const offset = -currentIndex * 100;
+
+   // Apply the transform to slide images
+   imagesContainer.style.transform = `translateX(${offset}%)`;
+ }
+
+ // Change images every 2 seconds
+ setInterval(showNextImage, 2000);
+
 
