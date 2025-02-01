@@ -40,6 +40,6 @@ window.addEventListener('scroll', function () {
  }
 
  // Change images every 2 seconds
- setInterval(showNextImage, 2000);
+ setInterval(showNextImage, 3000);
 
 

@@ -1,4 +1,5 @@
 @extends('layouts.front')
+@include('front.components.HeaderVideo')
 @section('main_content')
     @include('front.components.hero-section')
 

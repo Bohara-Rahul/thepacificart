@@ -8,10 +8,11 @@ use Livewire\Component;
 
 class ArtList extends Component
 {
-    public $searchTerm = '';
     public $results;
+    public $searchTerm = '';
+    public $selectedPrice = '';
     public $selectedCategories = [];
-
+    
     public function render()
     {        
         $categories = Category::all();
@@ -26,6 +27,10 @@ class ArtList extends Component
             }
         } else {
             $this->results = Product::search($this->searchTerm)->get();
+        }
+
+        if ($this->selectedPrice) {
+            
         }
 
         return view('livewire.art-list', [

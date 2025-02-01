@@ -1,63 +1,88 @@
 <section class="container">
-    <div class="flex justify-center items-center max-w-screen-lg mt-5 h-20">
-        
-    </div>
+
     <h2 class="section-heading mb-10">Arts List</h2>
-    <div class="flex gap-2">
-        <aside>
+    <div class="flex">
+        <aside class="mb-5">
             <input type="text" placeholder="Search arts here...." class="border border-gray-300 rounded-md"
-            wire:model.live.debounce.300ms="searchTerm" />
+                wire:model.live.debounce.300ms="searchTerm" />
             <h3>Filters</h3>
-            <p>Select Caetgory</p>
+            <hr />
+            <h5 class="font-extrabold mt-2 mb-2">Select Caetgory:</h5>
             @foreach ($categories as $category)
-                <div class="flex flex-col">
+                <div wire:key="{{ $category->id }}" class="grid grid-cols-2 place-content-center place-items-start">
+                    <label class="text-left text-gray-800">{{ $category->title }}</label>
                     <input wire:model="selectedCategories" type="checkbox" value="{{ $category->id }}" />
-                    <label class="text-left">{{ $category->title }}</label>
                 </div>
             @endforeach
+            <h5 class="font-extrabold mb-2">Choose Price:</h5>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">100$ ≤ Price ≤ 1000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price between 100 and 1000" />
+            </div>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">1001$ ≤ Price ≤ 2000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price between 1001 and 2000" />
+            </div>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">2001$ ≤ Price ≤ 3000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price between 2001 and 3000" />
+            </div>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">3001$ ≤ Price ≤ 4000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price between 3001 and 4000" />
+            </div>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">4001$ ≤ Price ≤ 5000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price between 4001 and 5000" />
+            </div>
+            <div class="grid grid-cols-3 place-content-center place-items-start">
+                <label class="col-span-2">Price > 5000$</label>
+                <input wire:model="selectedPrice" type="radio" value="price above 5000" />
+            </div>
             <button wire:click="$refresh" class="btn">Apply Filter</button>
-
         </aside>
         <section class="flex-1 overflow-auto">
-            <article class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
-                @foreach ($arts as $art)
-                    <x-card>
-                        <section class="flex flex-col justify-start text-black p-5">
-                            <header class="flex justify-between items-center">
-                                <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                                    {{ $art->title }}
-                                </h3>
-                                <span class="text-xl">by {{ $art->artist->name }}</span>
-                            </header>
+            @if (count($arts))
+                <article class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
+                    @foreach ($arts as $art)
+                        <x-card>
+                            <section class="flex flex-col justify-start text-black p-5">
+                                <header class="flex justify-between items-center">
+                                    <h3 class="text-2xl text-[#13292a] capitalize font-bold">
+                                        {{ $art->title }}
+                                    </h3>
+                                    <span class="text-xl">by {{ $art->artist->name }}</span>
+                                </header>
 
-                            @if ($art->photos)
-                                <article class="shadow-lg">
-                                    <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
-                                        class="product-image rounded-md" />
+                                @if ($art->photos)
+                                    <article class="shadow-lg">
+                                        <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
+                                            class="product-image rounded-md" />
+                                    </article>
+                                @endif
+
+                                <p>{{ substr($art->description, 0, 150) }}</p>
+
+                                <article class="flex justify-between items-center mt-5">
+                                    <a href="#">
+                                        <p>ADD TO WISHLIST</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>ADD TO CART</p>
+                                    </a>
                                 </article>
-                            @endif
 
-                            <p>{{ substr($art->description, 0, 150) }}</p>
 
-                            <article class="flex justify-between items-center mt-5">
-                                <a href="#">
-                                    <p>ADD TO WISHLIST</p>
+                                <a class="btn text-center" href="{{ route('product_detail', $art->slug) }}">
+                                    Learn More
                                 </a>
-                                <a href="#">
-                                    <p>ADD TO CART</p>
-                                </a>
-                            </article>
 
-
-                            <a class="btn text-center" href="{{ route('product_detail', $art->slug) }}">
-                                Learn More
-                            </a>
-
-                        </section>
-                    </x-card>
-                @endforeach
-
+                            </section>
+                        </x-card>
+                    @endforeach
         </section>
     </div>
-
+@else
+    <h2>Your filters do not match any arts</h2>
+    @endif
 </section>

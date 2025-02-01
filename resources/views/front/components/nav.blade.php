@@ -1,7 +1,7 @@
 <header id="header" class="header">
-    <video muted autoplay loop poster="{{ asset('hero-img.png') }}">
-        <source src="{{ asset('bg-video.MOV') }}" />
-    </video>
+  <video muted autoplay loop poster="{{ asset('hero-img.png') }}">
+    <source src="{{ asset('bg-video.MOV') }}" />
+  </video>
     <div class="navigation-container show" id="nav-container">
         <nav class="navbar" id="nav-bar">
             <ul class="flex justify-between gap-5">
@@ -19,7 +19,7 @@
                 </li>
             </ul>
             <a href="/">
-                <img src="{{ asset('logo.jpg') }}" alt="logo" style="height: 80px; object-fit: cover;" />
+                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 120px; object-fit: cover;" />
             </a>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 <li>
@@ -51,7 +51,7 @@
     <div class="navigation-container hide" id="left-logo-nav">
         <nav class="left-navbar" id="left-nav-bar">
             <a href="/">
-                <img src="{{ asset('logo.jpg') }}" alt="logo" style="height: 100px; object-fit: cover;" />
+                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
             </a>
             <ul class="flex justify-between gap-5">
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
