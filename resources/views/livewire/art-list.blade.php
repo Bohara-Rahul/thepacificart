@@ -1,11 +1,12 @@
 <section class="container">
     <div class="flex justify-center items-center max-w-screen-lg mt-5 h-20">
-        <input type="text" placeholder="Search arts here...." class="border border-gray-300"
-            wire:model.live.debounce.300ms="searchTerm" />
+        
     </div>
     <h2 class="section-heading mb-10">Arts List</h2>
     <div class="flex gap-2">
         <aside>
+            <input type="text" placeholder="Search arts here...." class="border border-gray-300 rounded-md"
+            wire:model.live.debounce.300ms="searchTerm" />
             <h3>Filters</h3>
             <p>Select Caetgory</p>
             @foreach ($categories as $category)

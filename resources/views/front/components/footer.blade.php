@@ -2,7 +2,7 @@
     <div class="container grid grid-cols-3">
         <ul class="flex flex-col gap-2">
             <p class="text-xl">Contact Us</p>
-            <li><i class="fa-solid fa-phone mr-2"></i> +61 450 213 015</li>
+            <li><i class="fa-solid fa-phone mr-2"></i> +61 494 381 041</li>
             <li><i class="fa-solid fa-envelope mr-2"></i> info@thepacificart.com.au</li>
         </ul>
 
