@@ -37,9 +37,9 @@
                         </header>
 
                         @if ($product->photos)
-                            <article class="shadow-lg">
+                            <article class="shadow-lg w-96 h-80">
                                 <img src="{{ asset('uploads/' . $product->photos[0]->name) }}" alt="product image"
-                                    class="product-image rounded-md" />
+                                    class="rounded-md w-96" />
                             </article>
                         @endif
 
