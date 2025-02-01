@@ -116,6 +116,7 @@ h1 {
 form {
     @apply max-w-screen-md;
 }
+
 input,
 select,
 textarea {
@@ -191,7 +192,7 @@ textarea {
 
 .slider .images {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.7s ease-in-out;
 }
 
 .slider img {
