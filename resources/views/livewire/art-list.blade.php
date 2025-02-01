@@ -1,5 +1,4 @@
 <section class="container">
-
     <h2 class="section-heading mb-10">Arts List</h2>
     <div class="flex">
         <aside class="mb-5">
