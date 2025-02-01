@@ -24,7 +24,7 @@ Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.c
 Route::get("/artist-application", [FrontController::class, 'artist_application'])->name("front.artist_application");
 
 // Product related routes
-Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
+Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/categories/{slug}', [CategoryController::class, 'category_detail'])->name('category_detail');
 
 // User Controller related routes

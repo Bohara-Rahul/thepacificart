@@ -150,7 +150,7 @@ textarea {
     position: relative;
     transition: all 0.3s ease-in-out;
     z-index: 10;
-    background: #092933;
+    background: #0A3341;
     color: #fff;
 }
 
@@ -246,6 +246,6 @@ textarea {
 }
 
 .footer {
-    background-color: #092933;
+    background-color: #0A3341;
     color: #ffffff;
 }
