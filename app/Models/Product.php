@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public function scopeSearch($query, $searchTerm)
+    {
+        return $query->where('title', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('artist', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('description', 'LIKE', "%{$searchTerm}%");
+    }
+
     protected $fillable = [
         "title",
         "slug",

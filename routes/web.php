@@ -26,7 +26,7 @@ Route::get("/refund-policy", [FrontController::class, 'refund_policy'])->name("f
 Route::get("/terms-conditions", [FrontController::class, 'terms_conditions'])->name("front.terms_conditions");
 
 // Product related routes
-Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
+Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
 Route::get('/categories/{slug}', [CategoryController::class, 'category_detail'])->name('category_detail');
 
 // User Controller related routes

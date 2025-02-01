@@ -41,9 +41,6 @@ html {
 body {
     @apply min-h-screen text-black;
     font-family: "Lato";
-<<<<<<< HEAD
-    background-image: linear-gradient(80deg, rgb(250, 214, 214), rgb(249, 238, 220), rgb(252, 252, 226), rgb(227, 251, 227), rgb(223, 223, 249), rgb(238, 223, 248), rgb(251, 231, 251));
-=======
     background-image: linear-gradient(
         50deg,
         rgb(250, 214, 214),
@@ -54,7 +51,6 @@ body {
         rgb(238, 223, 248),
         rgb(251, 231, 251)
     );
->>>>>>> 4e007f06d148fb882ff0dec701049ce5ef164d63
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
@@ -154,7 +150,7 @@ textarea {
     position: relative;
     transition: all 0.3s ease-in-out;
     z-index: 10;
-    background: #092933;
+    background: #0A3341;
     color: #fff;
 }
 
@@ -250,6 +246,6 @@ textarea {
 }
 
 .footer {
-    background-color: #092933;
+    background-color: #0A3341;
     color: #ffffff;
 }
