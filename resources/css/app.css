@@ -116,6 +116,11 @@ h1 {
 form {
     @apply max-w-screen-md;
 }
+
+.search-form {
+    @apply max-w-screen-xl;
+}
+
 input,
 select,
 textarea {

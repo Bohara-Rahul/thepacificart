@@ -1,18 +1,18 @@
 <section class="container">
+    <div class="flex justify-center items-center max-w-screen-lg mt-5 h-20">
+        <input type="text" placeholder="Search arts here...." class="border border-gray-300"
+            wire:model.live.debounce.300ms="searchTerm" />
+    </div>
     <h2 class="section-heading mb-10">Arts List</h2>
     <div class="flex gap-2">
         <aside>
-            <form>
-                <input type="text" placeholder="Search arts here...." class="border border-gray-100"
-                    wire:model.live.debounce.300ms="searchTerm" />
-            </form>
             <h3>Filters</h3>
             <p>Select Caetgory</p>
             @foreach ($categories as $category)
-                <label>
+                <div class="flex flex-col">
                     <input wire:model="selectedCategories" type="checkbox" value="{{ $category->id }}" />
-                    {{ $category->title }}
-                </label>
+                    <label class="text-left">{{ $category->title }}</label>
+                </div>
             @endforeach
             <button wire:click="$refresh" class="btn">Apply Filter</button>
 
