@@ -26,19 +26,6 @@
             <li>Terms and Conditions</li>
             <li>Return Policy</li>
         </ul>
-<<<<<<< HEAD
-        
-      <ul>
-      <a href="{{ route('front.terms_conditions') }}">
-        <li>Terms and Conditions</li>
-        
-        <a href="{{ route('front.refund_policy') }}">
-          <li>Refund Policy</li>
-        </a>
-        
-      </ul> 
-=======
->>>>>>> 8fb2e3bc7573ec4da1fb2fdcf49cd54736878709
     </div>
 
     <p class="text-center">
