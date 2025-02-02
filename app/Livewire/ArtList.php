@@ -5,36 +5,48 @@ namespace App\Livewire;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\withPagination;
 
 class ArtList extends Component
 {
+
+    use withPagination;
+
     public $results;
     public $searchTerm = '';
     public $selectedPrice = '';
     public $selectedCategories = [];
+
+    // Function to update category when the user selects one
+    public function updatedSelectedCategory($value)
+    {
+        $this->resetPage(); // Reset pagination when category changes
+    }
     
     public function render()
     {        
         $categories = Category::all();
-        
+
+        $query = Product::query();
+
         if ($this->searchTerm == '') {
             if (count($this->selectedCategories)) {
-                $this->results = Product::when(count($this->selectedCategories), function ($query) {
-                    $query->whereIn('category_id', $this->selectedCategories);
+                $query->when(count($this->selectedCategories), function ($subQuery) {
+                    $subQuery->whereIn('category_id', $this->selectedCategories);
                 })->get();
             } else {
-                $this->results = Product::all();
+                $query->get();
             }
         } else {
-            $this->results = Product::search($this->searchTerm)->get();
+            $query->search($this->searchTerm);
         }
 
-        if ($this->selectedPrice) {
+        // if ($this->selectedPrice) {
             
-        }
+        // }
 
         return view('livewire.art-list', [
-            'arts' => $this->results,
+            'arts' => $query->paginate(15),
             'categories' => $categories,
         ]);
     }
