@@ -12,18 +12,11 @@
         <div class="images">
             <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-fill" />
 
-<<<<<<< HEAD
-        <img src="{{ asset('slider_1.jpg') }}" alt="hero image" class="object-contain" />
+            <img src="{{ asset('slider_1.jpg') }}" alt="slider image 1" class="object-fill" />
 
-        <img src="{{ asset('slider_2.jpg') }}" alt="hero image" class="object-contain" />
+            <img src="{{ asset('slider_2.jpg') }}" alt="slider image 2" class="object-contain" />
 
-        <img src="{{ asset('slider_3.jpg') }}" alt="hero image" class="object-contain" />
-      </div>
-=======
-            <img src="{{ asset('slider_1.jpg') }}" alt="hero image" class="object-fill" />
-
-            <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-contain" />
+            <img src="{{ asset('slider_3.jpg') }}" alt="slider image 3" class="object-contain" />
         </div>
->>>>>>> 87f0ab6afd323360f1fa4844c54d05dc0a5f16f4
     </div>
 </section>
