@@ -42,7 +42,7 @@ body {
     @apply min-h-screen text-black;
     font-family: "Lato";
     background-image: linear-gradient(
-        50deg,
+        60deg,
         rgb(250, 214, 214),
         rgb(249, 238, 220),
         rgb(252, 252, 226),
