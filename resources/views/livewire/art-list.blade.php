@@ -50,7 +50,6 @@
                                     <h3 class="text-2xl text-[#13292a] capitalize font-bold">
                                         {{ $art->title }}
                                     </h3>
-                                    <span class="text-xl">by {{ $art->artist->name }}</span>
                                 </header>
 
                                 @if ($art->photos)

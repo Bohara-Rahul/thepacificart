@@ -29,21 +29,18 @@
             @foreach ($products as $product)
                 <x-card>
                     <section class="flex flex-col justify-start text-black p-5">
-                        <header class="flex justify-between items-center">
-                            <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                                {{ $product->title }}
-                            </h3>
-                            <span class="text-xl">by {{ $product->artist->name }}</span>
-                        </header>
+                        <h3 class="text-2xl text-[#13292a] capitalize font-bold">
+                            {{ $product->title }}
+                        </h3>
 
                         @if ($product->photos)
-                            <article class="shadow-lg w-96 h-80">
+                            <article class="shadow-xl w-96 h-80">
                                 <img src="{{ asset('uploads/' . $product->photos[0]->name) }}" alt="product image"
-                                    class="rounded-md w-96" />
+                                    class="rounded-md" />
                             </article>
                         @endif
 
-                        <p>{{ substr($product->description, 0, 150) }}</p>
+                        <p class="mt-20">{{ substr($product->description, 0, 150) }}</p>
 
                         <article class="flex justify-between items-center mt-5">
                             <a href="#">
