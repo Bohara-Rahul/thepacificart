@@ -259,12 +259,26 @@ textarea {
     object-fit: cover;
 }
 
-.page-link-container {
-    @apply flex flex-col justify-center items-center gap-2 mb-2;
+.pagination {
+    @apply flex justify-center items-center gap-2 mb-2;
 }
 
-.page-link-container p {
-    margin-right: 1rem;
+.pagination .active {
+    background-color: #0a3341; 
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.pagination a {
+    padding: 8px 12px;
+    margin: 0 3px;
+    text-decoration: none;
+    color: gray;
+    border-radius: 5px;
+}
+.pagination a:hover {
+    background-color: #ddd;
 }
 
 .footer {

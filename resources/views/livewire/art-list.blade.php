@@ -83,10 +83,27 @@
 @else
     <h2>Your filters do not match any arts</h2>
     @endif
-    <section class="page-link-container">
-        @if ($arts->links())
-            {{ $arts->links() }}
+    <div class="pagination mt-4">
+        @if ($arts->onFirstPage())
+            <span class="px-3 py-2 text-gray-400 cursor-not-allowed">
+                <i class="fa-solid fa-arrow-left"></i>
+            </span>
+        @else
+            <a href="{{ $arts->previousPageUrl() }}" class="px-3 py-2 text-white rounded"><i class="fa-solid fa-arrow-left"></i></a>
         @endif
-    </section>
+        @foreach ($arts->links()->elements[0] as $page => $url)
+            @if ($page == $arts->currentPage())
+                <span class="active">{{ $page }}</span>
+            @else
+                <a href="{{ $url }}">{{ $page }}</a>
+            @endif
+        @endforeach
+        @if ($arts->hasMorePages())
+            <a href="{{ $arts->nextPageUrl() }}" class="px-3 py-2  text-white rounded"><i class="fa-solid fa-arrow-right"></i></a>
+        @else
+            <span class="px-3 py-2 text-gray-400 cursor-not-allowed"><i class="fa-solid fa-arrow-right"></i></span>
+        @endif
+
+    </div>
 
 </section>
