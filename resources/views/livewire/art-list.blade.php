@@ -83,4 +83,10 @@
 @else
     <h2>Your filters do not match any arts</h2>
     @endif
+    <section class="page-link-container">
+        @if ($arts->links())
+            {{ $arts->links() }}
+        @endif
+    </section>
+
 </section>
