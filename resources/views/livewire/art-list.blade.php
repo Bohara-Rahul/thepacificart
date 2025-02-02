@@ -53,9 +53,9 @@
                                 </header>
 
                                 @if ($art->photos)
-                                    <article class="shadow-lg">
+                                    <article class="shadow-lg w-80 h-96">
                                         <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
-                                            class="product-image rounded-md" />
+                                            class="product-image rounded-md object-cover" />
                                     </article>
                                 @endif
 
@@ -80,16 +80,14 @@
                     @endforeach
         </section>
     </div>
-@else
-    <h2>Your filters do not match any arts</h2>
-    @endif
     <div class="pagination mt-4">
         @if ($arts->onFirstPage())
             <span class="px-3 py-2 text-gray-400 cursor-not-allowed">
                 <i class="fa-solid fa-arrow-left"></i>
             </span>
         @else
-            <a href="{{ $arts->previousPageUrl() }}" class="px-3 py-2 text-white rounded"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="{{ $arts->previousPageUrl() }}" class="px-3 py-2 text-white rounded"><i
+                    class="fa-solid fa-arrow-left"></i></a>
         @endif
         @foreach ($arts->links()->elements[0] as $page => $url)
             @if ($page == $arts->currentPage())
@@ -99,11 +97,16 @@
             @endif
         @endforeach
         @if ($arts->hasMorePages())
-            <a href="{{ $arts->nextPageUrl() }}" class="px-3 py-2  text-white rounded"><i class="fa-solid fa-arrow-right"></i></a>
+            <a href="{{ $arts->nextPageUrl() }}" class="px-3 py-2  text-white rounded"><i
+                    class="fa-solid fa-arrow-right"></i></a>
         @else
             <span class="px-3 py-2 text-gray-400 cursor-not-allowed"><i class="fa-solid fa-arrow-right"></i></span>
         @endif
 
     </div>
+    @else
+        <h2>Your filters do not match any arts</h2>
+    @endif
+
 
 </section>

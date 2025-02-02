@@ -38,7 +38,15 @@ class AdminProductController extends Controller
             'size' => 'required',
             'category_id' => 'required|exists:categories,id',
             'artist_id' => 'required|exists:artists,id',
+            'isBestSeller' => 'string',
+            'primary_image' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
         ]);
+
+        if ($request->hasFile('primary_image')) {
+            $filename = 'primary_image_'.time().'.'.$request->primary_image->extension();
+            $request->primary_image->move(public_path('uploads'), $filename);
+            $validated['primary_image'] = $filename;
+        }
 
         $validated['price'] = $validated['price'] * 100;
 
