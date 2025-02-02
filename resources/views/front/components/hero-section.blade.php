@@ -9,12 +9,12 @@
     </aside>
 
     <div class="overflow-hidden rounded-md slider" style="width: 640px; height: 780px;">
-      <div class="images">
-        <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-contain" />
+        <div class="images">
+            <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-fill" />
 
-        <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-contain" />
+            <img src="{{ asset('slider_1.jpg') }}" alt="hero image" class="object-fill" />
 
-        <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-contain" />
-      </div>
+            <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-contain" />
+        </div>
     </div>
 </section>
