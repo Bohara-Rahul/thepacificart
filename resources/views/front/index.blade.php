@@ -33,12 +33,9 @@
                             {{ $product->title }}
                         </h3>
 
-                        @if ($product->photos)
-                            <article class="shadow-xl w-96 h-80">
-                                <img src="{{ asset('uploads/' . $product->photos[0]->name) }}" alt="product image"
-                                    class="rounded-md" />
-                            </article>
-                        @endif
+                        <article class="shadow-xl w-96 h-80">
+                            <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="product image" class="rounded-md" />
+                        </article>
 
                         <p class="mt-20">{{ substr($product->description, 0, 150) }}</p>
 
@@ -133,7 +130,9 @@
 
     <section class="container flex flex-col justify-center items-center p-20">
         <h3 class="section-heading">Are you an artist?</h3>
-        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always eager to welcome artists with creativity and a positive spirit into our community.</p>
+        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists
+            from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always
+            eager to welcome artists with creativity and a positive spirit into our community.</p>
         <a href="{{ route('front.artist_application') }}" class="btn text-xl tracking-wide">Artist Application</a>
     </section>
 @endsection

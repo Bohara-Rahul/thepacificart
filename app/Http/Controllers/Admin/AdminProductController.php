@@ -49,7 +49,6 @@ class AdminProductController extends Controller
         }
 
         $validated['price'] = $validated['price'] * 100;
-
         $product = Product::create($validated);
 
         if ($request->hasFile('files')) {
