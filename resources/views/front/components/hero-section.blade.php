@@ -14,9 +14,9 @@
 
             <img src="{{ asset('slider_1.jpg') }}" alt="slider image 1" class="object-fill" />
 
-            <img src="{{ asset('slider_2.jpg') }}" alt="slider image 2" class="object-contain" />
+            <img src="{{ asset('slider_2.jpg') }}" alt="slider image 2" class="object-fill" />
 
-            <img src="{{ asset('slider_3.jpg') }}" alt="slider image 3" class="object-contain" />
+            <img src="{{ asset('slider_3.jpg') }}" alt="slider image 3" class="object-fill" />
         </div>
     </div>
 </section>
