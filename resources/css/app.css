@@ -114,7 +114,7 @@ h1 {
 
 /* form elements */
 form {
-    @apply max-w-screen-md;
+    @apply max-w-screen-xl;
 }
 
 input,

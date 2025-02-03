@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @include('front.components.HeaderVideo')
 @section('main_content')
-    @include('front.components.hero-section')
+@include('front.components.hero-section')
 
     <section class="mt-32 bg-slate-100 text-black p-5">
         <h3 class="section-heading">
@@ -26,21 +26,18 @@
     <section class="container mt-28">
         <h2 class="section-heading mb-10">Best Sellers</h2>
         <article class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-2">
-            @foreach ($products as $product)
+            @foreach ($best_seller_arts as $best_seller_art)
                 <x-card>
                     <section class="flex flex-col justify-start text-black p-5">
                         <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                            {{ $product->title }}
+                            {{ $best_seller_art->title }}
                         </h3>
 
-                        @if ($product->photos)
-                            <article class="shadow-xl w-96 h-80">
-                                <img src="{{ asset('uploads/' . $product->photos[0]->name) }}" alt="product image"
-                                    class="rounded-md" />
-                            </article>
-                        @endif
+                        <article class="shadow-xl w-96 h-80">
+                            <img src="{{ asset('uploads/' . $best_seller_art->primary_image) }}" alt="best seller art image" class="rounded-md" />
+                        </article>
 
-                        <p class="mt-20">{{ substr($product->description, 0, 150) }}</p>
+                        <p class="mt-20">{{ substr($best_seller_art->description, 0, 150) }}</p>
 
                         <article class="flex justify-between items-center mt-5">
                             <a href="#">
@@ -52,7 +49,7 @@
                         </article>
 
 
-                        <a class="btn text-center" href="{{ route('product_detail', $product->slug) }}">
+                        <a class="btn text-center" href="{{ route('product_detail', $best_seller_art->slug) }}">
                             Learn More
                         </a>
 
@@ -133,7 +130,9 @@
 
     <section class="container flex flex-col justify-center items-center p-20">
         <h3 class="section-heading">Are you an artist?</h3>
-        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always eager to welcome artists with creativity and a positive spirit into our community.</p>
+        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists
+            from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always
+            eager to welcome artists with creativity and a positive spirit into our community.</p>
         <a href="{{ route('front.artist_application') }}" class="btn text-xl tracking-wide">Artist Application</a>
     </section>
 @endsection

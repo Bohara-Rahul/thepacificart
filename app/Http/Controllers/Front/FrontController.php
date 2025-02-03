@@ -7,18 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use App\Models\Artist;
 use App\Models\Category;
-use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['photos', 'category', 'artist'])->get();
+        $best_seller_arts = Product::where('isBestSeller', 1)->get();
         $categories = Category::all();
-        $sliders = Slider::get();
-        $images = Photo::all();
-        return view('front.index', compact('products', 'sliders', 'categories', 'images'));
+        return view('front.index', compact('best_seller_arts', 'categories'));
     }
 
     public function arts()
