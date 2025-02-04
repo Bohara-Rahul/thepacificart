@@ -20,3 +20,19 @@ Add to wish list and cart text should be in black , little description of Best s
 
 When we click on Best Seller's paintings, the painting overflows on the page , needs to align 
 
+04/02/25 - 
+Slider images needs some adjustments, I like when image cover's the card however it stretches out the image, I will find some portraits that can fit the slider 
+
+Learn more needs to be renamed to something 'more info' or 'view more' that will take us about us page for more information about the business. 
+
+Best Sellers Items are not showing up? I did git pul but images dissapeared 
+
+Art by Gabo and Miguel is not showing up, not sure if this is git pull push issue? 
+
+Please refer to Artist Application.txt page for more information on what can be added to the page and questions 
+
+Orientations on Arts page is a good option for customers to select Landscape, Portraitt paintings 
+
+On Arts page, is it possible to apply a feature for cusotmer to hover and images automatically zoomed in or shows full image or thumbnail or full image and then when they click , it takes them to full description page 
+
+I like the idea of having an option to select or make painting a primary to showcase on landing page, however It is worth having this option for an exisitngs arts to make it primary when required. i.e. Any painting which gets popularity, we can make it primary as best sellers 
