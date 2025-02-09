@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js"></script>
+    <title>Document</title>
 
-  @vite('resources/css/app.css')
+    @vite('resources/css/app.css')
 </head>
+
 <body class="container">
-  <nav class="flex justify-between items-center py-5">
-    <h2>Hello {{ auth()->user()->name }}</h2>
-    <ul class="flex justify-between items-center space-x-5">
-      <li>
-        <form action="{{ route('admin_logout') }}" method="POST">
-          @csrf
-          <button type="submit">Logout</button>
-        </form>
-      </li>
-      <li>
-        <a href="{{ route('front.home') }}" class="bg-yellow-200 p-3">Front End</a>
-      </li>      
-    </ul>
-    
-  </nav>
+    <nav class="flex justify-between items-center py-5">
+        <h2>Hello {{ auth()->user()->name }}</h2>
+        <ul class="flex justify-between items-center space-x-5">
+            <li>
+                <form action="{{ route('admin_logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <li>
+                <a href="{{ route('front.home') }}" class="bg-yellow-200 p-3">Front End</a>
+            </li>
+        </ul>
 
-  @if (session('success'))
-    <div id="flash" class="p-4 text-center bg-green-50 text-green-500 font-bold">
-      {{ session('success') }}
-    </div>    
-  @endif
+    </nav>
 
-  @if (session()->has('failure'))
-    <div class="p-4 text-center bg-red-100 text-red-500 font-bold">
-      {{ session('failure') }}
-    </div>  
-  @endif
+    @if (session('success'))
+        <div id="flash" class="p-4 text-center bg-green-50 text-green-500 font-bold">
+            {{ session('success') }}
+        </div>
+    @endif
 
-  <main class="flex space-x-5">
-    @yield("main_content")
-  </main>
+    @if (session()->has('failure'))
+        <div class="p-4 text-center bg-red-100 text-red-500 font-bold">
+            {{ session('failure') }}
+        </div>
+    @endif
+
+    <main class="flex space-x-5">
+        @yield('main_content')
+    </main>
+
+    <script>
+        const {
+            ClassicEditor,
+            Essentials,
+            Bold,
+            Italic,
+            Font,
+            Paragraph
+        } = CKEDITOR;
+
+        ClassicEditor
+            .create(document.querySelector('#description'), {
+                licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NDAzNTUxOTksImp0aSI6IjU2ZTE1NDkzLWU4NjgtNDIxYS05Y2UwLWVjNTAzZGY2NWU3MCIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjNiYWZlZmI4In0.lr4k-vrMtQgr2BUJ1IRZcpahRCMAqdHWv-vxVn_IxNmbM8CYRFwHs5L0IVBinVuFWL0TtYtJ7_g17yqgrzP1gA',
+                plugins: [Essentials, Bold, Italic, Font, Paragraph],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            })
+            .then( /* ... */ )
+            .catch( /* ... */ );
+    </script>
 </body>
+
 </html>

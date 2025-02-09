@@ -44,7 +44,8 @@
         
         <div>
             <label for="description">Description</label>
-            <textarea id="description" name="description" required>
+            <textarea id="description" name="description"
+            required>
                 {{ old('description') }}
             </textarea>
         </div>

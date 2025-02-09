@@ -45,7 +45,7 @@
                 <article class="grid-container gap-2 justify-center">
                     @foreach ($arts as $art)
                         <x-card>
-                            <section class="flex flex-col justify-start bg-red-200 text-black p-5 w-[360px] h-[600px]">
+                            <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
                                 <header class="flex justify-between items-center">
                                     <h3 class="text-2xl text-[#13292a] capitalize font-bold">
                                         {{ $art->title }}
