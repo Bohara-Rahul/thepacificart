@@ -7,17 +7,17 @@
         <h3 class="section-heading">
             Why Choose Us?
         </h3>
-        <ul class="flex flex-wrap place-content-center text-xl text-gray-900 font-bold gap-10">
+        <ul class="flex flex-wrap place-content-center text-2xl text-gray-900 font-bold gap-20">
             <li>
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star text-[#3d6571]"></i>
                 Premium Arts
             </li>
             <li>
-                <i class="fa-solid fa-truck"></i>
+                <i class="fa-solid fa-truck text-[#3d6571]"></i>
                 Faster Delivery
             </li>
             <li>
-                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-phone text-[#3d6571]"></i>
                 24x7 support
             </li>
         </ul>

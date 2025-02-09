@@ -40,12 +40,12 @@
             </div>
             <button wire:click="$refresh" class="btn">Apply Filter</button>
         </aside>
-        <section class="flex-1 overflow-auto">
+        <section class="flex-1">
             @if (count($arts))
-                <article class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
+                <article class="grid-container gap-2 justify-center">
                     @foreach ($arts as $art)
                         <x-card>
-                            <section class="flex flex-col justify-start text-black p-5">
+                            <section class="flex flex-col justify-start bg-red-200 text-black p-5 w-[360px] h-[600px]">
                                 <header class="flex justify-between items-center">
                                     <h3 class="text-2xl text-[#13292a] capitalize font-bold">
                                         {{ $art->title }}
@@ -53,7 +53,7 @@
                                 </header>
 
                                 @if ($art->photos)
-                                    <article class="shadow-lg w-80 h-96">
+                                    <article class="shadow-lg w-80 h-[340px]">
                                         <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
                                             class="product-image rounded-md object-cover" />
                                     </article>

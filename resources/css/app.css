@@ -53,9 +53,8 @@ body {
     );
 }
 h1 {
-    @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl;
+    @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl text-[#13292a];
     font-family: "Playfair";
-    color: #13292a;
 }
 h2 {
     @apply text-xl font-bold my-4;
@@ -128,6 +127,13 @@ textarea {
     @apply max-w-screen-2xl mx-auto px-12;
 }
 
+.grid-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    justify-content: center;
+}
+
 .header {
     position: relative;
     height: 70vh;
@@ -164,13 +170,11 @@ textarea {
 }
 
 .navbar {
-    @apply container flex justify-between items-center text-2xl text-white;
-    transition: 0.3s ease-in;
+    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in;
 }
 
 .left-navbar {
-    @apply container flex justify-between items-center text-2xl text-white;
-    transition: 0.3s ease-in;
+    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in;
 }
 
 .show {
@@ -202,12 +206,10 @@ textarea {
 
 .card {
     @apply text-white rounded px-3 py-3 my-2 flex;
-    /* background-image: linear-gradient(to right, black, gray); */
 }
 
 .section-heading {
-    @apply font-extrabold text-4xl text-center mb-10;
-    color: #13292a;
+    @apply font-extrabold text-4xl text-center mb-10 text-[#13292a];
 }
 
 .btn {
@@ -264,7 +266,7 @@ textarea {
 }
 
 .pagination .active {
-    background-color: #0a3341; 
+    background-color: #0a3341;
     color: white;
     font-weight: bold;
     padding: 8px 12px;
