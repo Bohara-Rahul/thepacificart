@@ -10,12 +10,17 @@ class PendingArtist extends Model
     use HasFactory;
 
     protected $fiillable = [
-        'fullname',
+        'bio',
         'email',
         'country',
+        'fullname',
         'phone_number',
         'portfolio_link',
-        'bio',
         'application_status'
     ];
+
+    public function portfolio_images()
+    {
+        return $this->hasMany(ArtistPortfolioImages::class);
+    }
 }

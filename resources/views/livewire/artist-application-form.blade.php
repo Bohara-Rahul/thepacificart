@@ -1,4 +1,4 @@
-<form class="max-w-fit mb-2">
+<form class="max-w-fit mb-2" wire:submit="save">
     <label>
         Full Name:
         <input required type="text" placeholder="Enter your full name here" wire:model="fullname" />
