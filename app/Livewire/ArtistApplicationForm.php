@@ -9,7 +9,7 @@ class ArtistApplicationForm extends Component
 {
     use WithFileUploads;
 
-    public $full_name;
+    public $fullname;
     public $phone_number;
     public $email;
     public $bio;

@@ -3,7 +3,11 @@
 @include('admin.layout.sidebar')
 <section>
   <h2>Add New Artist</h2>
-  <form action="{{ route('admin_artist_create_submit') }}" method="POST" enctype="multipart/form-data">
+  <form 
+    action="{{ route('admin_artist_create_submit') }}" 
+    method="POST" 
+    enctype="multipart/form-data"
+  >
     @csrf
     <div>
       <label for="name">Name:</label>

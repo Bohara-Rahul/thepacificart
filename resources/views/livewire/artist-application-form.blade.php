@@ -1,7 +1,7 @@
 <form class="max-w-fit mb-2">
     <label>
         Full Name:
-        <input required type="text" placeholder="Enter your full name here" wire:model="full_name" />
+        <input required type="text" placeholder="Enter your full name here" wire:model="fullname" />
     </label>
     <label>
         Email:
@@ -39,7 +39,7 @@
     </label>
     <div class="grid grid-cols-3">
         <label class="col-span-2">Agree to Terms & Conditions</label>
-        <input type="checkbox" wire:model="isChecked" {{ $isChecked ? 'Checked' : 'Unchecked' }} /> 
+        <input type="checkbox" wire:model="isChecked" {{ $isChecked ? 'Checked' : 'Unchecked' }} />
     </div>
     <button class="btn" type="submit">Apply</button>
 </form>

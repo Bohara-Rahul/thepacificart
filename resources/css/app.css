@@ -113,7 +113,7 @@ h1 {
 
 /* form elements */
 form {
-    @apply max-w-screen-xl;
+    @apply max-w-screen-2xl;
 }
 
 input,
@@ -232,13 +232,12 @@ textarea {
 }
 
 .collection-item:hover {
+    @apply cursor-pointer;
     text-decoration: underline;
-    cursor: pointer;
 }
 
 .slogan {
-    @apply text-2xl;
-    color: #13292a;
+    @apply text-2xl text-[#13292a];
     letter-spacing: 30px;
 }
 
@@ -266,10 +265,7 @@ textarea {
 }
 
 .pagination .active {
-    background-color: #0a3341;
-    color: white;
-    font-weight: bold;
-    padding: 8px 12px;
+    @apply bg-[#0a3341] text-white font-bold px-[12px] py-[8px];
     border-radius: 5px;
 }
 .pagination a {
@@ -280,10 +276,9 @@ textarea {
     border-radius: 5px;
 }
 .pagination a:hover {
-    background-color: #ddd;
+    @apply bg-[#ddd];
 }
 
 .footer {
-    background-color: #0a3341;
-    color: #ffffff;
+    @apply bg-[#0a3341] text-[#fff];
 }
