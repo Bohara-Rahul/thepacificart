@@ -1,15 +1,19 @@
 <aside class="border-2 border-gray-200">
-      <ul class="p-10">
-        <li class="{{ Request::is('admin/dashboard*') ? 'nav-active' : '' }} w-full capitalize font-normal justify-start mb-5"><a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+    <ul class="p-10">
+        <li
+            class="{{ Request::is('admin/dashboard*') ? 'nav-active' : '' }} w-full capitalize font-normal justify-start mb-5">
+            <a class="" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i>
+                <span>Dashboard</span></a>
+        </li>
 
         {{-- <li class="{{ Request::is('admin/sliders*') ? 'font-bold' : '' }} mb-2">
             <a class="" href="{{ route('admin_sliders_index') }}"><i class="fas fa-hand-point-right"></i> <span>Sliders</span></a> 
         </li> --}}
 
-        <li class="{{ Request::is('admin/products*') ? 'nav-active' : '' }} mb-5">
-          <a href="{{ route('admin_products') }}">
-            <i class="fas fa-hand-point-right"></i> <span>Arts</span>
-          </a>
+        <li class="{{ Request::is('admin/arts*') ? 'nav-active' : '' }} mb-5">
+            <a href="{{ route('admin_products') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Arts</span>
+            </a>
         </li>
 
         <li class="{{ Request::is('admin/categories*') ? 'nav-active' : '' }} mb-5">
@@ -30,14 +34,20 @@
             </a>
         </li>
 
+        <li class="{{ Request::is('admin/pending-artists*') ? 'nav-active' : '' }}">
+            <a href="{{ route('admin_pending_artists') }}">
+                <i class="fas fa-hand-point-right"></i> <span>Pending Artists</span>
+            </a>
+        </li>
+
         <li class="{{ Request::is('admin/hero*') ? 'nav-active' : '' }}">
             <a href="{{ route('admin_hero_index') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Hero</span>
             </a>
         </li>
-      </ul>
+    </ul>
 
-      {{-- <ul class="sidebar-menu">
+    {{-- <ul class="sidebar-menu">
 
           <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 

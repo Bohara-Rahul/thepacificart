@@ -67,7 +67,6 @@ class AdminProductController extends Controller
             }
     
         }
-
         
         return redirect()
             ->route('admin_products')

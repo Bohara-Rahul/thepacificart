@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminHeroController;
 use App\Http\Controllers\Admin\AdminArtistController;
+use App\Http\Controllers\Admin\AdminPendingArtistController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
@@ -88,4 +89,8 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get('/artists/edit/{id}', [AdminArtistController::class, 'edit'])->name('admin_artist_edit');
   Route::post('/artists/edit/{id}', [AdminArtistController::class, 'edit_submit'])->name('admin_artist_edit_submit');
   Route::get('/artists/delete/{id}', [AdminArtistController::class, 'delete'])->name('admin_artist_delete');
+
+  // Pending Artists Related Routes
+  Route::get('/pending-artists', [AdminPendingArtistController::class, 'index'])->name('admin_pending_artists');
+  Route::get('/pending-artists/{id}', [AdminPendingArtistController::class, 'view'])->name('admin_pending_artists_view');
 });

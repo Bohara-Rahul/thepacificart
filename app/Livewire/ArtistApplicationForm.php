@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\ArtistPortfolioImages;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\PendingArtist;
@@ -13,6 +14,7 @@ class ArtistApplicationForm extends Component
     public $fullname;
     public $phone_number;
     public $email;
+    public $country;
     public $bio;
     public $portfolio_link;
     public $images = [];
@@ -31,27 +33,43 @@ class ArtistApplicationForm extends Component
 
     public function save()
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|email|unique:pending_artists,email|unique:artists,email',
-        //     'portfolio_link' => 'nullable|url',
-        //     'profile_picture' => 'nullable|string',
-        //     'bio' => 'nullable|string',
-        // ]);
-
-        // PendingArtist::create($request->all());
-
-        // return response()->json(['message' => 'Application submitted successfully!'], 201);
+        $this->validate([
+            'fullname' => 'string|required',
+            'email' => 'string|required|email',
+            'country' => 'string|required',
+            'phone_number' => 'required',
+            'bio' => 'required|string',
+            'portfolio_link' => 'string',
+        ]);
 
         $artist = PendingArtist::create([
             'fullname' => $this->fullname,
             'email' => $this->email,
+            'country' => $this->country,
             'phone_number' => $this->phone_number,
             'bio' => $this->bio,
             'portfolio_link' => $this->portfolio_link,
         ]);
 
-        return back()->with('success', 'Application Submitted successfully!!!');
+        if ($this->images) {
+            $this->validate([
+                'images.*' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
+            ]);
+
+            foreach($this->images as $image) {
+                $filename = 'artist_photo_'.time().'.'.$image->extension();
+                $image->move(public_path('uploads'), $filename);
+    
+                ArtistPortfolioImages::create([
+                    'name' => $filename,
+                    'artist_id' => $artist->id
+                ]);
+            }
+        }
+
+        return redirect()
+            ->back()
+            ->with('success', 'You have successfully submitted the application');
     }
 
     public function render()

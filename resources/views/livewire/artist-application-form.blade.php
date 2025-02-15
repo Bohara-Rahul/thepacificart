@@ -13,7 +13,7 @@
     </label>
     <label>
         Phone Number:
-        <input wire:model="phone_number" type="text" placeholder="Enter your phone number here" />
+        <input required wire:model="phone_number" type="text" placeholder="Enter your phone number here" />
     </label>
     <label>
         Portfolio Link / Webiste:
@@ -35,7 +35,7 @@
     </label>
     <label>
         Short Bio:
-        <textarea wire:model="bio" rows="5" cols="10"></textarea>
+        <textarea required wire:model="bio" rows="5" cols="10"></textarea>
     </label>
     <div class="grid grid-cols-3">
         <label class="col-span-2">Agree to Terms & Conditions</label>

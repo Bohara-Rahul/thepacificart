@@ -9,14 +9,15 @@ class PendingArtist extends Model
 {
     use HasFactory;
 
-    protected $fiillable = [
-        'bio',
+    protected $fillable = [
+        'fullname',
         'email',
         'country',
-        'fullname',
         'phone_number',
+        'bio',
         'portfolio_link',
-        'application_status'
+        'application_status',
+        'images'
     ];
 
     public function portfolio_images()
