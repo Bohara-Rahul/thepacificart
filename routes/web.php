@@ -93,4 +93,6 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   // Pending Artists Related Routes
   Route::get('/pending-artists', [AdminPendingArtistController::class, 'index'])->name('admin_pending_artists');
   Route::get('/pending-artists/{id}', [AdminPendingArtistController::class, 'view'])->name('admin_pending_artists_view');
+  Route::post('/pending-artists/{id}', [AdminPendingArtistController::class, 'approveApplication'])->name('admin_pending_artists_approve');
+  Route::post('/pending-artists/{id}', [AdminPendingArtistController::class, 'rejectApplication'])->name('admin_pending_artists_reject');
 });
