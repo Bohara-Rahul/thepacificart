@@ -42,4 +42,13 @@ window.addEventListener('scroll', function () {
  // Change images every 2 seconds
  setInterval(showNextImage, 3000);
 
+ // Arts Detail Page Related JS
+ const mainPhotoContainer = document.querySelector('#main-photo-container')
+ const allPhotos = document.querySelectorAll('.photos');
+
+ allPhotos.addEventListener('click', () => {
+  console.log('Photo clicked');
+  mainPhotoContainer.innerHTML = `<img src="{{}}" alt="title" />`; 
+ })
+
 

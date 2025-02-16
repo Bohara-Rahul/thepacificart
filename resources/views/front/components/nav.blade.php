@@ -81,7 +81,15 @@
                     </button>
                 </li>
                 <li>
-                    <a href="{{ route('user.register') }}">Register/Login</a>
+                    @auth
+                        <li>
+                            <a href="{{ route('user.dashboard') }}">Go to your Dashboard</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('user.register') }}">Register/Login</a>
+                        </li>
+                    @endauth
                 </li>
             </ul>
         </nav>

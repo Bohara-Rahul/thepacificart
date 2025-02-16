@@ -24,7 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('artists', function (Blueprint $table) {
-            //
+            $table->dropColumn('email');
+            $table->dropColumn('phone_number');
+            $table->dropColumn('portfolio_link');
         });
     }
 };

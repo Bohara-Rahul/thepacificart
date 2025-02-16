@@ -1,49 +1,43 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
-@include('admin.layout.sidebar')
+    @include('admin.layout.sidebar')
     <main>
-        <header class="flex justify-between items-center">
-            <h2>List of Pending Artists</h2>
-        </header>
+        <h2 class="mt-5">Pending Artist Applications</h2>
         <table>
             <thead>
-                <th>S.N.</th>
-                <th>Full Name</th>
-                <th>Action</th>
+                <tr>
+                    <th>S.N</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Portfolio</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
-                <h2 class="mt-5">Pending Artist Applications</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Portfolio</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($pendingArtists as $artist)
-                            <tr>
-                                <td>{{ $artist->name }}</td>
-                                <td>{{ $artist->email }}</td>
-                                <td><a href="{{ $artist->portfolio_link }}" target="_blank">View Portfolio</a></td>
-                                <td>{{ ucfirst($artist->application_status) }}</td>
-                                <td>
-                                    <form action="{{ route('artist.approve', $artist->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
-                                    </form>
-                                    <form action="{{ route('artist.reject', $artist->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                @foreach ($pending_artists as $artist)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $artist->fullname }}</td>
+                        <td>{{ $artist->email }}</td>
+                        <td><a href="{{ $artist->portfolio_link }}" target="_blank">View Portfolio</a></td>
+                        <td>{{ ucfirst($artist->application_status) }}</td>
+                        <td>
+                            <div class="flex space-x-2">
+                                <a href="{{ route('admin_pending_artists_view', $artist->id) }}"
+                                    class="btn btn-secondary">View</a>
+                                <form action="{{ route('admin_pending_artists_approve', $artist->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Approve</button>
+                                </form>
+                                <form action="{{ route('admin_pending_artists_reject', $artist->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </main>

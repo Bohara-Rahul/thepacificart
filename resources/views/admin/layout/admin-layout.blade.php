@@ -26,7 +26,7 @@
                 </form>
             </li>
             <li>
-                <a href="{{ route('front.home') }}" class="bg-yellow-200 p-3">Front End</a>
+                <a href="{{ route('front.home') }}" class="btn btn-secondary">Front End</a>
             </li>
         </ul>
 

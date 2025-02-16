@@ -34,7 +34,8 @@
                         </h3>
 
                         <article class="shadow-xl w-96 h-80">
-                            <img src="{{ asset('uploads/' . $best_seller_art->primary_image) }}" alt="best seller art image" class="rounded-md" />
+                            <img src="{{ asset('uploads/' . $best_seller_art->primary_image) }}" alt="best seller art image"
+                                class="rounded-md" />
                         </article>
 
                         <p class="mt-20">{!! substr($best_seller_art->description, 0, 150) !!}</p>
@@ -43,14 +44,15 @@
                             <a href="#">
                                 <p>ADD TO WISHLIST</p>
                             </a>
-                            <a href="#">
+                            <a href="#" class="btn btn-primary">
                                 <p>ADD TO CART</p>
                             </a>
                         </article>
 
 
-                        <a class="btn text-center" href="{{ route('product_detail', $best_seller_art->slug) }}">
-                            Learn More
+                        <a class="btn btn-primary text-center mt-5"
+                            href="{{ route('product_detail', $best_seller_art->slug) }}">
+                            More Info
                         </a>
 
                     </section>
@@ -88,7 +90,7 @@
                 the subject. The scene conveys a sense of strength and vitality, with the horse moving fluidly through the
                 river’s current. Rich tones of brown, white, blue, and green dominate the composition, enhancing the natural
                 beauty and intensity of the moment.</p>
-            <a class="btn mt-8 w-[150px] text-center">Learn More</a>
+            <a class="btn btn-primary mt-8 w-[150px] text-center">More Info</a>
         </aside>
 
 
@@ -107,7 +109,7 @@
                 lighting highlight her emotional strength and vulnerability, evoking themes of love, loss, and resilience.
                 This evocative piece offers a timeless portrayal of Mary as both a mother and a symbol of enduring faith.
             </p>
-            <a class="btn mt-8 w-[150px] text-center">Learn More</a>
+            <a class="btn btn-primary mt-8 w-[150px] text-center">More Info</a>
         </aside>
 
         <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
@@ -133,6 +135,6 @@
         <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists
             from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always
             eager to welcome artists with creativity and a positive spirit into our community.</p>
-        <a href="{{ route('front.artist_application') }}" class="btn text-xl tracking-wide">Artist Application</a>
+        <a href="{{ route('front.artist_application') }}" class="btn btn-primary text-xl tracking-wide">Artist Application</a>
     </section>
 @endsection

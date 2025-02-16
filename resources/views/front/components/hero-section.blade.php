@@ -5,10 +5,10 @@
             exquisite oil paintings that bring timeless elegance to your space, no matter where you are.<br /> Our
             carefully crafted collections are designed to inspire, elevate, and create lasting impressions. Explore our
             gallery and find the perfect masterpiece to make your home or office truly unforgettable</p>
-        <a class="btn mt-8 w-[150px] text-center">Learn More</a>
+        <a href="" class="btn btn-primary mt-8 w-[150px] text-center">More Info</a>
     </aside>
 
-    <div class="overflow-hidden rounded-md slider" style="width: 640px; height: 780px;">
+    <div class="overflow-hidden rounded-md slider w-[640px] h-[780px]">
         <div class="images">
             <img src="{{ asset('hero-img.png') }}" alt="hero image" class="object-fill" />
 

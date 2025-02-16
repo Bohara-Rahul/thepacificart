@@ -213,11 +213,31 @@ textarea {
 }
 
 .btn {
-    @apply rounded px-3 py-2  bg-[#13292a] text-white;
+    @apply rounded px-3 py-2 text-white;
 }
 
-.btn:hover {
+.btn-primary {
+    @apply bg-[#13292a];
+}
+
+.btn-primary:hover {
     @apply bg-[#3d6571] cursor-pointer;
+}
+
+.btn-secondary {
+    @apply bg-[#3d6571];
+}
+
+.btn-secondary:hover {
+    @apply bg-[#13292a];
+}
+
+.btn-danger {
+    @apply bg-red-500;
+}
+
+.btn-danger:hover {
+    @apply bg-red-400 cursor-pointer;
 }
 
 /* .nav-active {
