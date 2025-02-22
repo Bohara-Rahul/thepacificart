@@ -4,7 +4,7 @@
     <section>
         <h2>Edit Product</h2>
         <section>
-            <article>
+            {{-- <article>
                 @if ($product->primary_image)
                     <p>Primary Photo</p>
                     <aside>
@@ -17,7 +17,7 @@
                         </form>
                     </aside>
                 @endif
-            </article>
+            </article> --}}
 
             <article class="flex">
                 @if ($product->photos->count() > 0)
@@ -43,7 +43,14 @@
             @csrf
             @method('PUT')
             <div>
-                <label for="files">Add photo:</label>
+                @if ($product->primary_image)
+                    <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="{{ $product->title }}" />
+                    <label for="primary_image">Change primary photo:</label>
+                    <input type="file" id="primary_image" name="primary_image" />
+                @endif
+            </div>
+            <div>
+                <label for="files">Add photos:</label>
                 <input type="file" id="files" name="files[]" multiple />
             </div>
 
@@ -110,6 +117,19 @@
                 <div>
                     <label for="size">Size:</label>
                     <input type="text" id="size" name="size" value="{{ $product->size }}" />
+                </div>
+            </div>
+            <p>Is BestSeller?</p>
+            <div class="grid grid-cols-2">
+                <div class="grid grid-cols-2">
+                    <label for="isBestSeller">Yes</label>
+                    <input value="1" type="radio" id="isBestSeller" name="isBestSeller"
+                    {{ $product->isBestSeller == '1' ? 'checked' : '' }} />
+                </div>
+                <div class="grid grid-cols-2">
+                    <label for="isBestSeller">No</label>
+                    <input value="0" type="radio" id="isBestSeller" name="isBestSeller"
+                    {{ $product->isBestSeller == '0' ? 'checked' : '' }} />
                 </div>
             </div>
 
