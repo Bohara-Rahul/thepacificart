@@ -4,7 +4,7 @@
 <main>
   <header class="flex justify-between items-center">
     <h2>List of Artists</h2>
-    <a href="{{ route('admin_artist_create') }}">
+    <a href="{{ route('admin_artist_create') }}" class="btn btn-primary">
       Add New Artist
     </a>
   </header>
@@ -22,7 +22,7 @@
           <td>{{ $artist->name }}</td>
           <td>{{ $artist->location }}</td>
           <td>
-            <a href="{{ route('admin_artist_edit', $artist->id) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('admin_artist_edit', $artist->id) }}" class="btn btn-secondary">Edit</a>
             <a href="{{ route('admin_artist_delete', $artist->id) }}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Delete</a>
           </td>
         </tr>   
