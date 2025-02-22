@@ -41,5 +41,5 @@
         <label class="col-span-2">Agree to Terms & Conditions</label>
         <input type="checkbox" wire:model="isChecked" {{ $isChecked ? 'Checked' : 'Unchecked' }} />
     </div>
-    <button class="btn" type="submit">Apply</button>
+    <button class="btn btn-primary" type="submit">Apply</button>
 </form>
