@@ -44,7 +44,7 @@
             @method('PUT')
             <div>
                 @if ($product->primary_image)
-                    <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="{{ $product->title }}" />
+                    <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="{{ $product->title }}" class="w-[150px]" />
                     <label for="primary_image">Change primary photo:</label>
                     <input type="file" id="primary_image" name="primary_image" />
                 @endif
