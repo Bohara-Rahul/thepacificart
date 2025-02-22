@@ -38,7 +38,7 @@
                 <label class="col-span-2">Price > 5000$</label>
                 <input wire:model="selectedPrice" type="radio" value="price above 5000" />
             </div>
-            <button wire:click="$refresh" class="btn">Apply Filter</button>
+            <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
         </aside>
         <section class="flex-1">
             @if (count($arts))
@@ -71,7 +71,7 @@
                                 </article>
 
 
-                                <a class="btn text-center" href="{{ route('product_detail', $art->slug) }}">
+                                <a class="btn btn-primary text-center" href="{{ route('product_detail', $art->slug) }}">
                                     Learn More
                                 </a>
 

@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <title>Laravel</title>
-        
-        @vite('resources/css/app.css')
-    </head>
-    <body>
 
-      @if (session()->has('success'))
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Laravel</title>
+
+    @vite('resources/css/app.css')
+</head>
+
+<body>
+
+    @if (session()->has('success'))
         <div class="container">
-          <div class="alert alert-success text-center">
-            {{ session('success') }}
-          </div>
-        </div>    
-      @endif
+            <div class="alert alert-success text-center">
+                {{ session('success') }}
+            </div>
+        </div>
+    @endif
 
-      @if (session()->has('failure'))
+    @if (session()->has('failure'))
         <div class="container">
-          <div class="alert alert-danger text-center">
-            {{ session('failure') }}
-          </div>
-        </div>    
-      @endif
+            <div class="alert alert-danger text-center">
+                {{ session('failure') }}
+            </div>
+        </div>
+    @endif
 
-      <div class="navigation-container show" id="nav-container">
+    <div class="navigation-container show" id="nav-container">
         <nav class="navbar" id="nav-bar">
             <ul class="flex justify-between gap-5">
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
@@ -60,7 +64,7 @@
                 </li>
                 @auth
                     <li>
-                        <a href="{{ route('user.dashboard') }}">Go to your Dashboard</a>
+                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                 @else
                     <li>
@@ -104,18 +108,25 @@
                         </a>
                     </button>
                 </li>
-                <li>
-                    <a href="{{ route('user.register') }}">Register/Login</a>
-                </li>
+                @auth
+                    <li>
+                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('user.register') }}">Register/Login</a>
+                    </li>
+                @endauth
             </ul>
         </nav>
     </div>
-      <main>
-        @yield("main_content")
-      </main>
+    <main>
+        @yield('main_content')
+    </main>
 
-      @include('front.components.footer')
+    @include('front.components.footer')
 
-      @vite('resources/js/app.js')
-    </body>
+    @vite('resources/js/app.js')
+</body>
+
 </html>

@@ -125,7 +125,7 @@
             </h3>
 
             <a href="{{ route('front.custom_art') }}" class="text-lg">
-                Click here for more information
+                <span class="text-2xl"><i class="fas fa-hand-point-right"></i> Click here for more information</span>
             </a>
         </article>
     </section>

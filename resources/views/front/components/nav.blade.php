@@ -36,7 +36,7 @@
                 </li>
                 @auth
                     <li>
-                        <a href="{{ route('user.dashboard') }}">Go to your Dashboard</a>
+                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                 @else
                     <li>
@@ -83,7 +83,7 @@
                 <li>
                     @auth
                         <li>
-                            <a href="{{ route('user.dashboard') }}">Go to your Dashboard</a>
+                            <a href="{{ route('user.dashboard') }}">Dashboard</a>
                         </li>
                     @else
                         <li>

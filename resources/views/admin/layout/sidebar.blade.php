@@ -28,11 +28,11 @@
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/sliders*') ? 'nav-active' : '' }}">
+        {{-- <li class="{{ Request::is('admin/sliders*') ? 'nav-active' : '' }}">
             <a href="{{ route('admin_sliders_index') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Sliders</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="{{ Request::is('admin/pending-artists*') ? 'nav-active' : '' }}">
             <a href="{{ route('admin_pending_artists') }}">
@@ -40,11 +40,11 @@
             </a>
         </li>
 
-        <li class="{{ Request::is('admin/hero*') ? 'nav-active' : '' }}">
+        {{-- <li class="{{ Request::is('admin/hero*') ? 'nav-active' : '' }}">
             <a href="{{ route('admin_hero_index') }}">
                 <i class="fas fa-hand-point-right"></i> <span>Hero</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
 
     {{-- <ul class="sidebar-menu">
