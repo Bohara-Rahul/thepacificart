@@ -39,7 +39,7 @@ window.addEventListener('scroll', function () {
    imagesContainer.style.transform = `translateX(${offset}%)`;
  }
 
- // Change images every 2 seconds
+ // Change images every 3 seconds
  setInterval(showNextImage, 3000);
 
  // Arts Detail Page Related JS

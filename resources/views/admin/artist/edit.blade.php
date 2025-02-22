@@ -59,7 +59,7 @@
         {{ $artist->bio }}
       </textarea>
     </div>
-    <button type="submit">Update</button>
+    <button type="submit" class="btn btn-primary">Update</button>
   </form>
 
   <!-- validation errors -->

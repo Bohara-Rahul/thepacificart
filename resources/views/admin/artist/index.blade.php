@@ -22,10 +22,8 @@
           <td>{{ $artist->name }}</td>
           <td>{{ $artist->location }}</td>
           <td>
-            <a href="{{ route('admin_artist_edit', $artist->id) }}">Edit</a>
-          </td>
-          <td>
-            <a href="{{ route('admin_artist_delete', $artist->id) }}" onclick="return confirm('Are you sure?');">Delete</a>
+            <a href="{{ route('admin_artist_edit', $artist->id) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('admin_artist_delete', $artist->id) }}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Delete</a>
           </td>
         </tr>   
       @endforeach

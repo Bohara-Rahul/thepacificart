@@ -13,7 +13,7 @@
                         <form action="{{ route('admin_photo_delete', $product->primary_image) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="bg-red-300 p-2" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                     </aside>
                 @endif
@@ -29,7 +29,7 @@
                             <form action="{{ route('admin_photo_delete', $photo) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="bg-red-300 p-2" type="submit">Delete</button>
+                                <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </aside>
                     @endforeach
@@ -119,7 +119,7 @@
                     value="{{ $product->year_of_creation }}" />
             </div>
 
-            <button type="submit" class="btn">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
 
         <!-- validation errors -->

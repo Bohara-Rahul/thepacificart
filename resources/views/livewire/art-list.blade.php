@@ -59,7 +59,7 @@
                                     </article>
                                 @endif
 
-                                <p>{{ substr($art->description, 0, 150) }}</p>
+                                <p>{!! substr($art->description, 0, 150) !!}</p>
 
                                 <article class="flex justify-between items-center mt-5">
                                     <a href="#">

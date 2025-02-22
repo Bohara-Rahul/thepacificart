@@ -90,7 +90,7 @@
             <input required type="file" id="files" name="files[]" multiple />
         </div>
         </article>
-        <button type="submit" class="btn">Create</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 
     <!-- validation errors -->

@@ -4,7 +4,7 @@
 <section>
   <header class="flex justify-between items-center">
     <h2>List of Arts</h2>
-    <a href="{{ route('admin_products_create') }}">Create New Art</a>
+    <a href="{{ route('admin_products_create') }}" class="btn btn-primary">Create New Art</a>
   </header>
   <table>
     <thead>
@@ -22,8 +22,8 @@
           <td>{{ $product->title }}</td>
           <td>{{ $product->slug }}</td>
           <td>
-            <a href="{{ route('admin_products_edit', $product->id) }}">Edit</a>
-            <a href="{{ route('admin_products_delete', $product->id) }}" onclick="return confirm('Are you sure?');">Delete</a>
+            <a href="{{ route('admin_products_edit', $product->id) }}" class="btn btn-secondary">Edit</a>
+            <a href="{{ route('admin_products_delete', $product->id) }}" onclick="return confirm('Are you sure?');" class="btn btn-danger">Delete</a>
           </td>
         </tr>
       @endforeach

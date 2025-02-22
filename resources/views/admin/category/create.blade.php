@@ -15,7 +15,7 @@
         placeholder="Enter category title" 
       />
     </div>
-    <button type="submit">Create</button>
+    <button type="submit" class="btn btn-primary">Create</button>
   </form>
   
   <!-- validation errors -->
