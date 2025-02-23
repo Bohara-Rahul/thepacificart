@@ -33,12 +33,12 @@
                             {{ $best_seller_art->title }}
                         </h3>
 
-                        <article class="shadow-xl w-96 h-80">
+                        <article class="shadow-xl w-96 h-80 overflow-hidden">
                             <img src="{{ asset('uploads/' . $best_seller_art->primary_image) }}" alt="best seller art image"
                                 class="rounded-md" />
                         </article>
 
-                        <p class="mt-20">{!! substr($best_seller_art->description, 0, 150) !!}</p>
+                        <p>{!! substr($best_seller_art->description, 0, 150) !!}</p>
 
                         <article class="flex justify-between items-center mt-5">
                             <a href="#">

@@ -100,9 +100,22 @@ class AdminProductController extends Controller
             'year_of_creation' => 'required',
             'stock' => 'required',
             'size' => 'required',
+            'isBestSeller' => 'string',
             'category_id' => 'required|exists:categories,id',
-            'artist_id' => 'required|exists:artists,id'
+            'artist_id' => 'required|exists:artists,id',
         ]); 
+
+        if ($request->hasFile('primary_image')) {
+            unlink(public_path('uploads/' . $product->primary_image));
+
+            $request->validate([
+                'primary_image' => 'image:jpg,jpeg,png,svg,webp',
+            ]);
+
+            $filename = 'primary_image_'.time().'.'.$request->primary_image->extension();
+            $request->primary_image->move(public_path('uploads'), $filename);
+            $validated['primary_image'] = $filename;
+        }
 
         $product->update($validated);
 

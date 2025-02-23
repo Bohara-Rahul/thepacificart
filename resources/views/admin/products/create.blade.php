@@ -1,7 +1,9 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
-    @include('admin.layout.sidebar')
+@include('admin.layout.sidebar')
+    
     <form action="{{ route('admin_products_create_submit') }}" method="POST" enctype="multipart/form-data">
+        <h3>Please enter the details to add the art</h3>
         @csrf
         <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
@@ -41,11 +43,10 @@
                 </select>
             </div>
         </article>
-        
+
         <div>
             <label for="description">Description</label>
-            <textarea id="description" name="description"
-            required>
+            <textarea id="description" name="description" required>
                 {{ old('description') }}
             </textarea>
         </div>
@@ -69,26 +70,33 @@
                 <input type="text" name="size" value="{{ old('size') }}" required />
             </div>
         </article>
-        <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex justify-between items-center">
-                <label for="isBestSeller">Is BestSeller</label>
-                <input value="1" type="radio" id="isBestSeller" name="isBestSeller" />
+            <p>Is BestSeller?</p>
+            <div class="grid grid-cols-2">
+                <div class="grid grid-cols-2">
+                    <label for="isBestSeller">Yes</label>
+                    <input value="1" type="radio" id="isBestSeller" name="isBestSeller" />         
+                </div>
+                <div class="grid grid-cols-2">
+                    <label for="isBestSeller">No</label>
+                    <input value="0" type="radio" id="isBestSeller" name="isBestSeller" />        
+                </div>
             </div>
+        <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
                 <label for="year_of_creation">Year of Creation</label>
                 <input type="text" name="year_of_creation" value="{{ old('year_of_creation') }}" required />
             </div>
         </article>
-        
+
         <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
-        <div>
-            <label for="primaryImage">Primary Photo</label>
-            <input required type="file" id="primaryImage" name="primary_image" />
-        </div>
-        <div>
-            <label for="files">Choose photos</label>
-            <input required type="file" id="files" name="files[]" multiple />
-        </div>
+            <div>
+                <label for="primaryImage">Primary Photo</label>
+                <input required type="file" id="primaryImage" name="primary_image" />
+            </div>
+            <div>
+                <label for="files">Choose photos</label>
+                <input required type="file" id="files" name="files[]" multiple />
+            </div>
         </article>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
