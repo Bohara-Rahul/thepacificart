@@ -80,7 +80,7 @@
 
     <section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
         <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
-            <img src="{{ asset('Portrait02.png') }}" alt="portrait image" class="object-contain" />
+            <img src="{{ asset('Gabo.png') }}" alt="portrait image" class="object-contain" />
         </div>
         <aside class="flex flex-col max-w-xl justify-center text-2xl">
             <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Gabo</h1>
@@ -113,7 +113,7 @@
         </aside>
 
         <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
-            <img src="{{ asset('Portrait01.png') }}" alt="portrait image" class="object-contain" />
+            <img src="{{ asset('Maria.png') }}" alt="portrait image" class="object-contain" />
         </div>
 
     </section>
