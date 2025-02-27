@@ -65,6 +65,11 @@ h3 {
 ul {
     @apply my-10;
 }
+
+li {
+    font-size: 15px;
+}
+
 p {
     @apply my-2;
 }
