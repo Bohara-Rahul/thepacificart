@@ -40,7 +40,7 @@ html {
 
 body {
     @apply min-h-screen text-black;
-    font-family: "Lato";
+    font-family: "Playfair";
     background-image: linear-gradient(
         60deg,
         rgb(250, 214, 214),
@@ -50,7 +50,7 @@ body {
         rgb(223, 223, 249),
         rgb(238, 223, 248),
         rgb(251, 231, 251)
-    );
+    ); 
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl text-[#13292a];
@@ -170,11 +170,13 @@ textarea {
 }
 
 .navbar {
-    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in;
+    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in p-0;
+    height: 80px;
 }
 
 .left-navbar {
     @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in;
+    height: 80px;
 }
 
 .show {

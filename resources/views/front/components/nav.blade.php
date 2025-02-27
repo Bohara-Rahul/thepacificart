@@ -19,7 +19,7 @@
                 </li>
             </ul>
             <a href="/">
-                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 120px; object-fit: cover;" />
+                <img src="{{ asset('logo.png') }}" alt="logo" style="height: 80px; object-fit: contain;" />
             </a>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 <li>
