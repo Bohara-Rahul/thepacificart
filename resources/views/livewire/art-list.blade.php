@@ -72,7 +72,7 @@
 
 
                                 <a class="btn btn-primary text-center" href="{{ route('product_detail', $art->slug) }}">
-                                    Learn More
+                                    Explore the Artwork
                                 </a>
 
                             </section>
