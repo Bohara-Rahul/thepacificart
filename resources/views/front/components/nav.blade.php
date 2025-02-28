@@ -6,6 +6,9 @@
         <nav class="navbar" id="nav-bar">
             <ul class="flex justify-between gap-5">
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.home') }}">What's New</a>
+                </li>
+                <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
                 <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
@@ -62,6 +65,9 @@
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
+                </li>
+                <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.arts') }}">Auction</a>
                 </li>
                 <li class="{{ Request::is('/about-us') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.about-us') }}">About Us</a>
