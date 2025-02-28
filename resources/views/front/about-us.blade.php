@@ -1,20 +1,48 @@
 @extends('layouts.other-page-layout')
 @section('main_content')
+    <section class="container">
+        <h3>Our Mission</h3>
+        <p>The Pacific Art is dedicated to bringing exceptional art from around the world to your home. We believe that art
+            has the power to transform spaces and evoke emotions, which is why we work closely with talented artists to
+            curate pieces that speak to the heart. We strive to offer unique, high-quality artwork created by artists from
+            diverse cultures, showcasing the richness and variety of global artistic traditions. Whether you're a seasoned
+            art collector with an eye for rare pieces or a first-time buyer looking to start your art journey, we provide an
+            ever-evolving collection that reflects creativity, passion, and cultural richness. Our goal is to make beautiful
+            art accessible to everyone and inspire individuals to connect with art in a meaningful way.</p>
 
-  <h3>Our Mission</h3>
-  <p>The Pacific Art is dedicated to bringing exceptional art from around the world to your home. We believe that art has the power to transform spaces and evoke emotions, which is why we work closely with talented artists to curate pieces that speak to the heart. We strive to offer unique, high-quality artwork created by artists from diverse cultures, showcasing the richness and variety of global artistic traditions. Whether you're a seasoned art collector with an eye for rare pieces or a first-time buyer looking to start your art journey, we provide an ever-evolving collection that reflects creativity, passion, and cultural richness. Our goal is to make beautiful art accessible to everyone and inspire individuals to connect with art in a meaningful way.</p>
+        <h3>Our Story</h3>
+        <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
+            During their travels through South America, the founders met local artists in Colombia and were mesmerized by
+            the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
+            transport you to another place. Inspired by this experience, the founders decided to bring together artists from
+            around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
+            celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
+            where art connects, inspires, and transcends borders.</p>
 
-<h3>Our Story</h3>
-<p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art. During their travels through South America, the founders met local artists in Colombia and were mesmerized by the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to transport you to another place. Inspired by this experience, the founders decided to bring together artists from around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform where art connects, inspires, and transcends borders.</p>
 
-
-<h3>Why Choose Us?</h3>
-<ul>
-    <li><strong>Global Artistry:</strong> We feature exceptional artists from around the world, representing a wide array of cultural backgrounds and artistic traditions. Our collection showcases art that celebrates the diverse beauty of our planet.</li>
-    <li><strong>Curated Collection:</strong> Each artwork in our collection is carefully selected by our team of art experts, ensuring that it meets our high standards for quality, originality, and artistic expression. We offer a diverse range of styles to suit all tastes, from timeless classics to contemporary masterpieces.</li>
-    <li><strong>Seamless Shopping Experience:</strong> We provide a user-friendly, online shopping experience that brings high-quality art directly to your doorstep. Our website is designed to make browsing, purchasing, and shipping as simple and secure as possible, ensuring your art arrives safely and on time.</li>
-    <li><strong>Authenticity and Quality:</strong> At The Pacific Art, we are committed to offering only the most authentic, high-quality pieces. Each artwork is handpicked for its artistic merit, craftsmanship, and cultural significance. Our artists take pride in creating pieces that are both visually striking and meaningful.</li>
-    <li><strong>Supporting Artists:</strong> We are deeply committed to supporting the global art community. By purchasing artwork from The Pacific Art, you’re directly supporting artists from around the world. We aim to create sustainable opportunities for artists while sharing their incredible work with a global audience.</li>
-    <li><strong>Personalized Service:</strong> Our team is here to guide you through every step of your art-buying journey. Whether you need help choosing the perfect piece for your home, assistance with framing options, or advice on art investment, we offer personalized customer support to ensure your complete satisfaction.</li>
-</ul> 
+        <h3>Why Choose Us?</h3>
+        <ul>
+            <li><strong>Global Artistry:</strong> We feature exceptional artists from around the world, representing a wide
+                array of cultural backgrounds and artistic traditions. Our collection showcases art that celebrates the
+                diverse beauty of our planet.</li>
+            <li><strong>Curated Collection:</strong> Each artwork in our collection is carefully selected by our team of art
+                experts, ensuring that it meets our high standards for quality, originality, and artistic expression. We
+                offer a diverse range of styles to suit all tastes, from timeless classics to contemporary masterpieces.
+            </li>
+            <li><strong>Seamless Shopping Experience:</strong> We provide a user-friendly, online shopping experience that
+                brings high-quality art directly to your doorstep. Our website is designed to make browsing, purchasing, and
+                shipping as simple and secure as possible, ensuring your art arrives safely and on time.</li>
+            <li><strong>Authenticity and Quality:</strong> At The Pacific Art, we are committed to offering only the most
+                authentic, high-quality pieces. Each artwork is handpicked for its artistic merit, craftsmanship, and
+                cultural significance. Our artists take pride in creating pieces that are both visually striking and
+                meaningful.</li>
+            <li><strong>Supporting Artists:</strong> We are deeply committed to supporting the global art community. By
+                purchasing artwork from The Pacific Art, you’re directly supporting artists from around the world. We aim to
+                create sustainable opportunities for artists while sharing their incredible work with a global audience.
+            </li>
+            <li><strong>Personalized Service:</strong> Our team is here to guide you through every step of your art-buying
+                journey. Whether you need help choosing the perfect piece for your home, assistance with framing options, or
+                advice on art investment, we offer personalized customer support to ensure your complete satisfaction.</li>
+        </ul>
+    </section>
 @endsection
