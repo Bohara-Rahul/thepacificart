@@ -12,7 +12,7 @@
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
                 <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.arts') }}">Arts</a>
+                    <a href="{{ route('front.arts') }}">Gallery</a>
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
@@ -61,7 +61,7 @@
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
                 <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.arts') }}">Arts</a>
+                    <a href="{{ route('front.arts') }}">Gallery</a>
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
