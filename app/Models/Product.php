@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class Product extends Model
 {
+    use HasTrixRichText;
+    
     public function scopeSearch($query, $searchTerm)
     {
         return $query->where('title', 'LIKE', "%{$searchTerm}%")

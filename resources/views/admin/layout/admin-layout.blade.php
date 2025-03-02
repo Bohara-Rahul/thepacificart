@@ -12,7 +12,9 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js"></script>
     <title>Document</title>
 
+    @trixassets
     @vite('resources/css/app.css')
+   
 </head>
 
 <body class="container">

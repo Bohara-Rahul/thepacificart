@@ -1,5 +1,5 @@
 <section class="container">
-    <h2 class="section-heading mb-10">Arts List</h2>
+    <h2 class="section-heading mb-10">Gallery</h2>
     <div class="flex">
         <aside class="mb-5">
             <input type="text" placeholder="Search arts here...." class="border border-gray-300 rounded-md"

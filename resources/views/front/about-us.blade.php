@@ -1,25 +1,88 @@
 @extends('layouts.other-page-layout')
 @section('main_content')
-    <section class="container">
-        <h3>Our Mission</h3>
-        <p>The Pacific Art is dedicated to bringing exceptional art from around the world to your home. We believe that art
-            has the power to transform spaces and evoke emotions, which is why we work closely with talented artists to
-            curate pieces that speak to the heart. We strive to offer unique, high-quality artwork created by artists from
-            diverse cultures, showcasing the richness and variety of global artistic traditions. Whether you're a seasoned
-            art collector with an eye for rare pieces or a first-time buyer looking to start your art journey, we provide an
-            ever-evolving collection that reflects creativity, passion, and cultural richness. Our goal is to make beautiful
-            art accessible to everyone and inspire individuals to connect with art in a meaningful way.</p>
+    <section>
+        <div class="text-center container">
+            <h3 class="section-heading">Our Mission</h3>
+            <p class="max-xl">
+                The Pacific Art is dedicated to bringing exceptional art from around the world to your home. We believe that art
+                has the power to transform spaces and evoke emotions, which is why we work closely with talented artists to
+                curate pieces that speak to the heart. We strive to offer unique, high-quality artwork created by artists from
+                diverse cultures, showcasing the richness and variety of global artistic traditions. Whether you're a seasoned
+                art collector with an eye for rare pieces or a first-time buyer looking to start your art journey, we provide an
+                ever-evolving collection that reflects creativity, passion, and cultural richness. Our goal is to make beautiful
+                art accessible to everyone and inspire individuals to connect with art in a meaningful way.
+            </p>
+        </div>
 
-        <h3>Our Story</h3>
-        <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
+       
+        
+        <div class="container">
+            <h3 class="text-center section-heading">Our Story</h3> 
+            <div class="grid grid-cols-1 md:grid-cols-2 mb-5">
+                <img src="{{ asset('aboutus01.jpg') }}" style="height: 800px; width: 700px;"/>
+                <div class="desc flex flex-col justify-center items-center">
+                    <p class="font-bold text-2xl">Discover different categories of art</p>
+                    <a href="#" class="btn btn-primary">See More Categories</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="text-center section-heading">Our Story</h3> 
+            <div class="grid grid-cols-1 md:grid-cols-2 mb-5">
+                <div class="desc flex flex-col justify-center items-center">
+                    <p class="font-bold text-2xl">Discover different categories of art</p>
+                    <a href="#" class="btn btn-primary">See More Categories</a>
+                </div>
+                <img src="{{ asset('aboutus03.jpg') }}" style="height: 800px; width: 700px;"/>
+            </div>
+        </div>
+
+        <div class="bg-[#f0ecec]">
+            <div class="container">
+                <h3 class="section-heading">Meet our artists</h3>
+                <div class="flex space-x-20 justify-center items-center flex-wrap">
+                    <article class="text-center">
+                        <img src="{{ asset('user_pic.jpg') }}" class="w-[200px] h-[200px] rounded-full" />
+                        <p>Proficient in nude arts</p>
+                        <a href="#">Learn More about Artist</a>
+                    </article>
+                    <article>
+                        <img src="{{ asset('user_pic.jpg') }}" class="w-[200px] h-[200px] rounded-full" />
+                        <p>Proficient in nude arts</p>
+                    </article>
+                    <article>
+                        <img src="{{ asset('user_pic.jpg') }}" class="w-[200px] h-[200px] rounded-full" />
+                        <p>Proficient in nude arts</p>
+                    </article>
+                    <article>
+                        <img src="{{ asset('user_pic.jpg') }}" class="w-[200px] h-[200px] rounded-full" />
+                        <p>Proficient in nude arts</p>
+                    </article>
+                    
+                </div>
+            </div>
+        </div>
+    <section>
+    
+    
+        
+            <!-- <aside>
+                <h3>Our Story</h3>
+                <img src="{{ asset('Maria.png') }}" />
+            </aside>
+
+            <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
             During their travels through South America, the founders met local artists in Colombia and were mesmerized by
             the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
             transport you to another place. Inspired by this experience, the founders decided to bring together artists from
             around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
             celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
-            where art connects, inspires, and transcends borders.</p>
+            where art connects, inspires, and transcends borders.
+            </p> -->
+        </section> 
 
 
+        <div>
         <h3>Why Choose Us?</h3>
         <ul>
             <li><strong>Global Artistry:</strong> We feature exceptional artists from around the world, representing a wide
@@ -44,5 +107,7 @@
                 journey. Whether you need help choosing the perfect piece for your home, assistance with framing options, or
                 advice on art investment, we offer personalized customer support to ensure your complete satisfaction.</li>
         </ul>
+        </div>
+        
     </section>
 @endsection
