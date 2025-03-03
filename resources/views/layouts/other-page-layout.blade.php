@@ -32,12 +32,18 @@
 
     <div class="navigation-container show" id="nav-container">
         <nav class="navbar" id="nav-bar">
+            <a href="/">
+                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
+            </a>
             <ul class="flex justify-between gap-5">
+                <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.home') }}">What's New</a>
+                </li>
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
-                <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.arts') }}">Arts</a>
+                <li class="{{ Request::is('/gallery') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.gallery') }}">Gallery</a>
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
@@ -46,9 +52,6 @@
                     <a href="{{ route('front.about-us') }}">About Us</a>
                 </li>
             </ul>
-            <a href="/">
-                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 120px; object-fit: cover;" />
-            </a>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 <li>
                     <i class="fa-regular fa-heart"></i>
@@ -83,10 +86,13 @@
             </a>
             <ul class="flex justify-between gap-5">
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.home') }}">What's New</a>
+                </li>
+                <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
-                <li class="{{ Request::is('/arts') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.arts') }}">Arts</a>
+                <li class="{{ Request::is('/gallery') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.gallery') }}">Gallery</a>
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
@@ -108,15 +114,17 @@
                         </a>
                     </button>
                 </li>
-                @auth
-                    <li>
-                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('user.register') }}">Register/Login</a>
-                    </li>
-                @endauth
+                <li>
+                    @auth
+                        <li>
+                            <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('user.register') }}">Register/Login</a>
+                        </li>
+                    @endauth
+                </li>
             </ul>
         </nav>
     </div>

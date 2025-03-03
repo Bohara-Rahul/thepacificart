@@ -1,5 +1,4 @@
-@extends("layouts.front")
-
-@section("main_content")
-  <h2>Gallery Page</h2>
+@extends('layouts.other-page-layout')
+@section('main_content')
+  <livewire:art-list />
 @endsection

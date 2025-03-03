@@ -18,10 +18,10 @@ class FrontController extends Controller
         return view('front.index', compact('best_seller_arts', 'categories'));
     }
 
-    public function arts()
+    public function gallery()
     {
         $arts = Product::all();
-        return view("front.arts", [
+        return view("front.gallery", [
             'arts' => $arts
         ]);
     }
