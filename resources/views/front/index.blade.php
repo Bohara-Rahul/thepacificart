@@ -3,7 +3,7 @@
 @section('main_content')
 @include('front.components.hero-section')
 
-    <section class="mt-32 bg-slate-100 text-black p-5">
+    <section class="bg-slate-100 text-black p-5">
         <h3 class="section-heading">
             Why Choose Us?
         </h3>

@@ -1,4 +1,4 @@
-<section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-[-100px]" id="hero-section">
+<section class="container grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-[100px]" id="hero-section">
     <aside class="flex flex-col max-w-xl justify-center text-2xl">
         <h1 class="font-bold text-4xl tracking-wide sm:text-6xl">Art that travels, Elegance that stays</h1>
         <p class="mt-8 text-lg leading-8">Welcome to a world where art transcends borders. We specialize in curating
