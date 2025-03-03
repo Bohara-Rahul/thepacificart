@@ -4,6 +4,9 @@
   </video>
     <div class="navigation-container show" id="nav-container">
         <nav class="navbar" id="nav-bar">
+            <a href="/">
+                <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
+            </a>
             <ul class="flex justify-between gap-5">
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">What's New</a>
@@ -21,9 +24,6 @@
                     <a href="{{ route('front.about-us') }}">About Us</a>
                 </li>
             </ul>
-            <a href="/">
-                <img src="{{ asset('logo.png') }}" alt="logo" style="height: 80px; object-fit: contain;" />
-            </a>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 <li>
                     <i class="fa-regular fa-heart"></i>
