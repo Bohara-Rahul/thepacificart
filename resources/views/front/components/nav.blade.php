@@ -1,8 +1,8 @@
-<header id="header" class="header">
+<header id="header" class="header mt-20">
   <video muted autoplay loop poster="{{ asset('hero-img.png') }}">
     <source src="{{ asset('bg-video.MOV') }}" />
   </video>
-    <div class="navigation-container show" id="nav-container">
+    <div class="navigation-container fixed bg-[#13292a]" id="nav-container">
         <nav class="navbar" id="nav-bar">
             <a href="/">
                 <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
@@ -51,7 +51,7 @@
         </nav>
     </div>
 
-    <div class="navigation-container hide" id="left-logo-nav">
+    {{-- <div class="navigation-container hide" id="left-logo-nav">
         <nav class="left-navbar" id="left-nav-bar">
             <a href="/">
                 <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
@@ -99,6 +99,6 @@
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> --}}
 
 </header>

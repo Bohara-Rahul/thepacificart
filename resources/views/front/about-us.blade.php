@@ -1,7 +1,7 @@
 @extends('layouts.other-page-layout')
 @section('main_content')
-    <section>
-        <div class="text-center container mt-20">
+    <section class="mt-40">
+        <div class="text-center container">
             <h3 class="section-heading">Our Mission</h3>
             <p class="max-xl">
                 The Pacific Art is dedicated to bringing exceptional art from around the world to your home. We believe that
@@ -113,7 +113,7 @@
         <div class="container mt-20 mb-20">
             <h3 class="section-heading">Why Choose Us?</h3>
             <section class="grid grid-cols-1 md:grid-cols-6 gap-2">
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Global Artistry:</strong> </p>
                     <p>We feature exceptional artists from around the world, representing
                         a
@@ -123,14 +123,14 @@
                         diverse beauty of our planet.
                     </p>
                 </div>
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Curated Collection:</strong></p>
                     <p>Each artwork in our collection is carefully selected by our team of art experts, ensuring that it
                         meets our high standards for quality, originality, and artistic expression. We offer a diverse range
                         of styles to suit all tastes, from timeless classics to contemporary masterpieces.
                     </p>
                 </div>
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Seamless Shopping Experience:</strong></p>
                     <p>We provide a user-friendly, online shopping experience that
                         brings high-quality art directly to your doorstep. Our website is designed to make
@@ -138,7 +138,7 @@
                         and on time.
                     </p>
                 </div>
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Authenticity and Quality:</strong></p>
                     <p>At The Pacific Art, we are committed to offering only the
                         most
@@ -148,12 +148,12 @@
                         meaningful.
                     </p>
                 </div>
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Supporting Artists:</strong></p>
                     <p>We are deeply committed to supporting the global art community. By purchasing artwork from The Pacific Art, you’re directly supporting artists from around the world.We aim to create sustainable opportunities for artists while sharing their incredible work with a global audience.
                     </p>
                 </div>
-                <div class="border p-10">
+                <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p><strong>Personalized Service:</strong></p>
                     <p>Our team is here to guide you through every step of your
                         art-buying

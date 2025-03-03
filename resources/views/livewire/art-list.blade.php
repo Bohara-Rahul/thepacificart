@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container mt-40">
     <h2 class="section-heading mb-10">Gallery</h2>
     <div class="flex">
         <aside class="mb-5">

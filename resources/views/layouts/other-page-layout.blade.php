@@ -30,7 +30,7 @@
         </div>
     @endif
 
-    <div class="navigation-container show" id="nav-container">
+    <div class="navigation-container fixed bg-[#13292a]" id="nav-container">
         <nav class="navbar" id="nav-bar">
             <a href="/">
                 <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
