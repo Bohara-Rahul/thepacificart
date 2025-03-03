@@ -4,9 +4,9 @@
 @include('front.components.hero-section')
 
     <section class="bg-slate-100 text-black p-5">
-        <h3 class="section-heading">
+        <h2 class="section-heading">
             Why Choose Us?
-        </h3>
+        </h2>
         <ul class="flex flex-wrap place-content-center text-2xl text-gray-900 font-bold gap-20">
             <li>
                 <i class="fa-solid fa-star text-[#3d6571]"></i>
@@ -62,9 +62,9 @@
     </section>
 
     <section class="mt-20 bg-slate-100 text-black p-5">
-        <h3 class="section-heading">
+        <h2 class="section-heading">
             Our Collections
-        </h3>
+        </h2>
 
         <ul class="flex flex-wrap justify-center text-2xl">
             @foreach ($categories as $category)
@@ -83,7 +83,7 @@
             <img src="{{ asset('Gabo.png') }}" alt="portrait image" class="object-contain" />
         </div>
         <aside class="flex flex-col max-w-xl justify-center text-2xl">
-            <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Gabo</h1>
+            <h2 class="font-bold text-2xl tracking-tight sm:text-6xl">Art by Gabo</h2>
             <p class="mt-8 text-lg leading-8">The painting by Gabo depicts a powerful horse galloping through a river, its
                 muscles and motion captured in dynamic detail. The water splashes around the horse’s legs, reflecting its
                 energy and freedom. <br /> <br /> The surrounding landscape is lush and vibrant, blending harmoniously with
@@ -101,7 +101,7 @@
     <section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
 
         <aside class="flex flex-col max-w-xl justify-center text-2xl">
-            <h1 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Miguel G</h1>
+            <h2 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Miguel G</h2>
             <p class="mt-8 text-lg leading-8">This painting of María, Madre de Jesús Crying captures a powerful moment of
                 sorrow, depicting Mary’s profound grief as the mother of Christ. Her tear-streaked face, framed by a flowing
                 mantle of deep blue and white, reflects her purity and divine connection. Her eyes, filled with anguish and
@@ -120,9 +120,9 @@
 
     <section class="bg-gray-50 text-center mt-20 p-20">
         <article class="container">
-            <h3 class="section-heading">
+            <h2 class="section-heading">
                 Want to bring Your Vision to Life with Custom Art?
-            </h3>
+            </h2>
 
             <a href="{{ route('front.custom_art') }}" class="text-lg">
                 <span class="text-2xl"><i class="fas fa-hand-point-right"></i> Click here for more information</span>
@@ -131,7 +131,7 @@
     </section>
 
     <section class="container flex flex-col justify-center items-center p-20">
-        <h3 class="section-heading">Are you an artist?</h3>
+        <h2 class="section-heading">Are you an artist?</h2>
         <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists
             from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always
             eager to welcome artists with creativity and a positive spirit into our community.</p>

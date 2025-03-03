@@ -20,9 +20,6 @@
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
                 </li>
-                <li class="{{ Request::is('/about-us') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.about-us') }}">About Us</a>
-                </li>
             </ul>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 <li>

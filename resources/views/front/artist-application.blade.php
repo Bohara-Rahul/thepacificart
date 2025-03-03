@@ -1,6 +1,6 @@
 @extends('layouts.other-page-layout')
 @section('main_content')
-    <section class="container">
+    <section class="container mt-32">
         <h2 class="text-2xl">Join The Pacific Art - Sell Your Paintings Worldwide</h2>
 
         <h3 class="text-xl">Showcase Your Art to a Global Audience</h3>

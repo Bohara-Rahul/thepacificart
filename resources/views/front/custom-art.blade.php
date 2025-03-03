@@ -6,9 +6,7 @@
             <img src="{{ asset('customart01.jpg') }}" alt="custom art 1" class="h-[700px] rounded-md" />
             <aside class="flex flex-col justify-center items-center p-20">
                 <h3 class="text-xl">Bring Your Vision to Life with Custom Art</h3>
-                <p class="text-center">At <strong>The Pacific Art</strong>, we believe that art should be as unique as your
-                    space. Whether you’re looking to add a personal touch to your home, office, or any special setting, our
-                    team is dedicated to creating bespoke pieces that perfectly complement your environment.</p>
+                <p class="text-center">At <strong>The Pacific Art</strong>, we believe that art should be as unique as your space. Whether you’re looking to add a personal touch to your home, office, or any special setting, our team is dedicated to creating bespoke pieces that perfectly complement your environment.</p>
             </aside>
 
         </article>
@@ -38,25 +36,25 @@
             <h2 class="text-2xl text-center mt-10 mb-10">How It Works:</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 place-content-center gap-5">
                 <article class="bg-gray-100 shadow-md p-5">
-                    <p><strong>Consultation:</strong></p>
+                    <p class="text-[#3d6571]"><span class="text-3xl">1.</span> <strong class="font-mono text-xl">Consultation:</strong></p>
                     <p>
                         Share your ideas, inspirations, and the specifics of your space (dimensions, colors, and mood).
                     </p>
                 </article>
                 <article class="bg-gray-100 shadow-md p-5">
-                    <p><strong>Design & Concept:</strong></p>
+                    <p class="text-[#3d6571]"><span class="text-3xl">2.</span> <strong class="font-mono text-xl">Design & Concept:</strong></p>
                     <p>
                         Our artists will create a draft based on your input and send it for your approval.
                     </p>
                 </article>
                 <article class="bg-gray-100 shadow-md p-5">
-                    <p><strong>Creation:</strong></p>
+                    <p class="text-[#3d6571]"><span class="text-3xl">3.</span> <strong class="font-mono text-xl">Creation:</strong></p>
                     <p>
                         Once you’re happy with the design, we begin crafting your custom piece.
                     </p>
                 </article>
                 <article class="bg-gray-100 shadow-md p-5">
-                    <p><strong>Delivery:</strong></p>
+                    <p class="text-[#3d6571]"><span class="text-3xl">4.</span> <strong class="font-mono text-xl">Delivery:</strong></p>
                     <p>
                         Your custom artwork will be carefully packaged and delivered to your doorstep.
                     </p>
@@ -65,8 +63,7 @@
         </section>
 
 
-        <p class="text-xl font-semibold mt-10">Let us help you create the perfect piece of art that tells your unique story. Get in touch with us
-            today to start your custom art journey.
+        <p class="text-xl font-semibold mt-10">Let us help you create the perfect piece of art that tells your unique story. Get in touch with us today to start your custom art journey.
         </p>
     </section>
 @endsection
