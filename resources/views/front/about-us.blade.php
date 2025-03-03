@@ -17,23 +17,35 @@
        
         
         <div class="container">
-            <h3 class="text-center section-heading">Our Story</h3> 
-            <div class="grid grid-cols-1 md:grid-cols-2 mb-5">
-                <img src="{{ asset('aboutus01.jpg') }}" style="height: 800px; width: 700px;"/>
+            <h3 class="text-center section-heading">Connecting the World Through Art</h3> 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                <img src="{{ asset('aboutus01.jpg') }}" style="height: 650px;"/>
                 <div class="desc flex flex-col justify-center items-center">
-                    <p class="font-bold text-2xl">Discover different categories of art</p>
+                
+        <p class="about-text">
+            At <strong>The Pacific Art</strong>, Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
+            During their travels through South America, the founders met local artists in Colombia and were mesmerized by
+            the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
+            transport you to another place. Inspired by this experience, the founders decided to bring together artists from
+            around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
+            celebrates diverse styles, including <b>Abstract, Colonial, Modern, Contemporary, and Nature,</b> offering a platform
+            where art connects, inspires, and transcends borders
+        </p>
+                    <p class="font-bold text-2xl">Discover different categories or Art</p>
                     <a href="#" class="btn btn-primary">See More Categories</a>
                 </div>
             </div>
         </div>
         <div class="container">
-            <h3 class="text-center section-heading">Our Story</h3> 
+            <h3 class="text-center section-heading">Why Art Matters</h3> 
             <div class="grid grid-cols-1 md:grid-cols-2 mb-5">
                 <div class="desc flex flex-col justify-center items-center">
-                    <p class="font-bold text-2xl">Discover different categories of art</p>
-                    <a href="#" class="btn btn-primary">See More Categories</a>
+
+                <p><p>Art has the power to transcend language, culture, and time, connecting people in ways words cannot. It reflects emotions, tells stories, and challenges perceptions. At <strong>The Pacific Art</strong>, we believe that art enriches our lives, brings beauty, and fosters a deeper understanding of the world. Through our collections, we make art accessible, allowing you to connect with diverse cultures and perspectives. Art transforms spaces, sparks creativity, and reminds us of our shared humanity.</p></p>
+                    <p class="font-bold text-2xl">Find the perfect masterpiece for your collection</p>
+                    <a href="#" class="btn btn-primary">Explore Our Gallery</a>
                 </div>
-                <img src="{{ asset('aboutus03.jpg') }}" style="height: 800px; width: 700px;"/>
+                <img src="{{ asset('aboutus03.jpg') }}" style="height: 650px;"/>
             </div>
         </div>
 

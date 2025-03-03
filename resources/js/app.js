@@ -65,7 +65,7 @@ function showSlide(index) {
             slider.style.transform = `translateX(-${(updatedTotal - 2) * 100}%)`; // Reset to last real image
             currentIndex = updatedTotal - 2;
         }
-    }, 500); // Match the transition duration
+    }, 3000); // Match the transition duration
 }
 
 function nextSlide() {
