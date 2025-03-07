@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Front Contoller related routes
 Route::get("/", [FrontController::class, 'index'])->name('front.home');
 Route::get("/gallery", [FrontController::class, 'gallery'])->name("front.gallery");
+Route::get("/categories", [FrontController::class, 'categories'])->name("front.categories");
 Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
 Route::get("/about-us", [FrontController::class, 'about'])->name("front.about-us");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");

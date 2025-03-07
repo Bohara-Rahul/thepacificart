@@ -41,7 +41,7 @@
                         where art connects, inspires, and transcends borders
                     </p>
                     <p class="font-bold text-2xl">Discover different categories or Art</p>
-                    <a href="#" class="btn btn-primary">See More Categories</a>
+                    <a href="{{ route('front.categories') }}" class="btn btn-primary mt-5">See More Categories</a>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         our shared humanity.</p>
                     </p>
                     <p class="font-bold text-2xl">Find the perfect masterpiece for your collection</p>
-                    <a href="#" class="btn btn-primary">Explore Our Gallery</a>
+                    <a href="{{ route('front.gallery') }}" class="btn btn-primary mt-5">Explore Our Gallery</a>
                 </div>
                 <img src="{{ asset('aboutus03.jpg') }}" style="height: 650px;" />
             </div>
@@ -114,7 +114,7 @@
             <h3 class="section-heading">Why Choose Us?</h3>
             <section class="grid grid-cols-1 md:grid-cols-6 gap-2">
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Global Artistry:</strong> </p>
+                    <p class="text-xl"><strong>Global Artistry:</strong> </p>
                     <p>We feature exceptional artists from around the world, representing
                         a
                         wide
@@ -124,14 +124,14 @@
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Curated Collection:</strong></p>
+                    <p class="text-xl"><strong>Curated Collection:</strong></p>
                     <p>Each artwork in our collection is carefully selected by our team of art experts, ensuring that it
                         meets our high standards for quality, originality, and artistic expression. We offer a diverse range
                         of styles to suit all tastes, from timeless classics to contemporary masterpieces.
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Seamless Shopping Experience:</strong></p>
+                    <p class="text-xl"><strong>Seamless Shopping Experience:</strong></p>
                     <p>We provide a user-friendly, online shopping experience that
                         brings high-quality art directly to your doorstep. Our website is designed to make
                         browsing,purchasing,and shipping as simple and secure as possible, ensuring your art arrives safely
@@ -139,7 +139,7 @@
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Authenticity and Quality:</strong></p>
+                    <p class="text-xl"><strong>Authenticity and Quality:</strong></p>
                     <p>At The Pacific Art, we are committed to offering only the
                         most
                         authentic, high-quality pieces. Each artwork is handpicked for its artistic merit, craftsmanship,
@@ -149,12 +149,12 @@
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Supporting Artists:</strong></p>
+                    <p class="text-xl"><strong>Supporting Artists:</strong></p>
                     <p>We are deeply committed to supporting the global art community. By purchasing artwork from The Pacific Art, you’re directly supporting artists from around the world.We aim to create sustainable opportunities for artists while sharing their incredible work with a global audience.
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p><strong>Personalized Service:</strong></p>
+                    <p class="text-xl"><strong>Personalized Service:</strong></p>
                     <p>Our team is here to guide you through every step of your
                         art-buying
                         journey. Whether you need help choosing the perfect piece for your home, assistance with framing

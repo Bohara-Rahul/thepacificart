@@ -26,6 +26,14 @@ class FrontController extends Controller
         ]);
     }
     
+    public function categories()
+    {
+        $categories = Category::all();
+        return view("front.categories", [
+            'categories' => $categories
+        ]);
+    }
+    
     public function artists()
     {
         $artists = Artist::all();
