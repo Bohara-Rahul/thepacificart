@@ -1,15 +1,20 @@
 @extends('layouts.other-page-layout')
 @section('main_content')
     <section class="container mt-32">
-        <h2 class="text-2xl">Join The Pacific Art - Sell Your Paintings Worldwide</h2>
+        <h2 class="text-2xl">
+            Join The Pacific Art - Sell Your Paintings Worldwide
+        </h2>
 
         <h3 class="text-xl">Showcase Your Art to a Global Audience</h3>
 
         <h4>Are you an artist looking to sell your paintings online?</h4>
 
-        <h5>The Pacific Art connects talented artists with collectors worldwide, helping you showcase and sell your unique
-            artwork with ease.</h5> <br />
+        <h5>
+            The Pacific Art connects talented artists with collectors worldwide, helping you showcase and sell your unique
+            artwork with ease.
+        </h5>
 
+        <br />
 
         <aside>
             <p>Why Sell with Us?</p>
@@ -32,8 +37,6 @@
             </ul>
         </aside>
 
-
-
         <p>Artist Success Stories</p>
         <ul class="mt-0">
             <li>
@@ -47,7 +50,7 @@
             </li>
         </ul>
 
-        <article class="flex justify-between">
+        <article class="flex flex-wrap justify-between">
             <aside>
                 <p class="text-xl">
                     Apply to Become an Artist. <br />
