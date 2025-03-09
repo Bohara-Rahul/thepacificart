@@ -78,7 +78,7 @@
 
     </section>
 
-    <section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+    <section class="container flex flex-wrap gap-x-10 items-center mt-28" id="hero-section">
         <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
             <img src="{{ asset('Gabo.png') }}" alt="portrait image" class="object-contain" />
         </div>
@@ -98,16 +98,11 @@
 
     @include('front.components.testimonials')
 
-    <section class="container grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mt-28" id="hero-section">
+    <section class="container flex flex-wrap gap-20 items-center mt-28" id="hero-section">
 
         <aside class="flex flex-col max-w-xl justify-center text-2xl">
             <h2 class="font-bold text-4xl tracking-tight sm:text-6xl">Art by Miguel G</h2>
-            <p class="mt-8 text-lg leading-8">This painting of María, Madre de Jesús Crying captures a powerful moment of
-                sorrow, depicting Mary’s profound grief as the mother of Christ. Her tear-streaked face, framed by a flowing
-                mantle of deep blue and white, reflects her purity and divine connection. Her eyes, filled with anguish and
-                compassion, gaze downward, mourning her son’s suffering. <br /> <br /> The subtle background and soft
-                lighting highlight her emotional strength and vulnerability, evoking themes of love, loss, and resilience.
-                This evocative piece offers a timeless portrayal of Mary as both a mother and a symbol of enduring faith.
+            <p class="mt-8 text-lg leading-8">This painting of María, Madre de Jesús Crying captures a powerful moment of sorrow, depicting Mary’s profound grief as the mother of Christ. Her tear-streaked face, framed by a flowing mantle of deep blue and white, reflects her purity and divine connection. Her eyes, filled with anguish and compassion, gaze downward, mourning her son’s suffering. <br /> <br /> The subtle background and soft lighting highlight her emotional strength and vulnerability, evoking themes of love, loss, and resilience. This evocative piece offers a timeless portrayal of Mary as both a mother and a symbol of enduring faith.
             </p>
             <a class="btn btn-primary mt-8 w-[150px] text-center">More Info</a>
         </aside>
@@ -132,9 +127,7 @@
 
     <section class="container flex flex-col justify-center items-center p-20">
         <h2 class="section-heading">Are you an artist?</h2>
-        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists
-            from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always
-            eager to welcome artists with creativity and a positive spirit into our community.</p>
+        <p class="max-w-xl text-lg text-center mb-10 tracking-wider">We showcase exceptional emerging and mid-career artists from across the globe. With a deep passion for our collection and the incredible talent behind it, we are always eager to welcome artists with creativity and a positive spirit into our community.</p>
         <a href="{{ route('front.artist_application') }}" class="btn btn-primary text-xl tracking-wide">Artist Application</a>
     </section>
 @endsection

@@ -11,26 +11,26 @@
             artwork with ease.</h5> <br />
 
 
-            <aside>
-                <p>Why Sell with Us?</p>
-                <ul class="mt-0">
-                    <li>✅ Global Exposure – Reach buyers from different parts of the world.</li>
-                    <li>✅ No Upfront Costs – List your artwork for free; we only take a small commission on sales.</li>
-                    <li>✅ Secure Transactions – Hassle-free payments and order processing.</li>
-                    <li>✅ Marketing Support – We promote your work through social media and email campaigns.</li>
-                    <li>✅ Dedicated Artist Page – Your own portfolio space to display and sell your paintings.</li>
-                </ul>
-            </aside>
+        <aside>
+            <p>Why Sell with Us?</p>
+            <ul class="mt-0">
+                <li>✅ Global Exposure – Reach buyers from different parts of the world.</li>
+                <li>✅ No Upfront Costs – List your artwork for free; we only take a small commission on sales.</li>
+                <li>✅ Secure Transactions – Hassle-free payments and order processing.</li>
+                <li>✅ Marketing Support – We promote your work through social media and email campaigns.</li>
+                <li>✅ Dedicated Artist Page – Your own portfolio space to display and sell your paintings.</li>
+            </ul>
+        </aside>
 
-            <aside>
-                <p>How It Works?</p>
-                <ul class="mt-0">
-                    <li>1️⃣ Apply Online – Fill out the application form below.</li>
-                    <li>2️⃣ Get Approved – Our team reviews your work for quality and originality.</li>
-                    <li>3️⃣ List Your Art – Upload your paintings with descriptions and pricing.</li>
-                    <li>4️⃣ Sell & Earn – We handle payments, customer support, and logistics.</li>
-                </ul>
-            </aside>
+        <aside>
+            <p>How It Works?</p>
+            <ul class="mt-0">
+                <li>1️⃣ Apply Online – Fill out the application form below.</li>
+                <li>2️⃣ Get Approved – Our team reviews your work for quality and originality.</li>
+                <li>3️⃣ List Your Art – Upload your paintings with descriptions and pricing.</li>
+                <li>4️⃣ Sell & Earn – We handle payments, customer support, and logistics.</li>
+            </ul>
+        </aside>
 
 
 
@@ -40,6 +40,7 @@
                 🎨 "The Pacific Art helped me sell my paintings globally and reach new collectors. The process is smooth,
                 and I love how my artwork is getting recognized!" – Maria, Colombia
             </li>
+            <br />
             <li>
                 🎨 "Being part of this platform has allowed me to focus on my creativity while they handle the sales and
                 shipping. Highly recommended!" – Ali, Iran
@@ -68,7 +69,8 @@
                     <li>❓ Who handles shipping?<br />✅ We assist with logistics to ensure safe delivery of your artwork.
                     </li>
                     <br />
-                    <li>❓ What commission does The Pacific Art take?<br />✅ We take a small commission to cover operational costs while maximizing your earnings.</li>
+                    <li>❓ What commission does The Pacific Art take?<br />✅ We take a small commission to cover operational
+                        costs while maximizing your earnings.</li>
                 </ul>
             </aside>
         </article>
