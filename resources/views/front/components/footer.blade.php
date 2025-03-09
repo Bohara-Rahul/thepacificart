@@ -33,7 +33,14 @@
             <li>Return Policy</li>
         </ul>
     </div>
+    <h2>Cultural Acknowledgement</h2>
 
+    <p style="font-size: 16px; max-width: 800px; margin: 0 auto;">
+        We acknowledge the Traditional Custodians of the land on which we operate, 
+        the Aboriginal and Torres Strait Islander peoples. We pay our respects to their Elders 
+        past, present, and emerging and recognize their deep and ongoing connection to the land, 
+        waters, and communities. Their legacy continues to inspire and guide us toward a better Queensland.
+    </p>
     <p class="text-center">
         All rights reserved with <strong>thepacificart</strong> &copy; {{ date('Y') }}
     </p>
