@@ -49,6 +49,11 @@ class Product extends Model
         return $this->belongsTo(Artist::class);
     }
 
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;

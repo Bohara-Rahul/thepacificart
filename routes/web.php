@@ -26,6 +26,7 @@ Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.c
 Route::get("/artist-application", [FrontController::class, 'artist_application'])->name("front.artist_application");
 Route::get("/refund-policy", [FrontController::class, 'refund_policy'])->name("front.refund_policy");
 Route::get("/terms-conditions", [FrontController::class, 'terms_conditions'])->name("front.terms_conditions");
+Route::get("/wishlist/{product_id}", [FrontController::class, 'wishlist'])->name("front.wishlist");
 
 // Product related routes
 Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');

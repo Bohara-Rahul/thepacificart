@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Photo;
 use App\Models\Artist;
 use App\Models\Category;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -69,4 +71,26 @@ class FrontController extends Controller
     {
         return view('front.terms-conditions');
     } 
+
+    public function wishlist($product_id)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('user.login')->with('error', 'Please login to add this art in your wishlist');
+        }
+
+        $user_id = Auth::user()->id;
+
+        $itemCount = Wishlist::where('user_id', $user_id)->where('product_id', $product_id)->count();
+        if ($itemCount > 0) {
+            return back()->with('error', 'This art is already in your wishlist');
+        }
+
+        $wishlist = new Wishlist();
+        $wishlist->product_id = $product_id;
+        $wishlist->user_id = $user_id;
+        if ($wishlist->save()) {
+            return back()->with('success', 'The art has been added to wishlist successfully');
+        }
+        return back()->with('error', 'Could not add to the wishlist. Try again later');
+    }
 }
