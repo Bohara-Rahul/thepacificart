@@ -42,7 +42,7 @@ class ArtistApplicationForm extends Component
             'portfolio_link' => 'string',
         ]);
 
-        $artist = PendingArtist::create([
+        PendingArtist::create([
             'fullname' => $this->fullname,
             'email' => $this->email,
             'country' => $this->country,

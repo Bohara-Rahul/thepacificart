@@ -255,7 +255,7 @@ textarea {
 }
 
 .btn-primary {
-    @apply bg-[#13292a];
+    @apply bg-[#13292a] transition-all;
 }
 
 .btn-primary:hover {
@@ -263,7 +263,7 @@ textarea {
 }
 
 .btn-secondary {
-    @apply bg-[#3d6571];
+    @apply bg-[#3d6571] transition-all;
 }
 
 .btn-secondary:hover {
