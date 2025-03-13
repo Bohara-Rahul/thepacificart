@@ -62,6 +62,11 @@ class FrontController extends Controller
         return view('front.artist-application');
     }
 
+    public function whats_new()
+    {
+        return view('front.whats-new');
+    }
+
     public function refund_policy()
     {
         return view('front.refund-policy');

@@ -1,4 +1,5 @@
 @extends('layouts.other-page-layout')
+@section('title', 'Artist Application - The Pacific Art Marketplace')
 @section('main_content')
     <section class="container mt-32">
         <h2 class="text-2xl">

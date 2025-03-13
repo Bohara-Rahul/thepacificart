@@ -21,6 +21,7 @@ Route::get("/gallery", [FrontController::class, 'gallery'])->name("front.gallery
 Route::get("/categories", [FrontController::class, 'categories'])->name("front.categories");
 Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
 Route::get("/about-us", [FrontController::class, 'about'])->name("front.about-us");
+Route::get("/whats-new", [FrontController::class, 'whats_new'])->name("front.whats-new");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
 Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.custom_art");
 Route::get("/artist-application", [FrontController::class, 'artist_application'])->name("front.artist_application");

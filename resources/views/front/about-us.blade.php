@@ -1,4 +1,5 @@
 @extends('layouts.other-page-layout')
+@section('title', 'About Us - The Pacific Art Marketplace')
 @section('main_content')
     <section class="mt-40">
         <div class="text-center container">
@@ -29,16 +30,14 @@
                         At <strong>The Pacific Art</strong>, Founded in Brisbane, Australia, The Pacific Art emerged from a
                         deep passion for connecting the world through art.
                         During their travels through South America, the founders met local artists in Colombia and were
-                        mesmerized by
-                        the handcrafted art they encountered. The unique creations were not just visually stunning—they had
-                        the power to
-                        transport you to another place. Inspired by this experience, the founders decided to bring together
-                        artists from
-                        around the world to showcase their works on a global stage. From the rest of the world, The Pacific
-                        Art
-                        celebrates diverse styles, including <b>Abstract, Colonial, Modern, Contemporary, and Nature,</b>
-                        offering a platform
-                        where art connects, inspires, and transcends borders
+                        mesmerized by the handcrafted art they encountered. The unique creations were not just visually
+                        stunning—they had the power to transport you to another place. Inspired by this experience, the
+                        founders decided to bring together
+                        artists from around the world to showcase their works on a global stage. From the rest of the world,
+                        The Pacific
+                        Art celebrates diverse styles, including <b>Abstract, Colonial, Modern, Contemporary, and
+                            Nature,</b>
+                        offering a platform where art connects, inspires, and transcends borders
                     </p>
                     <p class="font-bold text-2xl">Discover different categories or Art</p>
                     <a href="{{ route('front.categories') }}" class="btn btn-primary mt-5">See More Categories</a>
@@ -95,18 +94,18 @@
 
 
             <!-- <aside>
-                                                    <h3>Our Story</h3>
-                                                    <img src="{{ asset('Maria.png') }}" />
-                                                </aside>
+                                                                <h3>Our Story</h3>
+                                                                <img src="{{ asset('Maria.png') }}" />
+                                                            </aside>
 
-                                                <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
-                                                During their travels through South America, the founders met local artists in Colombia and were mesmerized by
-                                                the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
-                                                transport you to another place. Inspired by this experience, the founders decided to bring together artists from
-                                                around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
-                                                celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
-                                                where art connects, inspires, and transcends borders.
-                                                </p> -->
+                                                            <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
+                                                            During their travels through South America, the founders met local artists in Colombia and were mesmerized by
+                                                            the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
+                                                            transport you to another place. Inspired by this experience, the founders decided to bring together artists from
+                                                            around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
+                                                            celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
+                                                            where art connects, inspires, and transcends borders.
+                                                            </p> -->
         </section>
 
 
@@ -150,7 +149,9 @@
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">
                     <p class="text-xl"><strong>Supporting Artists:</strong></p>
-                    <p>We are deeply committed to supporting the global art community. By purchasing artwork from The Pacific Art, you’re directly supporting artists from around the world.We aim to create sustainable opportunities for artists while sharing their incredible work with a global audience.
+                    <p>We are deeply committed to supporting the global art community. By purchasing artwork from The
+                        Pacific Art, you’re directly supporting artists from around the world.We aim to create sustainable
+                        opportunities for artists while sharing their incredible work with a global audience.
                     </p>
                 </div>
                 <div class="border p-10 bg-[#f1f5f9] shadow-md">

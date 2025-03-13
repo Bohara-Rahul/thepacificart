@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Laravel</title>
+    <title>@yield('title', 'The Pacific Art - Art Marketplace')</title>
 
     @vite('resources/css/app.css')
 </head>
@@ -113,14 +113,14 @@
                 </li>
                 <li>
                     @auth
-                        <li>
-                            <a href="{{ route('user.dashboard') }}">Dashboard</a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{ route('user.register') }}">Register/Login</a>
-                        </li>
-                    @endauth
+                    <li>
+                        <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('user.register') }}">Register/Login</a>
+                    </li>
+                @endauth
                 </li>
             </ul>
         </nav>
