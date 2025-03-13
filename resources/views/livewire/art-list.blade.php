@@ -39,6 +39,7 @@
                 <input wire:model="selectedPrice" type="radio" value="price above 5000" />
             </div>
             <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
+            <button wire:click="$refresh" class="btn btn-primary">Reset Filter</button>
         </aside>
         <section class="flex-1">
             @if (count($arts))
@@ -62,8 +63,8 @@
                                 <p>{!! substr($art->description, 0, 150) !!}</p>
 
                                 <article class="flex justify-between items-center mt-5">
-                                    <a href="{{ route('front.wishlist', $art->id ) }}">
-                                        <p>ADD TO WISHLIST</p>
+                                    <a href="{{ route('front.wishlist', $art->id) }}">
+                                        <p><i class="shopping-cart"></i></p>
                                     </a>
                                     <a href="#">
                                         <p>ADD TO CART</p>
@@ -104,8 +105,8 @@
         @endif
 
     </div>
-    @else
-        <h2>Your filters do not match any arts</h2>
+@else
+    <h2>Your filters do not match any arts</h2>
     @endif
 
 

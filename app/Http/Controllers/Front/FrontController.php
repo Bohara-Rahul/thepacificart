@@ -42,6 +42,11 @@ class FrontController extends Controller
         return view("front.artists", compact('artists'));
     }
 
+    public function artist_detail()
+    {
+        return view("front.artist-detail");
+    }
+
     public function about()
     {
         return view("front.about-us");
