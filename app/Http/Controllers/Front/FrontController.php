@@ -44,7 +44,8 @@ class FrontController extends Controller
 
     public function artist_detail(Artist $artist)
     {
-        return view("front.artist-detail", compact('artist'));
+        $arts = Product::where('artist_id', $artist->id)->get();
+        return view("front.artist-detail", compact('artist', 'arts'));
     }
 
     public function about()
