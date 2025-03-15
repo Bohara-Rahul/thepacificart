@@ -48,8 +48,7 @@
             past, present, and emerging and recognize their deep and ongoing connection to the land,
             waters, and communities. Their legacy continues to inspire and guide us toward a better Queensland.
         </p>
-    </div>
-    <p class="text-center">
+    </div>    <p class="text-center">
         All rights reserved with <strong>thepacificart</strong> &copy; {{ date('Y') }}
     </p>
 
