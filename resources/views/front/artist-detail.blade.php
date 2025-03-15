@@ -4,11 +4,7 @@
     <section class="container p-5 mt-28">
         <div class="flex flex-wrap justify-center gap-5 mb-10">
             <article>
-                <img 
-                    class="rounded-full w-80 h-80" 
-                    src="{{ asset('user_pic.jpg') }}" 
-                    alt="{{ $artist->name }}" 
-                />
+                <img class="rounded-full w-80 h-80" src="{{ asset('user_pic.jpg') }}" alt="{{ $artist->name }}" />
             </article>
             <article class="flex flex-col justify-center gap-x-10">
                 <h2 class="text-3xl">{{ $artist->name }}</h2>
@@ -27,11 +23,8 @@
                 @foreach ($arts as $art)
                     <article class="p-5 border border-gray-400 rounded-md">
                         <div class="overflow-hidden">
-                            <img 
-                                src="{{ asset('uploads/' . $art->primary_image) }}" 
-                                alt="{{ $art->title }}"
-                                class="rounded-md" 
-                            />
+                            <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="{{ $art->title }}"
+                                class="rounded-md" />
                         </div>
                         <div class="flex justify-between items-center">
                             <h3>{{ $art->title }}</h3>
@@ -44,19 +37,26 @@
                             <span>Surface: {{ ucfirst($art->surface) }}</span>
                             <span class="mr-auto">Size: {{ $art->size }}</span>
                             @if ($art->stock > 0)
-                              <span class="text-green-500">In Stock</span>  
+                                <span class="text-green-500">In Stock</span>
                             @else
-                              <span class="text-gray-300">Out of Stock</span>   
+                                <span class="text-gray-300">Out of Stock</span>
                             @endif
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <button class="border border-gray-500 hover:bg-gray-200 p-1">
-                                Add to Wishlist
-                            </button>
-                            <button class="btn btn-secondary">
-                                Add to cart
-                            </button>
-                            <button class="btn btn-primary">Buy Now</button>
+                        <div class="flex flex-col gap-2 text-center">
+                            <a href="{{ route('front.wishlist', $art->id) }}"
+                                class="border border-gray-500 hover:bg-gray-200 p-1">
+                                <button>
+                                    Add to Wishlist
+                                </button>
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <button>
+                                    Add to cart
+                                </button>
+                            </a>
+                            <a href="#" class="btn btn-primary">
+                                <button>Buy Now</button>
+                            </a>
                         </div>
                     </article>
                 @endforeach
