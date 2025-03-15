@@ -1,5 +1,5 @@
 @extends('layouts.other-page-layout')
-@section('title', '{{ $product->title }} - The Pacific Art Marketplace')
+@section('title', $product->title . ' - The Pacific Art Marketplace')
 @section('main_content')
     <section class="container mt-32 mb-10">
         <div class="grid grid-cols-2 mt-10 gap-5">
