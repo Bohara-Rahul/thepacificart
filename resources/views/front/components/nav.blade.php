@@ -1,16 +1,13 @@
 <header id="header" class="header mt-20">
-  <video muted autoplay loop poster="{{ asset('hero-img.png') }}">
-    <source src="{{ asset('bg-video.MOV') }}" />
-  </video>
+    <video muted autoplay loop poster="{{ asset('hero-img.png') }}">
+        <source src="{{ asset('bg-video.MOV') }}" />
+    </video>
     <div class="navigation-container fixed bg-[#13292a]" id="nav-container">
         <nav class="navbar" id="nav-bar">
             <a href="/">
                 <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
             </a>
             <ul class="flex justify-between gap-5">
-                <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
-                    <a href="{{ route('front.home') }}">What's New</a>
-                </li>
                 <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
@@ -19,6 +16,9 @@
                 </li>
                 <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
+                </li>
+                <li class="{{ Request::is('/whats-new') ? 'nav-active' : '' }}">
+                    <a href="{{ route('front.whats-new') }}">What's New</a>
                 </li>
             </ul>
             <ul class="flex justify-between gap-5 items-center text-xl">

@@ -1,4 +1,5 @@
 @extends('layouts.front')
+@section('title', 'Homepage - The Pacific Art Marketplace')
 @include('front.components.HeaderVideo')
 @section('main_content')
     @include('front.components.hero-section')

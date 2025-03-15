@@ -20,7 +20,9 @@ Route::get("/", [FrontController::class, 'index'])->name('front.home');
 Route::get("/gallery", [FrontController::class, 'gallery'])->name("front.gallery");
 Route::get("/categories", [FrontController::class, 'categories'])->name("front.categories");
 Route::get("/artists", [FrontController::class, 'artists'])->name("front.artists");
+Route::get("/artists/{artist}", [FrontController::class, 'artist_detail'])->name("front.artist_detail");
 Route::get("/about-us", [FrontController::class, 'about'])->name("front.about-us");
+Route::get("/whats-new", [FrontController::class, 'whats_new'])->name("front.whats-new");
 Route::get("/blog", [FrontController::class, 'blog'])->name("front.blog");
 Route::get("/custom-art", [FrontController::class, 'custom_art'])->name("front.custom_art");
 Route::get("/artist-application", [FrontController::class, 'artist_application'])->name("front.artist_application");
@@ -84,7 +86,7 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::post('/categories/edit/{id}', [AdminCategoryController::class, 'edit_submit'])->name('admin_categories_edit_submit');
   Route::get('/categories/delete/{id}', [AdminCategoryController::class, 'delete'])->name('admin_categories_delete');
 
-  // Artist Related Routes
+  // Admin Section Artist Related Routes
   Route::get('/artists', [AdminArtistController::class, 'index'])->name('admin_artists');
   Route::get('/artists/create', [AdminArtistController::class, 'create'])->name('admin_artist_create');
   Route::post('/artists/create', [AdminArtistController::class, 'create_submit'])->name('admin_artist_create_submit');

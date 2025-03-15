@@ -42,6 +42,12 @@ class FrontController extends Controller
         return view("front.artists", compact('artists'));
     }
 
+    public function artist_detail(Artist $artist)
+    {
+        $arts = Product::where('artist_id', $artist->id)->get();
+        return view("front.artist-detail", compact('artist', 'arts'));
+    }
+
     public function about()
     {
         return view("front.about-us");
@@ -60,6 +66,11 @@ class FrontController extends Controller
     public function artist_application()
     {
         return view('front.artist-application');
+    }
+
+    public function whats_new()
+    {
+        return view('front.whats-new');
     }
 
     public function refund_policy()

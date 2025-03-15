@@ -10,10 +10,10 @@
         <ul class="flex flex-col gap-2">
             <p class="text-xl">Contact Us</p>
             <li><i class="fa-solid fa-phone mr-2"></i>
-                <a href="tel:+61494381041">Call Us</a>
+                <a href="tel:+61494381041">+61 494 381 041</a>
             </li>
             <li><i class="fa-solid fa-envelope mr-2"></i>
-                <a href="mailto:info@thepacificart.com">Send an Email</a>
+                <a href="mailto:info@thepacificart.com">info@thepacificart.com</a>
             </li>
         </ul>
 
@@ -26,9 +26,11 @@
                     </li>
                 </a>
 
-                <li href="#">
-                    <i class="fa-brands fa-instagram text-lg"></i>
-                </li>
+                <a href="https://www.instagram.com" target="_blank">
+                    <li href="#">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </li>
+                </a>
             </div>
 
         </ul>
@@ -36,7 +38,7 @@
         <ul>
             <p class="text-xl">Legal & Privacy</p>
             <li>Terms and Conditions</li>
-            <li>Return Policy</li>
+            <li><a href="{{ route('front.refund_policy') }}">Refund Policy</a></li>
         </ul>
     </div>
     <div class="text-center mb-10">

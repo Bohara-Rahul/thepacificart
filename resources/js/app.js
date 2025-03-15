@@ -26,7 +26,7 @@ import './bootstrap';
 // });
 
  // JavaScript for slider functionality
- let currentIndex = 1; // Start from the first real slide
+let currentIndex = 1; // Start from the first real slide
 const slides = document.querySelectorAll(".slide");
 const slider = document.querySelector(".slider");
 const totalSlides = slides.length;
@@ -82,13 +82,8 @@ prevBtn.addEventListener("click", prevSlide);
 // Auto-slide every 3 seconds
 setInterval(nextSlide, 3000);
 
- // Arts Detail Page Related JS
- const mainPhotoContainer = document.querySelector('#main-photo-container')
- const allPhotos = document.querySelectorAll('.photos');
 
- allPhotos.addEventListener('click', () => {
-  console.log('Photo clicked');
-  mainPhotoContainer.innerHTML = `<img src="{{}}" alt="title" />`; 
- })
+
+
 
 

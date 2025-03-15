@@ -41,8 +41,12 @@ html {
 body {
     @apply min-h-screen text-black;
     font-family: "Quicksand";
-    background-image: linear-gradient(60deg, rgb(231, 230, 234), rgb(254, 254, 254));
-    
+    background-image: linear-gradient(
+        60deg,
+        rgb(231, 230, 234),
+        rgb(254, 254, 254)
+    );
+
     /*linear-gradient(
         60deg,
         rgb(250, 214, 214),
@@ -52,7 +56,7 @@ body {
         rgb(223, 223, 249),
         rgb(238, 223, 248),
         rgb(251, 231, 251)
-    );*/ 
+    );*/
 }
 h1 {
     @apply text-2xl font-bold max-w-2xl tracking-tight sm:text-6xl text-[#13292a];
@@ -222,7 +226,8 @@ textarea {
     object-fit: contain; /* Ensures the whole image is visible */
 }
 
-.prev, .next {
+.prev,
+.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -235,10 +240,15 @@ textarea {
     border-radius: 5px;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev {
+    left: 10px;
+}
+.next {
+    right: 10px;
+}
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -255,7 +265,7 @@ textarea {
 }
 
 .btn-primary {
-    @apply bg-[#13292a];
+    @apply bg-[#13292a] transition-all;
 }
 
 .btn-primary:hover {
@@ -263,7 +273,7 @@ textarea {
 }
 
 .btn-secondary {
-    @apply bg-[#3d6571];
+    @apply bg-[#3d6571] transition-all;
 }
 
 .btn-secondary:hover {
@@ -316,6 +326,32 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Zoom Container */
+.zoom-container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Set a fixed height */
+    overflow: hidden;
+    /* border: 1px solid #ddd; */
+}
+
+/* Wrapper for Zoom Effect */
+.zoom-wrapper {
+    position: relative;
+    width: 100%;
+    height: 675px;
+    overflow: hidden;
+}
+
+/* Main Image */
+.zoomable-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.1s ease-out;
+    transform-origin: center center;
 }
 
 .pagination {
