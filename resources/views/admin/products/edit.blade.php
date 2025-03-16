@@ -94,10 +94,12 @@
                 </div>
             </div>
             <div>
+                
                 <label for="description">Description:</label>
-                <textarea name="description" id="description" rows="10">
-        {{ $product->description }}
-      </textarea>
+                <!-- Textarea for Trix Editor -->
+        <textarea id="description" name="description">{!! $product->description !!}</textarea>
+        <trix-editor input="description"></trix-editor>
+
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>

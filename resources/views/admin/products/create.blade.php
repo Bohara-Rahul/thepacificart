@@ -46,10 +46,8 @@
 
         <div>
             <label for="description">Description</label>
-            @trix(\App\Product::class, 'description')
-            <!-- <textarea id="description" name="description" required>
-                {{ old('description') }}
-            </textarea> -->
+            <input id="description" type="hidden" name="description">
+            <trix-editor input="description"></trix-editor>
         </div>
         <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>

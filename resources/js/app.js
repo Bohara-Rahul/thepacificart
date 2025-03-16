@@ -1,31 +1,8 @@
 import './bootstrap';
+import "trix";
+import "trix/dist/trix.css";
 
-// const navContainer = document.getElementById('nav-container');
-// const navBar = document.getElementById('nav-bar');
-// const leftLogoNav = document.getElementById('left-logo-nav')
-
-// window.addEventListener('scroll', function () {
-//   const scrollHeight = window.pageYOffset;
-//   const navContainerHeight = navContainer.getBoundingClientRect().height;
-
-//   if(scrollHeight > navContainerHeight) {
-//     navContainer.classList.remove('show');
-//     navContainer.classList.add('hide');
-//     leftLogoNav.classList.remove('hide');
-//     leftLogoNav.classList.add('show');
-//     leftLogoNav.classList.add('fixed');
-//     leftLogoNav.style.boxShadow = "2px";
-//     // navBar.style.color = "#13292a";
-//   } else { 
-//     leftLogoNav.classList.remove('show');  
-//     leftLogoNav.classList.remove('fixed'); 
-//     leftLogoNav.classList.add('hide');
-//     navContainer.classList.remove('hide');
-//     navContainer.classList.add('show');
-//   }
-// });
-
- // JavaScript for slider functionality
+// JavaScript for slider functionality
 let currentIndex = 1; // Start from the first real slide
 const slides = document.querySelectorAll(".slide");
 const slider = document.querySelector(".slider");
