@@ -39,7 +39,7 @@
                 <input wire:model="selectedPrice" type="radio" value="price above 5000" />
             </div>
             <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
-            <button wire:click="$refresh" class="btn btn-primary">Reset Filter</button>
+            <button wire:click="$refresh" class="text-black hover:underline">Reset Filter</button>
         </aside>
         <section class="flex-1">
             @if (count($arts))
@@ -64,7 +64,8 @@
 
                                 <article class="flex justify-between items-center mt-5">
                                     <a href="{{ route('front.wishlist', $art->id) }}">
-                                        <p><i class="shopping-cart"></i></p>
+                                        <p><i class="fa-regular fa-heart"></i></p>
+                                        {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
                                     </a>
                                     <a href="#">
                                         <p>ADD TO CART</p>
