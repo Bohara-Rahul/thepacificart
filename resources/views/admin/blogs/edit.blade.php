@@ -5,7 +5,7 @@
         <h2>Edit Product</h2>
         <section>
             <article class="flex">
-                @if ($product->photos->count() > 0)
+                {{-- @if ($product->photos->count() > 0)
                     <p>Current Photos</p>
                     @foreach ($product->photos as $photo)
                         <aside>
@@ -18,12 +18,12 @@
                             </form>
                         </aside>
                     @endforeach
-                @endif
+                @endif --}}
             </article>
 
         </section>
 
-        <form action="{{ route('admin_products_edit_submit', $product->id) }}" method="POST" enctype="multipart/form-data"
+        {{-- <form action="{{ route('admin_products_edit_submit', $product->id) }}" method="POST" enctype="multipart/form-data"
             class="mb-5">
             @csrf
             @method('PUT')
@@ -130,7 +130,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+        </form> --}}
 
         <!-- validation errors -->
         @if ($errors->any())
