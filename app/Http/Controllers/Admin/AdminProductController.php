@@ -47,8 +47,7 @@ class AdminProductController extends Controller
             $request->primary_image->move(public_path('uploads'), $filename);
             $validated['primary_image'] = $filename;
         }
-
-        $validated['price'] = $validated['price'] * 100;
+        
         $product = Product::create($validated);
 
         if ($request->hasFile('files')) {
