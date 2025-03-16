@@ -22,9 +22,9 @@
                 <div class="flex flex-wrap gap-2 mb-5">
                     <span class="mr-auto">Size: {{ $product->size }}</span>
                     @if ($product->stock > 0)
-                        <span class="text-green-500">In Stock</span>
+                        <span class="bg-green-100 text-green-500 px-3 rounded-md">In Stock</span>
                     @else
-                        <span class="text-gray-300">Out of Stock</span>
+                        <span class="bg-red-100 text-red-500 px-3">Out of Stock</span>
                     @endif
                 </div>
                 <div class="flex flex-col gap-2 text-center">
