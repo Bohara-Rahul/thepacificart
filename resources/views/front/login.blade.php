@@ -10,7 +10,7 @@
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" value="{{ old('password') }}" required />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
     <!-- validation errors -->
@@ -24,6 +24,6 @@
         </ul>
     @endif
 
-    <p>No account <span><a href="{{ route('user.register') }}">Sign up here</a></span></p>
-    </main>
+    <h3>No account? <a href="{{ route('user.register') }}" class="underline">Sign up here</a></h3>
+    
 </x-form>

@@ -26,7 +26,7 @@
       <label for="confirm_password">Confirm Password:</label>
       <input type="password" name="password_confirmation" id="confirm_password" />
     </div>
-    <button type="submit">Sign up</button>   
+    <button type="submit" class="btn btn-primary">Sign up</button>   
   </form>
 
   <!-- validation errors -->
@@ -40,9 +40,8 @@
     </ul>
   @endif
 
-  <p>Already have an account 
-    <span>
-      <a href="{{ route('user.login') }}">Login</a>
-    </span>
-  </p> 
+    <h3>Already have an account? 
+      <a class="underline" href="{{ route('user.login') }}">Login</a>
+    </h3>
+
 </x-form>
