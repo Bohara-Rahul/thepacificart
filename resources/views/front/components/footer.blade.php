@@ -2,8 +2,12 @@
     <div class="container grid grid-cols-1 md:grid-cols-4">
         <ul class="flex flex-col gap-2">
             <p class="text-xl">About</p>
-            <li class="hover:underline">
+            <li 
+            class="{{ request()->routeIs('front.about-us') ? 'nav-active' : 'hover:underline' }} ">
                 <a href="{{ route('front.about-us') }}">About Us</a>
+            </li>
+            <li class="{{ request()->routeIs('front.blog') ? 'nav-active' : 'hover:underline' }}">
+                <a href="{{ route('front.blog') }}">Blog</a>
             </li>
         </ul>
 
@@ -50,7 +54,8 @@
             past, present, and emerging and recognize their deep and ongoing connection to the land,
             waters, and communities. Their legacy continues to inspire and guide us toward a better Queensland.
         </p>
-    </div>    <p class="text-center">
+    </div>    
+    <p class="text-center">
         All rights reserved with <strong>thepacificart</strong> &copy; {{ date('Y') }}
     </p>
 
