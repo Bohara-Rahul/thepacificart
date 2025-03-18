@@ -23,114 +23,40 @@
 
         </section>
 
-        {{-- <form action="{{ route('admin_products_edit_submit', $product->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin_blogs_edit_submit', $blog->slug) }}" method="POST" enctype="multipart/form-data"
             class="mb-5">
             @csrf
             @method('PUT')
             <div>
-                @if ($product->primary_image)
-                    <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="{{ $product->title }}" class="w-[150px]" />
+                @if ($blog->primary_image)
+                    <img src="{{ asset('uploads/' . $blog->primary_image) }}" alt="{{ $blog->title }}" class="w-[150px]" />
                     <label for="primary_image">Change primary photo:</label>
                     <input type="file" id="primary_image" name="primary_image" />
                 @endif
-            </div>
-            <div>
-                <label for="files">Add photos:</label>
-                <input type="file" id="files" name="files[]" multiple />
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" value="{{ $product->title }}" />
+                    <input type="text" id="title" name="title" value="{{ $blog->title }}" />
                 </div>
                 <div>
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" value="{{ $product->price }}" />
+                  <div>
+                    <label for="content">Content:</label>
+                    <!-- Textarea for Trix Editor -->
+                    <input 
+                        id="content" 
+                        name="content"
+                        value="{{ $blog->content }}" 
+                        type="hidden"
+                    />    
+                    <trix-editor input="content"></trix-editor>
+                </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div>
-                    <label for="artist_id">Artist</label>
-                    <select name="artist_id" id="artist_id" required>
-                        <option value="" disabled selected>
-                            Select an artist
-                        </option>
-                        @foreach ($artists as $artist)
-                            <option value="{{ $artist->id }}" {{ $artist->id == $product->artist_id ? 'selected' : '' }}>
-                                {{ $artist->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div>
-                    <label for="category_id">Category</label>
-                    <select id="category_id" name="category_id" required>
-                        <option value="" disabled selected>
-                            Select a category
-                        </option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"
-                                {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                {{ $category->title }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div>
-                <label for="description">Description:</label>
-                <!-- Textarea for Trix Editor -->
-                <input 
-                    id="description" 
-                    name="description"
-                    value="{{ $product->description }}" 
-                    type="hidden"
-                />    
-                <trix-editor input="description"></trix-editor>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div>
-                    <label for="medium">Medium:</label>
-                    <input type="text" id="medium" name="medium" value="{{ $product->medium }}" />
-                </div>
-                <div>
-                    <label for="surface">Surface:</label>
-                    <input type="text" id="surface" name="surface" value="{{ $product->surface }}" />
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div>
-                    <label for="stock">Stock:</label>
-                    <input type="text" id="stock" name="stock" value="{{ $product->stock }}" />
-                </div>
-                <div>
-                    <label for="size">Size:</label>
-                    <input type="text" id="size" name="size" value="{{ $product->size }}" />
-                </div>
-            </div>
-            <p>Is BestSeller?</p>
-            <div class="grid grid-cols-2">
-                <div class="grid grid-cols-2">
-                    <label for="isBestSeller">Yes</label>
-                    <input value="1" type="radio" id="isBestSeller" name="isBestSeller"
-                    {{ $product->isBestSeller == '1' ? 'checked' : '' }} />
-                </div>
-                <div class="grid grid-cols-2">
-                    <label for="isBestSeller">No</label>
-                    <input value="0" type="radio" id="isBestSeller" name="isBestSeller"
-                    {{ $product->isBestSeller == '0' ? 'checked' : '' }} />
-                </div>
-            </div>
-
-            <div class="w-40">
-                <label for="year_of_creation">Year_of_creation:</label>
-                <input type="text" id="year_of_creation" name="year_of_creation"
-                    value="{{ $product->year_of_creation }}" />
-            </div>
-
+            
             <button type="submit" class="btn btn-primary">Update</button>
-        </form> --}}
+        </form>
 
         <!-- validation errors -->
         @if ($errors->any())
