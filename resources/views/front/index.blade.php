@@ -42,12 +42,17 @@
                         <p>{!! substr($best_seller_art->description, 0, 150) !!}</p>
 
                         <article class="flex justify-between items-center mt-5">
-                            <a href="{{ route('front.add_to_wishlist', $best_seller_art->id) }}">
-                                <p>ADD TO WISHLIST</p>
-                            </a>
-                            <a href="#" class="btn btn-primary">
-                                <p>ADD TO CART</p>
-                            </a>
+                            @if ($best_seller_art->wishlist()->where('user_id', Auth::id())->exists())
+                                <a href="{{ route('front.remove_from_wishlist', $best_seller_art->id) }}">
+                                    <i class="fa-solid fa-heart"></i> Remove from Wishlist
+                                </a>
+                            @else
+                                <a href="{{ route('front.add_to_wishlist', $best_seller_art->id) }}">
+                                    <i class="fa-regular fa-heart"></i> Add to Wishlist
+                                </a>
+                            @endif
+                            <a href=""> <i class="fas fa-shopping-cart"></i>
+                                ADD TO CART</a>
                         </article>
 
 
