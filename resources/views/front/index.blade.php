@@ -42,7 +42,7 @@
                         <p>{!! substr($best_seller_art->description, 0, 150) !!}</p>
 
                         <article class="flex justify-between items-center mt-5">
-                            <a href="{{ route('front.wishlist', $best_seller_art->id) }}">
+                            <a href="{{ route('front.add_to_wishlist', $best_seller_art->id) }}">
                                 <p>ADD TO WISHLIST</p>
                             </a>
                             <a href="#" class="btn btn-primary">

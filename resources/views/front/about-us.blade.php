@@ -94,75 +94,113 @@
 
 
             <!-- <aside>
-                                                                <h3>Our Story</h3>
-                                                                <img src="{{ asset('Maria.png') }}" />
-                                                            </aside>
+                                                                                                                <h3>Our Story</h3>
+                                                                                                                <img src="{{ asset('Maria.png') }}" />
+                                                                                                            </aside>
 
-                                                            <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
-                                                            During their travels through South America, the founders met local artists in Colombia and were mesmerized by
-                                                            the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
-                                                            transport you to another place. Inspired by this experience, the founders decided to bring together artists from
-                                                            around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
-                                                            celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
-                                                            where art connects, inspires, and transcends borders.
-                                                            </p> -->
+                                                                                                            <p>Founded in Brisbane, Australia, The Pacific Art emerged from a deep passion for connecting the world through art.
+                                                                                                            During their travels through South America, the founders met local artists in Colombia and were mesmerized by
+                                                                                                            the handcrafted art they encountered. The unique creations were not just visually stunning—they had the power to
+                                                                                                            transport you to another place. Inspired by this experience, the founders decided to bring together artists from
+                                                                                                            around the world to showcase their works on a global stage. From the rest of the world, The Pacific Art
+                                                                                                            celebrates diverse styles, including Abstract, Colonial, Modern, Contemporary, and Nature, offering a platform
+                                                                                                            where art connects, inspires, and transcends borders.
+                                                                                                            </p> -->
         </section>
 
 
         <div class="container mt-20 mb-20">
             <h3 class="section-heading">Why Choose Us?</h3>
-            <section class="grid grid-cols-1 md:grid-cols-6 gap-2">
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Global Artistry:</strong> </p>
-                    <p>We feature exceptional artists from around the world, representing
-                        a
-                        wide
-                        array of cultural backgrounds and artistic traditions. Our collection showcases art that celebrates
-                        the
-                        diverse beauty of our planet.
-                    </p>
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Global Artistry:</strong> </p>
+                            <p>We feature exceptional artists from around the world, representing
+                                a
+                                wide
+                                array of cultural backgrounds and artistic traditions. Our collection showcases art that
+                                celebrates
+                                the
+                                diverse beauty of our planet.
+                            </p>
+                        </span>
+                    </div>
                 </div>
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Curated Collection:</strong></p>
-                    <p>Each artwork in our collection is carefully selected by our team of art experts, ensuring that it
-                        meets our high standards for quality, originality, and artistic expression. We offer a diverse range
-                        of styles to suit all tastes, from timeless classics to contemporary masterpieces.
-                    </p>
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Curated Collection:</strong></p>
+                            <p>Each artwork in our collection is carefully selected by our team of art experts, ensuring
+                                that it
+                                meets our high standards for quality, originality, and artistic expression. We offer a
+                                diverse range
+                                of styles to suit all tastes, from timeless classics to contemporary masterpieces.
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Seamless Shopping Experience:</strong></p>
-                    <p>We provide a user-friendly, online shopping experience that
-                        brings high-quality art directly to your doorstep. Our website is designed to make
-                        browsing,purchasing,and shipping as simple and secure as possible, ensuring your art arrives safely
-                        and on time.
-                    </p>
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Seamless Shopping Experience:</strong></p>
+                            <p>We provide a user-friendly, online shopping experience that
+                                brings high-quality art directly to your doorstep. Our website is designed to make
+                                browsing,purchasing,and shipping as simple and secure as possible, ensuring your art arrives
+                                safely
+                                and on time.
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Authenticity and Quality:</strong></p>
-                    <p>At The Pacific Art, we are committed to offering only the
-                        most
-                        authentic, high-quality pieces. Each artwork is handpicked for its artistic merit, craftsmanship,
-                        and
-                        cultural significance. Our artists take pride in creating pieces that are both visually striking and
-                        meaningful.
-                    </p>
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Authenticity and Quality:</strong></p>
+                            <p>At The Pacific Art, we are committed to offering only the
+                                most
+                                authentic, high-quality pieces. Each artwork is handpicked for its artistic merit,
+                                craftsmanship,
+                                and
+                                cultural significance. Our artists take pride in creating pieces that are both visually
+                                striking and
+                                meaningful.
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Supporting Artists:</strong></p>
-                    <p>We are deeply committed to supporting the global art community. By purchasing artwork from The
-                        Pacific Art, you’re directly supporting artists from around the world.We aim to create sustainable
-                        opportunities for artists while sharing their incredible work with a global audience.
-                    </p>
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Supporting Artists:</strong></p>
+                            <p>We are deeply committed to supporting the global art community. By purchasing artwork from
+                                The
+                                Pacific Art, you’re directly supporting artists from around the world.We aim to create
+                                sustainable
+                                opportunities for artists while sharing their incredible work with a global audience.
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
-                <div class="border p-10 bg-[#f1f5f9] shadow-md">
-                    <p class="text-xl"><strong>Personalized Service:</strong></p>
-                    <p>Our team is here to guide you through every step of your
-                        art-buying
-                        journey. Whether you need help choosing the perfect piece for your home, assistance with framing
-                        options, or
-                        advice on art investment, we offer personalized customer support to ensure your complete
-                        satisfaction.
-                    </p>
+                <div class="card-container">
+                    <div class="card">
+                        <span>
+                            <p class="text-xl"><strong>Personalized Service:</strong></p>
+                            <p>Our team is here to guide you through every step of your
+                                art-buying
+                                journey. Whether you need help choosing the perfect piece for your home, assistance with
+                                framing
+                                options, or
+                                advice on art investment, we offer personalized customer support to ensure your complete
+                                satisfaction.
+                            </p>
+                        </span>
+                    </div>
+
                 </div>
         </div>
     </section>
