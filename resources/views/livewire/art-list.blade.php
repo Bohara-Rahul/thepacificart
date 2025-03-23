@@ -46,50 +46,49 @@
                 <article class="grid-container gap-2 justify-center">
                     @foreach ($arts as $art)
                         <x-card>
-                            <a href="{{ route('product_detail', $art->slug) }}">
-                                <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
+                            <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
+                                <a href="{{ route('product_detail', $art->slug) }}">
                                     <header class="flex justify-between items-center">
                                         <h3 class="text-2xl text-[#13292a] capitalize font-bold">
                                             {{ $art->title }}
                                         </h3>
                                     </header>
 
-                                    @if ($art->photos)
-                                        <article class="shadow-lg w-80 h-[340px]">
-                                            <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
-                                                class="product-image rounded-md object-cover" />
-                                        </article>
+
+                                    <article class="shadow-lg w-80 h-[340px]">
+                                        <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="art image"
+                                            class="product-image rounded-md object-cover" />
+                                    </article>
+                                    <p>{!! substr($art->description, 0, 150) !!}</p>
+                                </a>
+
+                                <article class="flex justify-between items-center mt-5">
+                                    @if ($art->wishlist()->where('user_id', Auth::id())->exists())
+                                        <a href="{{ route('front.remove_from_wishlist', $art->id) }}">
+                                            <i class="fa-solid fa-heart"></i> Remove from Wishlist
+                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                        </a>
+                                    @else
+                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}">
+                                            <i class="fa-regular fa-heart"></i> Add to Wishlist
+                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                        </a>
                                     @endif
 
-                                    <p>{!! substr($art->description, 0, 150) !!}</p>
-
-                                    <article class="flex justify-between items-center mt-5">
-                                        @if ($art->wishlist()->where('user_id', Auth::id())->exists())
-                                            <a href="{{ route('front.remove_from_wishlist', $art->id) }}">
-                                                <i class="fa-solid fa-heart"></i> Remove from Wishlist
-                                                {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
-                                            </a>     
-                                        @else
-                                            <a href="{{ route('front.add_to_wishlist', $art->id) }}">
-                                                <i class="fa-regular fa-heart"></i> Add to Wishlist
-                                                {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
-                                            </a>   
-                                        @endif
-                                        
-                                        <a href="#" class="ml-auto">
-                                            <p>ADD TO CART</p>
-                                        </a>
-                                    </article>
-
-
-                                    <a class="btn btn-primary text-center"
-                                        href="{{ route('product_detail', $art->slug) }}">
-                                        Explore the Masterpiece
+                                    <a href="#" class="ml-auto">
+                                        <p>ADD TO CART</p>
                                     </a>
+                                </article>
 
-                                </section>
-                            </a>
+
+                                <a class="btn btn-primary text-center" href="{{ route('product_detail', $art->slug) }}">
+                                    Explore the Masterpiece
+                                </a>
+
+                            </section>
+
                         </x-card>
+                        </a>
                     @endforeach
         </section>
     </div>
