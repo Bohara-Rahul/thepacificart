@@ -39,45 +39,48 @@
                 <input wire:model="selectedPrice" type="radio" value="price above 5000" />
             </div>
             <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
-            <button wire:click="$refresh" class="text-black hover:underline">Reset Filter</button>
+            <button wire:click="resetForm" class="text-black hover:underline">Reset Filter</button>
         </aside>
         <section class="flex-1">
             @if (count($arts))
                 <article class="grid-container gap-2 justify-center">
                     @foreach ($arts as $art)
                         <x-card>
-                            <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
-                                <header class="flex justify-between items-center">
-                                    <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                                        {{ $art->title }}
-                                    </h3>
-                                </header>
+                            <a href="{{ route('product_detail', $art->slug) }}">
+                                <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
+                                    <header class="flex justify-between items-center">
+                                        <h3 class="text-2xl text-[#13292a] capitalize font-bold">
+                                            {{ $art->title }}
+                                        </h3>
+                                    </header>
 
-                                @if ($art->photos)
-                                    <article class="shadow-lg w-80 h-[340px]">
-                                        <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
-                                            class="product-image rounded-md object-cover" />
+                                    @if ($art->photos)
+                                        <article class="shadow-lg w-80 h-[340px]">
+                                            <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
+                                                class="product-image rounded-md object-cover" />
+                                        </article>
+                                    @endif
+
+                                    <p>{!! substr($art->description, 0, 150) !!}</p>
+
+                                    <article class="flex justify-between items-center mt-5">
+                                        <a href="{{ route('front.wishlist', $art->id) }}">
+                                            <i class="fa-regular fa-heart"></i>
+                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                        </a>
+                                        <a href="#" class="ml-auto">
+                                            <p>ADD TO CART</p>
+                                        </a>
                                     </article>
-                                @endif
 
-                                <p>{!! substr($art->description, 0, 150) !!}</p>
 
-                                <article class="flex justify-between items-center mt-5">
-                                    <a href="{{ route('front.wishlist', $art->id) }}">
-                                        <p><i class="fa-regular fa-heart"></i></p>
-                                        {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                    <a class="btn btn-primary text-center"
+                                        href="{{ route('product_detail', $art->slug) }}">
+                                        Explore the Masterpiece
                                     </a>
-                                    <a href="#">
-                                        <p>ADD TO CART</p>
-                                    </a>
-                                </article>
 
-
-                                <a class="btn btn-primary text-center" href="{{ route('product_detail', $art->slug) }}">
-                                    Explore the Masterpiece
-                                </a>
-
-                            </section>
+                                </section>
+                            </a>
                         </x-card>
                     @endforeach
         </section>
