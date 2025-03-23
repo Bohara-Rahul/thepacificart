@@ -63,10 +63,8 @@
                 </li>
                 <li>
                     <button class="flex justify-center items-center relative">
-                        <a href="#" class="bg-black">
-                            <i class="fa-light fa-cart-shopping"></i>
-                            <span
-                                class='absolute -top-3 -right-3 bg-white text-black rounded-full h-6 w-6 flex items-center justify-center text-xs'>2</span>
+                        <a href="#">
+                            <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </button>
                 </li>

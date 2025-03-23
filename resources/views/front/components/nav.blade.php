@@ -24,6 +24,11 @@
                 </li>
             </ul>
             <ul class="flex justify-between gap-5 items-center text-xl">
+                @auth
+                    <li>
+                        <i class="fa-regular fa-heart"></i>
+                    </li>
+                @endauth
                 <li>
                     <button class="flex justify-center items-center relative">
                         <a href="#">
@@ -34,9 +39,6 @@
                     </button>
                 </li>
                 @auth
-                    <li>
-                        <i class="fa-regular fa-heart"></i>
-                    </li>
                     <li>
                         <a href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
