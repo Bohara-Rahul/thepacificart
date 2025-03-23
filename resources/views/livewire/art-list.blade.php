@@ -64,10 +64,18 @@
                                     <p>{!! substr($art->description, 0, 150) !!}</p>
 
                                     <article class="flex justify-between items-center mt-5">
-                                        <a href="{{ route('front.wishlist', $art->id) }}">
-                                            <i class="fa-regular fa-heart"></i>
-                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
-                                        </a>
+                                        @if ($art->wishlist()->where('user_id', Auth::id())->exists())
+                                            <a href="{{ route('front.wishlist', $art->id) }}">
+                                                <i class="fa-solid fa-heart"></i>
+                                                {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                            </a>     
+                                        @else
+                                            <a href="{{ route('front.wishlist', $art->id) }}">
+                                                <i class="fa-regular fa-heart"></i>
+                                                {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                            </a>   
+                                        @endif
+                                        
                                         <a href="#" class="ml-auto">
                                             <p>ADD TO CART</p>
                                         </a>
