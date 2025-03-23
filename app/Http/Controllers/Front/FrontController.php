@@ -83,7 +83,7 @@ class FrontController extends Controller
         return view('front.terms-conditions');
     } 
 
-    public function wishlist($product_id)
+    public function add_to_wishlist($product_id)
     {
         if (!Auth::check()) {
             return redirect()->route('user.login')->with('error', 'Please login to add this art in your wishlist');
@@ -103,5 +103,23 @@ class FrontController extends Controller
             return back()->with('success', 'The art has been added to wishlist successfully');
         }
         return back()->with('error', 'Could not add to the wishlist. Try again later');
+    }
+
+    public function remove_from_wishlist($product_id)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('user.login')->with('error', 'Please login to remove this item from your wishlist');
+        }
+
+        $user_id = Auth::user()->id;
+
+        $item = Wishlist::where('user_id', $user_id)->where('product_id', $product_id);
+
+        if ($item) {
+            $item->delete();
+            return back()->with('success', 'Removed item from wishlist');
+        }
+
+        return back()->with('error', 'Could not remove from the wishlist. Try again later');
     }
 }
