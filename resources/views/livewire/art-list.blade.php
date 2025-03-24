@@ -117,7 +117,7 @@
 
     </div>
 @else
-    <h2>Your filters do not match any arts</h2>
+    <h2 class="text-center">Your filters do not match any arts</h2>
     @endif
 
 
