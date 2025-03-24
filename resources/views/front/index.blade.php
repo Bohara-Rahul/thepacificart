@@ -51,8 +51,7 @@
                                     <i class="fa-regular fa-heart"></i> Add to Wishlist
                                 </a>
                             @endif
-                            <a href=""> <i class="fas fa-shopping-cart"></i>
-                                ADD TO CART</a>
+                            @livewire('add-to-cart', ['product' => $best_seller_art])
                         </article>
 
 
@@ -64,6 +63,7 @@
                     </section>
                 </x-card>
             @endforeach
+            @livewire('cart') <!-- Embed Livewire Cart Component -->
         </article>
     </section>
 
@@ -144,4 +144,5 @@
         <a href="{{ route('front.artist_application') }}" class="btn btn-primary text-xl tracking-wide">Artist
             Application</a>
     </section>
+    @livewire('cart')
 @endsection

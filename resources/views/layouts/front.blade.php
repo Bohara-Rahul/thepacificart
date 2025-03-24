@@ -15,6 +15,7 @@
 
     <title>@yield('title', 'The Pacific Art - Art Marketplace')</title>
 
+    @livewireStyles
     @vite('resources/css/app.css')
 </head>
 
@@ -45,6 +46,7 @@
     @include('front.components.footer')
 
 
+    @livewireScripts
     @vite('resources/js/app.js')
 </body>
 
