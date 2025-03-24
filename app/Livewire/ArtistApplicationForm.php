@@ -51,22 +51,6 @@ class ArtistApplicationForm extends Component
             'portfolio_link' => $this->portfolio_link,
         ]);
 
-        // if ($this->images) {
-        //     $this->validate([
-        //         'images.*' => 'required|image|mimes:jpg,jpeg,png,svg,webp'
-        //     ]);
-
-        //     foreach($this->images as $image) {
-        //         $filename = 'artist_photo_'.time().'.'.$image->extension();
-        //         $image->move(public_path('uploads'), $filename);
-    
-        //         ArtistPortfolioImages::create([
-        //             'name' => $filename,
-        //             'artist_id' => $artist->id
-        //         ]);
-        //     }
-        // }
-
         return redirect()
             ->back()
             ->with('success', 'You have successfully submitted the application');
