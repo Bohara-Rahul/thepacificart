@@ -45,7 +45,7 @@
                             @endif
                         </div>
                         <div class="flex flex-col gap-2 text-center">
-                            <a href="{{ route('front.wishlist', $art->id) }}"
+                            <a href="{{ route('front.add_to_wishlist', $art->id) }}"
                                 class="border border-gray-500 hover:bg-gray-300 p-1">
                                 <button>
                                     Add to Wishlist
