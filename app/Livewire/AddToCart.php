@@ -16,7 +16,7 @@ class AddToCart extends Component
     {
         $this->productId = $productId;
     }
-    
+
     public function addToCart($productId)
     {
         $product = Product::findOrFail($productId);
@@ -49,7 +49,7 @@ class AddToCart extends Component
             Session::put('cart', $cart);
         }
 
-        $this->emit('cartUpdated'); // Notify the cart component to refresh
+        $this->dispatch('cartUpdated'); // Notify the cart component to refresh
     }
 
     public function render()
