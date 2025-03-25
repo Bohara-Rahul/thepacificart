@@ -10,6 +10,13 @@ use App\Models\Product;
 
 class AddToCart extends Component
 {
+    public $productId; // Declare the variable
+
+    public function mount($productId)
+    {
+        $this->productId = $productId;
+    }
+    
     public function addToCart($productId)
     {
         $product = Product::findOrFail($productId);

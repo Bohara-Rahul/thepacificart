@@ -143,5 +143,4 @@
         <a href="{{ route('front.artist_application') }}" class="btn btn-primary text-xl tracking-wide">Artist
             Application</a>
     </section>
-    @livewire('add-to-cart')
 @endsection
