@@ -83,6 +83,11 @@ class FrontController extends Controller
         return view('front.terms-conditions');
     } 
 
+    public function cart()
+    {
+        return view('front.cart');
+    }
+
     public function add_to_wishlist($product_id)
     {
         if (!Auth::check()) {

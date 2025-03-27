@@ -1,4 +1,4 @@
-<div>
+<section class="container mt-32 mb-10">
     <h2>Your Cart</h2>
 
     @if(empty($cartItems))
@@ -17,7 +17,7 @@
             <tbody>
                 @foreach ($cartItems as $item)
                     <tr>
-                        <td>{{ $item['product']['name'] ?? $item['name'] }}</td>
+                        <td>{{ $item['product']['title'] ?? $item['title'] }}</td>
                         <td>{{ $item['quantity'] }}</td>
                         <td>${{ $item['product']['price'] ?? $item['price'] }}</td>
                         <td>${{ ($item['product']['price'] ?? $item['price']) * $item['quantity'] }}</td>
@@ -31,5 +31,5 @@
     @endif
 
     {{-- <a href="{{ route('checkout') }}">Proceed to Checkout</a> --}}
-</div>
+</section>
 

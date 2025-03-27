@@ -41,7 +41,7 @@ class Cart extends Component
         }
 
         $this->loadCart();
-        $this->emit('cartUpdated'); // Update cart everywhere
+        $this->dispatch('cartUpdated'); // Update cart everywhere
     }
 
     public function render()

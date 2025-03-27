@@ -63,8 +63,8 @@
                 </li>
                 <li>
                     <button class="flex justify-center items-center relative">
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                        <a href="{{ route('front.cart') }}">
+                            Cart ({{ count(session('cart', [])) }})
                         </a>
                     </button>
                 </li>
