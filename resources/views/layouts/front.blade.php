@@ -21,7 +21,7 @@
 
 <body>
 
-    @if (session()->has('success'))
+    {{-- @if (session()->has('success'))
         <div class="container">
             <div class="alert alert-success text-center">
                 {{ session('success') }}
@@ -35,9 +35,13 @@
                 {{ session('failure') }}
             </div>
         </div>
-    @endif
+    @endif --}}
 
+    <!-- Navigation -->
     <livewire:nav />
+
+     <!-- Toast Notification Component -->
+     <livewire:toast />
 
     <main>
         @yield('main_content')

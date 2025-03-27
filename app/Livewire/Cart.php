@@ -33,17 +33,30 @@ class Cart extends Component
     public function removeFromCart($productId)
     {
         if (Auth::check()) {
-            CartModel::where('user_id', Auth::id())
+            $deleted = CartModel::where('user_id', Auth::id())
             ->where('product_id', $productId)
             ->delete();
+   
+            if ($deleted) {
+                $this->dispatch('cartUpdated');
+                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
+            } else {
+                $this->dispatch('showToast', 'Failed to remove item', 'error'); 
+            }       
+
         } else {
             $cart = Session::get('cart', []);
-            unset($cart[$productId]);
-            Session::put('cart', $cart);
+            if (isset($cart[$productId])) {
+                unset($cart[$productId]);
+                Session::put('cart', $cart);
+                $this->dispatch('cartUpdated');
+                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
+            } else {
+                $this->dispatch('showToast', 'Item not found in cart', 'error'); 
+            }
         }
 
         $this->loadCart();
-        $this->dispatch('cartUpdated'); // Update cart everywhere
     }
 
     public function render()

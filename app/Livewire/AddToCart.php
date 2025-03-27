@@ -66,6 +66,7 @@ class AddToCart extends Component
 
         $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
+        $this->dispatch('showToast', 'Item added to cart'); // Show toast 
     }
 
     public function render()
