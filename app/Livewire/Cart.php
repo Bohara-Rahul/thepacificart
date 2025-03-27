@@ -33,7 +33,9 @@ class Cart extends Component
     public function removeFromCart($productId)
     {
         if (Auth::check()) {
-            CartModel::where('user_id', Auth::id())->where('product_id', $productId)->delete();
+            CartModel::where('user_id', Auth::id())
+            ->where('product_id', $productId)
+            ->delete();
         } else {
             $cart = Session::get('cart', []);
             unset($cart[$productId]);

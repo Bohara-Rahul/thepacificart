@@ -37,7 +37,7 @@
         </div>
     @endif
 
-    @include('front.components.nav')
+    <livewire:nav />
 
     <main>
         @yield('main_content')
@@ -46,6 +46,7 @@
     @include('front.components.footer')
 
     @livewireScripts
+
     @vite('resources/js/app.js')
 </body>
 

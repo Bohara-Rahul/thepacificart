@@ -75,9 +75,7 @@
                                         </a>
                                     @endif
 
-                                    <a href="#" class="ml-auto">
-                                        <p>ADD TO CART</p>
-                                    </a>
+                                    @livewire('add-to-cart', ['productId' => $art->id])
                                 </article>
 
 

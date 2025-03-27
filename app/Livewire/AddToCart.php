@@ -11,10 +11,25 @@ use App\Models\Product;
 class AddToCart extends Component
 {
     public $productId; // Declare the variable
+    public $cartItems = [];
+
+    protected $listeners = ['cartUpdated' => 'loadCart'];
 
     public function mount($productId)
     {
         $this->productId = $productId;
+        $this->loadCart();
+    }
+
+    public function loadCart()
+    {
+        if (Auth::check()) {
+            // Load cart items from database
+            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
+        } else {
+            // Load cart items from session
+            $this->cartItems = Session::get('cart', []);
+        }
     }
 
     public function addToCart($productId)
@@ -49,6 +64,7 @@ class AddToCart extends Component
             Session::put('cart', $cart);
         }
 
+        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
     }
 
