@@ -58,6 +58,7 @@ class AddToCart extends Component
                 $cart[$productId] = [
                     'title' => $product->title,
                     'price' => $product->price,
+                    'primary_image' => $product->primary_image,
                     'quantity' => 1,
                 ];
             }
