@@ -43,12 +43,14 @@
 
                         <article class="flex justify-between items-center mt-5">
                             @if ($best_seller_art->wishlist()->where('user_id', Auth::id())->exists())
-                                <a href="{{ route('front.remove_from_wishlist', $best_seller_art->id) }}">
-                                    <i class="fa-solid fa-heart"></i> Remove from Wishlist
+                                <a href="{{ route('front.remove_from_wishlist', $best_seller_art->id) }}"
+                                class="btn btn-accent"
+                                >
+                                    Remove from Wishlist
                                 </a>
                             @else
-                                <a href="{{ route('front.add_to_wishlist', $best_seller_art->id) }}">
-                                    <i class="fa-regular fa-heart"></i> Add to Wishlist
+                                <a href="{{ route('front.add_to_wishlist', $best_seller_art->id) }}" class="btn btn-accent">
+                                    Add to Wishlist
                                 </a>
                             @endif
                             @livewire('add-to-cart', ['productId' => $best_seller_art->id])
