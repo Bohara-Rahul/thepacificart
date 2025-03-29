@@ -321,6 +321,14 @@ textarea {
     @apply bg-[#13292a];
 }
 
+.btn-accent {
+    @apply bg-gray-500 transition-all;
+}
+
+.btn-accent:hover {
+    @apply bg-gray-600;
+}
+
 .btn-danger {
     @apply bg-red-500;
 }

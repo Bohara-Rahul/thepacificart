@@ -39,7 +39,7 @@
 
     <livewire:other-page-nav />
 
-    <livewire:toast />
+    {{-- <livewire:toast /> --}}
 
     <main>
         @yield('main_content')

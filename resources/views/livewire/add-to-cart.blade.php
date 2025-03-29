@@ -1,1 +1,3 @@
-<button wire:click="addToCart({{ $productId }})">Add to Cart</button>
+<button wire:click="addToCart({{ $productId }})" class="btn btn-secondary">
+    Add to Cart
+</button>

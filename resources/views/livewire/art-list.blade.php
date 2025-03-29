@@ -62,15 +62,17 @@
                                     <p>{!! substr($art->description, 0, 150) !!}</p>
                                 </a>
 
-                                <article class="flex justify-between items-center mt-5">
+                                <article class="flex justify-between items-center mt-5 mb-5">
                                     @if ($art->wishlist()->where('user_id', Auth::id())->exists())
-                                        <a href="{{ route('front.remove_from_wishlist', $art->id) }}">
-                                            <i class="fa-solid fa-heart"></i> Remove from Wishlist
+                                        <a href="{{ route('front.remove_from_wishlist', $art->id) }}"
+                                            class="bg-gray-400 text-gray-600 p-2 border border-gray-600">
+                                            Remove from Wishlist
                                             {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
                                         </a>
                                     @else
-                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}">
-                                            <i class="fa-regular fa-heart"></i> Add to Wishlist
+                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}"
+                                            class="btn btn-accent">
+                                            Add to Wishlist
                                             {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
                                         </a>
                                     @endif

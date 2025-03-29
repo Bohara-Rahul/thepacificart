@@ -51,11 +51,7 @@
                                     Add to Wishlist
                                 </button>
                             </a>
-                            <a href="#" class="btn btn-secondary">
-                                <button>
-                                    Add to cart
-                                </button>
-                            </a>
+                            @livewire('add-to-cart', ['productId' => $art->id])
                             <a href="#" class="btn btn-primary">
                                 <button>Buy Now</button>
                             </a>

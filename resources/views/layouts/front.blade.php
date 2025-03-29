@@ -40,8 +40,8 @@
     <!-- Navigation -->
     <livewire:nav />
 
-     <!-- Toast Notification Component -->
-     <livewire:toast />
+    <!-- Toast Notification Component -->
+    {{-- <livewire:toast /> --}}
 
     <main>
         @yield('main_content')
@@ -50,7 +50,6 @@
     @include('front.components.footer')
 
     @livewireScripts
-
     @vite('resources/js/app.js')
 </body>
 
