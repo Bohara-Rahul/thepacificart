@@ -69,8 +69,7 @@
                                             Remove from Wishlist
                                         </a>
                                     @else
-                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}"
-                                            class="btn btn-accent">
+                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}" class="btn btn-accent">
                                             Add to Wishlist
                                         </a>
                                     @endif
@@ -78,7 +77,8 @@
                                     @livewire('add-to-cart', ['productId' => $art->id])
                                 </article>
 
-                                <a class="btn btn-primary text-center mb-5" href="{{ route('product_detail', $art->slug) }}">
+                                <a class="btn btn-primary text-center mb-5"
+                                    href="{{ route('product_detail', $art->slug) }}">
                                     Explore the Masterpiece
                                 </a>
 
