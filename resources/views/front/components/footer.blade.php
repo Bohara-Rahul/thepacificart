@@ -59,9 +59,4 @@
         All rights reserved with <strong>thepacificart</strong> &copy; {{ date('Y') }}
     </p>
 
-<<<<<<< HEAD
 </footer>
-   
-=======
-</footer>
->>>>>>>
