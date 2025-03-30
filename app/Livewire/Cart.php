@@ -73,6 +73,50 @@ class Cart extends Component
         $this->dispatch('showToast', 'Item added to cart'); // Show toast 
     }
 
+    public function decreaseQuantity($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        if (Auth::check()) {
+            // Save to database
+            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            if ($cartItem->quantity == 1) {
+                $this->removeFromCart($product->id);
+            }
+            if ($cartItem) {
+                $cartItem->quantity -= 1;
+                if ($cartItem->quantity == 1) {
+                    dd($cartItem->quantity);
+                    $this->removeFromCart($product->id);
+                }
+                $cartItem->save();
+            } else {
+                $this->dispatch('showToast', 'No item'); // Show toast 
+            }
+        } else {
+            // Save to session
+            $cart = Session::get('cart', []);
+            if ($cart[$productId]['quantity'] == 1) {
+                $this->removeFromCart($cart[$productId]);
+            }
+            if (isset($cart[$productId])) {
+                $cart[$productId]['quantity'] -= 1;
+                // dd($cart[$productId]['quantity'] );
+                if ($cart[$productId]['quantity'] == 1) {
+                    // dd($cart[$productId]['quantity']);
+                    $this->removeFromCart($cart[$productId]);
+                }
+            } else {
+                $this->dispatch('showToast', 'No item'); // Show toast 
+            }
+            Session::put('cart', $cart);
+        }
+
+        $this->loadCart();
+        $this->dispatch('cartUpdated'); // Notify the cart component to refresh
+        $this->dispatch('showToast', 'Item Quantity decreased'); // Show toast 
+    }
+
     public function removeFromCart($productId)
     {
         if (Auth::check()) {

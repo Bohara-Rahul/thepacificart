@@ -65,7 +65,7 @@
                                 <article class="flex justify-between items-center mt-5 mb-5">
                                     @if ($art->wishlist()->where('user_id', Auth::id())->exists())
                                         <a href="{{ route('front.remove_from_wishlist', $art->id) }}"
-                                            class="bg-gray-400 text-gray-600 p-2 border border-gray-600">
+                                            class="btn btn-accent">
                                             Remove from Wishlist
                                         </a>
                                     @else
