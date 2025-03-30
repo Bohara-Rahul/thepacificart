@@ -24,19 +24,24 @@
                 </li>
             </ul>
             <ul class="flex justify-between gap-5 items-center text-xl">
-                <li>
-                    <button class="flex justify-center items-center relative">
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            {{-- <span
-                                class='absolute -top-3 -right-3 bg-white text-black rounded-full h-6 w-6 flex items-center justify-center text-xs'>2</span> --}}
-                        </a>
-                    </button>
-                </li>
                 @auth
                     <li>
                         <i class="fa-regular fa-heart"></i>
                     </li>
+                @endauth
+                <li>
+                    <button class="flex justify-center items-center relative">
+                        <a href="{{ route('front.cart') }}">
+                            Cart ({{ count(session('cart', [])) }})
+                        </a>
+                        {{-- <a href="#"> --}}
+                            {{-- <i class="fa-solid fa-cart-shopping"></i> --}}
+                            {{-- <span
+                                class='absolute -top-3 -right-3 bg-white text-black rounded-full h-6 w-6 flex items-center justify-center text-xs'>2</span> --}}
+                        {{-- </a> --}}
+                    </button>
+                </li>
+                @auth
                     <li>
                         <a href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>

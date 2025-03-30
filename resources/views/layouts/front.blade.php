@@ -15,12 +15,13 @@
 
     <title>@yield('title', 'The Pacific Art - Art Marketplace')</title>
 
+    @livewireStyles
     @vite('resources/css/app.css')
 </head>
 
 <body>
 
-    @if (session()->has('success'))
+    {{-- @if (session()->has('success'))
         <div class="container">
             <div class="alert alert-success text-center">
                 {{ session('success') }}
@@ -34,9 +35,13 @@
                 {{ session('failure') }}
             </div>
         </div>
-    @endif
+    @endif --}}
 
-    @include('front.components.nav')
+    <!-- Navigation -->
+    <livewire:nav />
+
+    <!-- Toast Notification Component -->
+    {{-- <livewire:toast /> --}}
 
     <main>
         @yield('main_content')
@@ -44,7 +49,7 @@
 
     @include('front.components.footer')
 
-
+    @livewireScripts
     @vite('resources/js/app.js')
 </body>
 

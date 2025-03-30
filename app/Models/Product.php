@@ -49,7 +49,7 @@ class Product extends Model
         return $this->belongsTo(Artist::class);
     }
 
-    public function wishlists()
+    public function wishlist()
     {
         return $this->hasMany(Wishlist::class);
     }

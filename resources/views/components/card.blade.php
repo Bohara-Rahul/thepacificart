@@ -1,3 +1,2 @@
-<article class="card">
-  {{ $slot }}
-</article>
+{{ $slot }}
+

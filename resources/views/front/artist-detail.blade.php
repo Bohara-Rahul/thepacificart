@@ -45,17 +45,13 @@
                             @endif
                         </div>
                         <div class="flex flex-col gap-2 text-center">
-                            <a href="{{ route('front.wishlist', $art->id) }}"
+                            <a href="{{ route('front.add_to_wishlist', $art->id) }}"
                                 class="border border-gray-500 hover:bg-gray-300 p-1">
                                 <button>
                                     Add to Wishlist
                                 </button>
                             </a>
-                            <a href="#" class="btn btn-secondary">
-                                <button>
-                                    Add to cart
-                                </button>
-                            </a>
+                            @livewire('add-to-cart', ['productId' => $art->id])
                             <a href="#" class="btn btn-primary">
                                 <button>Buy Now</button>
                             </a>

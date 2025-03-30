@@ -39,7 +39,7 @@
                 <input wire:model="selectedPrice" type="radio" value="price above 5000" />
             </div>
             <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
-            <button wire:click="$refresh" class="text-black hover:underline">Reset Filter</button>
+            <button wire:click="resetForm" class="text-black hover:underline">Reset Filter</button>
         </aside>
         <section class="flex-1">
             @if (count($arts))
@@ -47,29 +47,37 @@
                     @foreach ($arts as $art)
                         <x-card>
                             <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
-                                <header class="flex justify-between items-center">
-                                    <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                                        {{ $art->title }}
-                                    </h3>
-                                </header>
+                                <a href="{{ route('product_detail', $art->slug) }}">
+                                    <header class="flex justify-between items-center">
+                                        <h3 class="text-2xl text-[#13292a] capitalize font-bold">
+                                            {{ $art->title }}
+                                        </h3>
+                                    </header>
 
-                                @if ($art->photos)
+
                                     <article class="shadow-lg w-80 h-[340px]">
-                                        <img src="{{ asset('uploads/' . $art->photos[0]->name) }}" alt="art image"
+                                        <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="art image"
                                             class="product-image rounded-md object-cover" />
                                     </article>
-                                @endif
+                                    <p>{!! substr($art->description, 0, 150) !!}</p>
+                                </a>
 
-                                <p>{!! substr($art->description, 0, 150) !!}</p>
+                                <article class="flex justify-between items-center mt-5 mb-5">
+                                    @if ($art->wishlist()->where('user_id', Auth::id())->exists())
+                                        <a href="{{ route('front.remove_from_wishlist', $art->id) }}"
+                                            class="bg-gray-400 text-gray-600 p-2 border border-gray-600">
+                                            Remove from Wishlist
+                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                        </a>
+                                    @else
+                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}"
+                                            class="btn btn-accent">
+                                            Add to Wishlist
+                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
+                                        </a>
+                                    @endif
 
-                                <article class="flex justify-between items-center mt-5">
-                                    <a href="{{ route('front.wishlist', $art->id) }}">
-                                        <p><i class="fa-regular fa-heart"></i></p>
-                                        {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
-                                    </a>
-                                    <a href="#">
-                                        <p>ADD TO CART</p>
-                                    </a>
+                                    @livewire('add-to-cart', ['productId' => $art->id])
                                 </article>
 
 
@@ -78,7 +86,9 @@
                                 </a>
 
                             </section>
+
                         </x-card>
+                        </a>
                     @endforeach
         </section>
     </div>
@@ -107,7 +117,7 @@
 
     </div>
 @else
-    <h2>Your filters do not match any arts</h2>
+    <h2 class="text-center">Your filters do not match any arts</h2>
     @endif
 
 

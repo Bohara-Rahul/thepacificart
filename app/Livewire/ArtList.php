@@ -22,6 +22,12 @@ class ArtList extends Component
     {
         $this->resetPage(); // Reset pagination when category changes
     }
+
+    // Resets all properties of form
+    public function resetForm()
+    {
+        $this->reset();
+    }
     
     public function render()
     {        
