@@ -9,24 +9,27 @@
                 <img src="{{ asset('user_pic.jpg') }}" class="w-28 h-28" />
                 <div>
                     <h4 class="text-2xl">
-                        {{ $item['product']['title'] ?? $item['title'] }}
+                        {{ $item['title'] }}
+                        <!-- $item['product']['title'] ?? -->
                     </h4>
                     <div class="text-xl flex gap-x-5 items-center">
                         <button><i class="fa-solid fa-minus"></i></button>
                         <p>{{ $item['quantity'] }}</p>
                         <button wire:click="addToCart({{ $item['product_id'] }})"><i class="fa-solid fa-plus"></i></button> 
-                        <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer"></i> 
+                        <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer" wire:click="removeFromCart({{ $item['product_id'] }})"></i> 
                     </div>
 
                 </div>
                 <div>
                     <p>Price Per Unit</p>
-                    <p>${{ $item['product']['price'] ?? $item['price'] }}</p>
+                    <p>${{  $item['price'] }}</p>
                 </div>
                 <div>
                     <p>Total Price</p>
-                    <p>${{ ($item['product']['price'] ?? $item['price']) * $item['quantity'] }}</p>
+                    <p>${{ $item['price'] * $item['quantity'] }}</p>
                 </div>
+                <!-- $item['product']['price'] ??
+                $item['product']['price'] ?? -->
             </div>
 
             </div>
