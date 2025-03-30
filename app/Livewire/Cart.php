@@ -25,7 +25,7 @@ class Cart extends Component
     {
         if (Auth::check()) {
             // Load cart items from database
-            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()-toArray();
+            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
         } else {
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
