@@ -8,16 +8,18 @@
                 <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
             </a>
             <ul class="flex justify-between gap-5">
-                <li class="{{ Request::is('/') ? 'nav-active' : '' }}">
+                <li class="{{ request()->routeIs('front.home') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.home') }}">Home</a>
                 </li>
-                <li class="{{ Request::is('/gallery') ? 'nav-active' : '' }}">
+                <li
+                    class="{{ request()->routeIs('front.gallery') || request()->routeIs('product_detail') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.gallery') }}">Gallery</a>
                 </li>
-                <li class="{{ Request::is('/artists') ? 'nav-active' : '' }}">
+                <li
+                    class="{{ request()->routeIs('front.artists') || request()->routeIs('front.artist_detail') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.artists') }}">Artists</a>
                 </li>
-                <li class="{{ Request::is('/whats-new') ? 'nav-active' : '' }}">
+                <li class="{{ request()->routeIs('front.whats-new') ? 'nav-active' : '' }}">
                     <a href="{{ route('front.whats-new') }}">What's New</a>
                 </li>
             </ul>

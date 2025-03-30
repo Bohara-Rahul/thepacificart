@@ -1,24 +1,9 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
-    @include('admin.layout.sidebar')
+@include('admin.layout.sidebar')
     <section>
         <h2>Edit Product</h2>
         <section>
-            {{-- <article>
-                @if ($product->primary_image)
-                    <p>Primary Photo</p>
-                    <aside>
-                        <img src="{{ asset('uploads/' . $product->primary_image) }}" alt="{{ $product->title }}"
-                            class="w-[200px] h-auto" />
-                        <form action="{{ route('admin_photo_delete', $product->primary_image) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
-                    </aside>
-                @endif
-            </article> --}}
-
             <article class="flex">
                 @if ($product->photos->count() > 0)
                     <p>Current Photos</p>
@@ -94,12 +79,15 @@
                 </div>
             </div>
             <div>
-                
                 <label for="description">Description:</label>
                 <!-- Textarea for Trix Editor -->
-        <textarea id="description" name="description">{!! $product->description !!}</textarea>
-        <trix-editor input="description"></trix-editor>
-
+                <input 
+                    id="description" 
+                    name="description"
+                    value="{{ $product->description }}" 
+                    type="hidden"
+                />    
+                <trix-editor input="description"></trix-editor>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>

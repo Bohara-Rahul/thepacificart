@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminHeroController;
 use App\Http\Controllers\Admin\AdminArtistController;
 use App\Http\Controllers\Admin\AdminPendingArtistController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -64,6 +65,14 @@ Route::middleware('can:visitAdminPages')->prefix('admin')->group(function () {
   Route::get('/products/edit/{id}', [AdminProductController::class, 'edit'])->name('admin_products_edit');
   Route::put('/products/edit/{id}', [AdminProductController::class, 'edit_submit'])->name('admin_products_edit_submit');
   Route::get('/products/delete/{id}', [AdminProductController::class, 'delete'])->name('admin_products_delete');
+
+  // Blog Related Routes
+  Route::get("/blogs", [AdminBlogController::class, 'index'])->name('admin_blogs');
+  Route::get("/blogs/create", [AdminBlogController::class, 'create'])->name('admin_blogs_create');
+  Route::post("/blogs/create", [AdminBlogController::class, 'create_submit'])->name('admin_blogs_create_submit');
+  Route::get('/blogs/edit/{slug}', [AdminBlogController::class, 'edit'])->name('admin_blogs_edit');
+  Route::put('/blogs/edit/{slug}', [AdminBlogController::class, 'edit_submit'])->name('admin_blogs_edit_submit');
+  Route::get('/blogs/delete/{slug}', [AdminBlogController::class, 'delete'])->name('admin_blogs_delete');
 
   // Slider related routes
   Route::get('/sliders', [AdminSlidersController::class, 'index'])->name('admin_sliders_index');

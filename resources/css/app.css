@@ -124,7 +124,7 @@ h1 {
 
 /* form elements */
 form {
-    @apply max-w-screen-2xl;
+    @apply max-w-7xl;
 }
 
 input,
@@ -288,10 +288,10 @@ textarea {
     @apply bg-red-400 cursor-pointer;
 }
 
-/* .nav-active {
-    @apply font-bold;
-    color: #13292a;
-} */
+.nav-active {
+    color: #6DBEC5;
+    font-weight: bold;
+}
 
 .collection-item {
     font-family: "Quicksand";

@@ -1,7 +1,7 @@
 @extends('admin.layout.admin-layout')
 @section('main_content')
 @include('admin.layout.sidebar')
-    
+
     <form action="{{ route('admin_products_create_submit') }}" method="POST" enctype="multipart/form-data">
         <h3>Please enter the details to add the art</h3>
         @csrf
@@ -46,7 +46,12 @@
 
         <div>
             <label for="description">Description</label>
-            <input id="description" type="hidden" name="description">
+            <input 
+                id="description" 
+                type="hidden" 
+                name="description" 
+                value="{{ old('description') }}" 
+            />
             <trix-editor input="description"></trix-editor>
         </div>
         <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -69,17 +74,17 @@
                 <input type="text" name="size" value="{{ old('size') }}" required />
             </div>
         </article>
-            <p>Is BestSeller?</p>
+        <p>Is BestSeller?</p>
+        <div class="grid grid-cols-2">
             <div class="grid grid-cols-2">
-                <div class="grid grid-cols-2">
-                    <label for="isBestSeller">Yes</label>
-                    <input value="1" type="radio" id="isBestSeller" name="isBestSeller" />         
-                </div>
-                <div class="grid grid-cols-2">
-                    <label for="isBestSeller">No</label>
-                    <input value="0" type="radio" id="isBestSeller" name="isBestSeller" />        
-                </div>
+                <label for="isBestSeller">Yes</label>
+                <input value="1" type="radio" id="isBestSeller" name="isBestSeller" />
             </div>
+            <div class="grid grid-cols-2">
+                <label for="isBestSeller">No</label>
+                <input value="0" type="radio" id="isBestSeller" name="isBestSeller" />
+            </div>
+        </div>
         <article class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
                 <label for="year_of_creation">Year of Creation</label>

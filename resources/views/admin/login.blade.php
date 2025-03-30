@@ -32,7 +32,7 @@
           value='{{ old("password") }}'
         />
 
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </section> 
 </body>
