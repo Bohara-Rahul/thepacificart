@@ -59,7 +59,7 @@
                                         <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="art image"
                                             class="product-image rounded-md object-cover" />
                                     </article>
-                                    <p>{!! substr($art->description, 0, 150) !!}</p>
+                                    <p class="text-justify">{!! substr($art->description, 0, 150) !!}</p>
                                 </a>
 
                                 <article class="flex justify-between items-center mt-5 mb-5">

@@ -46,6 +46,8 @@ class AddToCart extends Component
                 Cart::create([
                     'user_id' => Auth::id(),
                     'product_id' => $productId,
+                    // 'primary_image' => $product->primaryImage,
+                    // 'price' => $product->price,
                     'quantity' => 1,
                 ]);
             }
@@ -56,6 +58,7 @@ class AddToCart extends Component
                 $cart[$productId]['quantity'] += 1;
             } else {
                 $cart[$productId] = [
+                    'product_id' => $product->id,
                     'title' => $product->title,
                     'price' => $product->price,
                     'primary_image' => $product->primary_image,
