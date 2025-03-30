@@ -54,7 +54,7 @@ class Cart extends Component
         } else {
             // Save to session
             $cart = Session::get('cart', []);
-            if (isset($cart[$productId])) {
+            if (is_array($cart) && isset($cart[$productId])) {
                 $cart[$productId]['quantity'] += 1;
             } else {
                 $cart[$productId] = [
@@ -86,7 +86,6 @@ class Cart extends Component
             if ($cartItem) {
                 $cartItem->quantity -= 1;
                 if ($cartItem->quantity == 1) {
-                    dd($cartItem->quantity);
                     $this->removeFromCart($product->id);
                 }
                 $cartItem->save();
@@ -99,7 +98,7 @@ class Cart extends Component
             if ($cart[$productId]['quantity'] == 1) {
                 $this->removeFromCart($cart[$productId]);
             }
-            if (isset($cart[$productId])) {
+            if (is_array($cart) && isset($cart[$productId])) {
                 $cart[$productId]['quantity'] -= 1;
                 // dd($cart[$productId]['quantity'] );
                 if ($cart[$productId]['quantity'] == 1) {
@@ -119,6 +118,7 @@ class Cart extends Component
 
     public function removeFromCart($productId)
     {
+        // dd($productId);
         if (Auth::check()) {
             $deleted = CartModel::where('user_id', Auth::id())
                 ->where('product_id', $productId)
@@ -133,7 +133,7 @@ class Cart extends Component
 
         } else {
             $cart = Session::get('cart', []);
-            if (isset($cart[$productId])) {
+            if (is_array($cart) && isset($cart[$productId])) {
                 unset($cart[$productId]);
                 Session::put('cart', $cart);
                 $this->dispatch('cartUpdated');
