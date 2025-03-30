@@ -34,8 +34,8 @@ class Cart extends Component
     {
         if (Auth::check()) {
             $deleted = CartModel::where('user_id', Auth::id())
-            ->where('product_id', $productId)
-            ->delete();
+                ->where('product_id', $productId)
+                ->delete();
    
             if ($deleted) {
                 $this->dispatch('cartUpdated');
