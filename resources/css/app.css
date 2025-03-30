@@ -302,7 +302,7 @@ textarea {
 }
 
 .btn {
-    @apply rounded px-3 py-2 text-white;
+    @apply rounded px-3 py-2 text-white ;
 }
 
 .btn-primary {
@@ -310,7 +310,7 @@ textarea {
 }
 
 .btn-primary:hover {
-    @apply bg-[#3d6571] cursor-pointer;
+    @apply bg-[#3d6571];
 }
 
 .btn-secondary {
@@ -322,7 +322,7 @@ textarea {
 }
 
 .btn-accent {
-    @apply bg-gray-500 transition-all;
+    @apply bg-gray-500  transition-all;
 }
 
 .btn-accent:hover {

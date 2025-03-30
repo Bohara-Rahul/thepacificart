@@ -46,7 +46,7 @@
                 <article class="grid-container gap-2 justify-center">
                     @foreach ($arts as $art)
                         <x-card>
-                            <section class="flex flex-col justify-start text-black p-5 w-[360px] h-[600px]">
+                            <section class="flex flex-col justify-start text-black p-5 w-[360px]">
                                 <a href="{{ route('product_detail', $art->slug) }}">
                                     <header class="flex justify-between items-center">
                                         <h3 class="text-2xl text-[#13292a] capitalize font-bold">
@@ -67,21 +67,18 @@
                                         <a href="{{ route('front.remove_from_wishlist', $art->id) }}"
                                             class="bg-gray-400 text-gray-600 p-2 border border-gray-600">
                                             Remove from Wishlist
-                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
                                         </a>
                                     @else
                                         <a href="{{ route('front.add_to_wishlist', $art->id) }}"
                                             class="btn btn-accent">
                                             Add to Wishlist
-                                            {{-- <p><i class="fa-solid fa-heart"></i></p> --}}
                                         </a>
                                     @endif
 
                                     @livewire('add-to-cart', ['productId' => $art->id])
                                 </article>
 
-
-                                <a class="btn btn-primary text-center" href="{{ route('product_detail', $art->slug) }}">
+                                <a class="btn btn-primary text-center mb-5" href="{{ route('product_detail', $art->slug) }}">
                                     Explore the Masterpiece
                                 </a>
 
