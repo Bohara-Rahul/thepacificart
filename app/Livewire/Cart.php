@@ -13,12 +13,17 @@ class Cart extends Component
     // public $productId;
     public $cartItems = [];
 
-    protected $listeners = ['cartUpdated' => 'loadCart'];
+    public $subTotal = 0;
+
+    protected $listeners = [
+        'cartUpdated' => 'loadCart'
+    ];
 
     public function mount()
     {
         // $this->productId = $productId;
         $this->loadCart();
+        
     }
 
     public function loadCart()
@@ -30,6 +35,12 @@ class Cart extends Component
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
         }
+        $this->findSubtotal();
+    }
+    
+    public function findSubtotal() 
+    {
+        $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['price'] * $item['quantity']);
     }
 
     public function addToCart($productId)
@@ -38,7 +49,9 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = Cart::where('user_id', Auth::id())
+                ->where('product_id', $productId)
+                ->first();
             if ($cartItem) {
                 $cartItem->quantity += 1;
                 $cartItem->save();
@@ -66,6 +79,7 @@ class Cart extends Component
                 ];
             }
             Session::put('cart', $cart);
+            
         }
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item added to cart'); // Show toast 
@@ -117,7 +131,6 @@ class Cart extends Component
    
             if ($deleted) {
                 $this->dispatch('cartUpdated');
-                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
             } else {
                 $this->dispatch('showToast', 'Failed to remove item', 'error'); 
             }       
@@ -129,9 +142,10 @@ class Cart extends Component
                 unset($cart[$productId]);   
             }
             Session::put('cart', $cart);
+            $this->dispatch('cartUpdated');
         }
-        $this->dispatch('cartUpdated');
-        $this->dispatch('showToast', 'Item removed from cart', 'success');    
+        $this->dispatch('showToast', 'Item removed from cart', 'success'); 
+        $this->dispatch('subtotalUpdated', $this->cartItems);     
     }
 
     public function render()
