@@ -12,8 +12,10 @@
                         {{ $item['title'] }}
                         <!-- $item['product']['title'] ?? -->
                     </h4>
-                    <div class="text-xl flex gap-x-5 items-center">
-                        <button wire:click="decreaseQuantity({{ $item['product_id'] }})"><i class="fa-solid fa-minus"></i></button>
+                    <div class="text-xl flex gap-x-5 items-center">  
+                        <button wire:click="decreaseQuantity({{ $item['product_id'] }})">
+                                <i class="fa-solid fa-minus"></i>
+                        </button>
                         <p>{{ $item['quantity'] }}</p>
                         <button wire:click="addToCart({{ $item['product_id'] }})"><i class="fa-solid fa-plus"></i></button> 
                         <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer" wire:click="removeFromCart({{ $item['product_id'] }})"></i> 
@@ -22,7 +24,7 @@
                 </div>
                 <div>
                     <p>Price Per Unit</p>
-                    <p>${{  $item['price'] }}</p>
+                    <p>${{ $item['price'] }}</p>
                 </div>
                 <div>
                     <p>Total Price</p>

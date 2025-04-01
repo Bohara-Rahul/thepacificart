@@ -67,8 +67,6 @@ class Cart extends Component
             }
             Session::put('cart', $cart);
         }
-
-        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item added to cart'); // Show toast 
     }
@@ -93,32 +91,25 @@ class Cart extends Component
                 $this->dispatch('showToast', 'No item'); // Show toast 
             }
         } else {
-            // Save to session
             $cart = Session::get('cart', []);
-            if ($cart[$productId]['quantity'] == 1) {
-                $this->removeFromCart($cart[$productId]);
-            }
-            if (is_array($cart) && isset($cart[$productId])) {
-                $cart[$productId]['quantity'] -= 1;
-                // dd($cart[$productId]['quantity'] );
-                if ($cart[$productId]['quantity'] == 1) {
-                    // dd($cart[$productId]['quantity']);
-                    $this->removeFromCart($cart[$productId]);
+            if (!empty($cart) && is_array($cart) && isset($cart[$productId])) {
+                if (isset($cart[$productId]['quantity']) && $cart[$productId]['quantity'] > 1) {
+                    // Reduce quantity by 1
+                    $cart[$productId]['quantity']--;
+                } else {
+                    // Remove item completely if quantity is 1
+                    unset($cart[$productId]);
+                    // {{ dd($cart[$productId]['quantity']); }}
+                   }   
                 }
-            } else {
-                $this->dispatch('showToast', 'No item'); // Show toast 
-            }
             Session::put('cart', $cart);
         }
-
-        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item Quantity decreased'); // Show toast 
     }
 
     public function removeFromCart($productId)
     {
-        // dd($productId);
         if (Auth::check()) {
             $deleted = CartModel::where('user_id', Auth::id())
                 ->where('product_id', $productId)
@@ -133,17 +124,14 @@ class Cart extends Component
 
         } else {
             $cart = Session::get('cart', []);
-            if (is_array($cart) && isset($cart[$productId])) {
-                unset($cart[$productId]);
-                Session::put('cart', $cart);
-                $this->dispatch('cartUpdated');
-                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
-            } else {
-                $this->dispatch('showToast', 'Item not found in cart', 'error'); 
+            if (!empty($cart) && is_array($cart) && isset($cart[$productId])) {
+                // Remove item completely if quantity is 1
+                unset($cart[$productId]);   
             }
+            Session::put('cart', $cart);
         }
-
-        $this->loadCart();
+        $this->dispatch('cartUpdated');
+        $this->dispatch('showToast', 'Item removed from cart', 'success');    
     }
 
     public function render()
