@@ -39,9 +39,9 @@
                             <span>Surface: {{ ucfirst($art->surface) }}</span>
                             <span class="mr-auto">Size: {{ $art->size }}</span>
                             @if ($art->stock > 0)
-                                <span class="text-green-500">In Stock</span>
+                                <span class="bg-green-100 text-green-500 px-3 rounded-md">In Stock</span>
                             @else
-                                <span class="text-gray-300">Out of Stock</span>
+                                <span class="bg-gray-600 text-gray-300 px-3 rounded-md">Out of Stock</span>
                             @endif
                         </div>
                         <div class="flex flex-col gap-2 text-center">

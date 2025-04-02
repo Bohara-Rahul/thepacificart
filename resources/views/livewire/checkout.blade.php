@@ -1,3 +1,3 @@
-<div>
-    Cart Page
+<div class="container mt-32">
+    Checkout Page
 </div>
