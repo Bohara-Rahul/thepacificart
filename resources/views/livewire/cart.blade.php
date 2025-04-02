@@ -39,10 +39,11 @@
         </div>
     @endif
     @if (count($cartItems) > 0)
-        <div class="flex float-end mr-44">
-            <a href="#" class="btn btn-primary">
+        <div class="flex flex-col items-end mr-44">
+            <p class="mb-5">
                 Subtotal ({{ count($cartItems) }}) {{ count($cartItems) > 1 ? 'items' : 'item' }}: ${{ number_format($subTotal, 2) }}
-            </a>
+            </p>
+            <a href="#" class="btn btn-primary">Proceed to checkout</a>
         </div>
     @endif
 </section>

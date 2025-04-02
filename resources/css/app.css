@@ -321,6 +321,10 @@ textarea {
     @apply bg-[#13292a];
 }
 
+.btn-outline {
+    @apply border border-gray-500 text-black px-3 py-1;
+}
+
 .btn-accent {
     @apply bg-gray-500  transition-all;
 }
