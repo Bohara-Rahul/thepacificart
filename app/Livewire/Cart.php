@@ -34,7 +34,10 @@ class Cart extends Component
     {
         if (Auth::check()) {
             // Load cart items from database
-            $this->cartItems = CartModel::where('user_id', Auth::id())->with('product')->get()->toArray();
+            $this->cartItems = CartModel::where('user_id', Auth::id())
+                ->with('product')
+                ->get()
+                ->toArray();
         } else {
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
@@ -45,7 +48,11 @@ class Cart extends Component
     
     public function findSubtotal() 
     {
-        $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['price'] * $item['quantity']);
+        if (Auth::check()) {
+            $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['product']['price'] * $item['quantity']);
+            return;
+        }
+        $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['price']*$item['quantity']);
     }
 
     public function addToCart($productId)

@@ -26,7 +26,7 @@ class OtherPageNav extends Component
     {
         if (Auth::check()) {
             // Count items from database for logged-in users
-            $this->cartItems = Cart::where('user_id', Auth::id())->count();
+            $this->cartItems = Cart::where('user_id', Auth::id())->get();
         } else {
             // Count items from session for guest users
             $this->cartItems = Session::get('cart', []);
@@ -36,8 +36,10 @@ class OtherPageNav extends Component
 
     public function loadCartCount()
     {
-        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
+        $this->cartCount = collect($this->cartItems)
+            ->sum(fn($item) => $item['quantity']);   
     }
+        
 
     public function loadWishlistCount()
     {

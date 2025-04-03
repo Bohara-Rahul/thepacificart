@@ -6,9 +6,11 @@ use App\Mail\EmailVerification;
 use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -41,9 +43,9 @@ class UserController extends Controller
             $user->photo = 'user-pic.jpg';
         }
         
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
         $token = hash('sha256',time());
         $user->token = $token;
         $user->isAdmin = 0;
@@ -72,8 +74,13 @@ class UserController extends Controller
         return redirect()->route('user.login')->with('success', 'Your email is verified. You can login now');
     }
 
-    public function login()
+    public function login(Request $request)
     {
+        // Store the intended URL in session if provided
+        if ($request->has('redirect_to')) {
+            Session::put('url.intended', $request->input('redirect_to'));
+        }
+
         return view('front.login');
     }
 
@@ -84,11 +91,16 @@ class UserController extends Controller
             'password' => 'string|required'
         ]);
 
-        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-            $request->session()->regenerate();
-            return redirect()
-                ->route('user.dashboard')
-                ->with('success', 'Logged in successfully!!!');
+        if (Auth::attempt([
+            'email' => $validated['email'], 
+            'password' => $validated['password']])
+        ) {
+            
+            // Check if there's a redirect_to parameter and store it
+            $redirectTo = $request->input('redirect_to') 
+                ?? Session::pull('url.intended', route('user.dashboard'));
+
+            return redirect($redirectTo);
         }
 
         throw ValidationException::withMessages([
@@ -101,12 +113,14 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('user.login')->with('success', 'Loggedd out successfully');
+        return redirect()->route('user.login')->with('success', 'Logged out successfully');
     }
 
     public function dashboard()
     {
-        $wishlists = Wishlist::with('product')->where('user_id', Auth::user()->id)->get();
+        $wishlists = Wishlist::with('product')
+            ->where('user_id', Auth::user()->id)
+            ->get();
         return view('user.dashboard', compact('wishlists'));
     }
 }

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Models\Photo;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Wishlist;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller

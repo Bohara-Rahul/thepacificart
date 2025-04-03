@@ -38,7 +38,9 @@ class AddToCart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = Cart::where('user_id', Auth::id())
+                ->where('product_id', $productId)
+                ->first();
             if ($cartItem) {
                 $cartItem->quantity += 1;
                 $cartItem->save();
@@ -46,8 +48,6 @@ class AddToCart extends Component
                 Cart::create([
                     'user_id' => Auth::id(),
                     'product_id' => $productId,
-                    // 'primary_image' => $product->primaryImage,
-                    // 'price' => $product->price,
                     'quantity' => 1,
                 ]);
             }

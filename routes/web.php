@@ -45,7 +45,7 @@ Route::get("/login", [UserController::class, 'login'])->name('user.login');
 Route::post("/login", [UserController::class, 'login_submit'])->name('user.login_submit');
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('mustBeLoggedIn');
 Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
-Route::get("/checkout", [FrontController::class, 'checkout'])->name("front.checkout")->middleware('mustBeLoggedIn');
+Route::get("/checkout", [FrontController::class, 'checkout'])->name("checkout");
 
 // Admin Auth Controller related routes
 Route::prefix('admin')->group(function () {
