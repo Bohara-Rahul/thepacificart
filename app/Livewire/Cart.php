@@ -12,7 +12,7 @@ class Cart extends Component
 {
     // public $productId;
     public $cartItems = [];
-
+    public $cartCount = 0;
     public $subTotal = 0;
 
     protected $listeners = [
@@ -23,18 +23,23 @@ class Cart extends Component
     {
         // $this->productId = $productId;
         $this->loadCart();
-        
+    }
+
+    public function calculateTotalNumOfItems()
+    {
+        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
     }
 
     public function loadCart()
     {
         if (Auth::check()) {
             // Load cart items from database
-            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
+            $this->cartItems = CartModel::where('user_id', Auth::id())->with('product')->get()->toArray();
         } else {
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
         }
+        $this->calculateTotalNumOfItems();
         $this->findSubtotal();
     }
     
@@ -49,7 +54,7 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())
+            $cartItem = CartModel::where('user_id', Auth::id())
                 ->where('product_id', $productId)
                 ->first();
             if ($cartItem) {
@@ -91,7 +96,7 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = CartModel::where('user_id', Auth::id())->where('product_id', $productId)->first();
             if ($cartItem->quantity == 1) {
                 $this->removeFromCart($product->id);
             }
@@ -144,14 +149,13 @@ class Cart extends Component
             Session::put('cart', $cart);
             $this->dispatch('cartUpdated');
         }
-        $this->dispatch('showToast', 'Item removed from cart', 'success'); 
-        $this->dispatch('subtotalUpdated', $this->cartItems);     
+        $this->dispatch('cartUpdated');
+        $this->dispatch('subtotalUpdated', $this->cartItems); 
+        $this->dispatch('showToast', 'Item removed from cart', 'success');    
     }
 
     public function render()
     {
-        return view('livewire.cart', [
-            'cartItems' => $this->cartItems,
-        ]);
+        return view('livewire.cart');
     }
 }

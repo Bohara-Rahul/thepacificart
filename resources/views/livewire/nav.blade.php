@@ -25,14 +25,16 @@
             </ul>
             <ul class="flex justify-between gap-5 items-center text-xl">
                 @auth
+                <li>
                     <a href="{{ route('front.cart') }}">
                         Wishlist ({{ $wishlistCount }})
                     </a>
+                </li>
                 @endauth
                 <li>
                     <button class="flex justify-center items-center relative">
                         <a href="{{ route('front.cart') }}">
-                            Cart ({{ count(session('cart', [])) }})
+                            Cart ({{ $cartCount }})
                         </a>
 
                     </button>

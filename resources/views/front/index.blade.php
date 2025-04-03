@@ -86,9 +86,9 @@
     </section>
 
     <section class="container flex flex-wrap gap-x-10 items-center mt-28" id="hero-section">
-        <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
-            <img src="{{ asset('Gabo.png') }}" alt="portrait image" class="object-contain" />
-        </div>
+        <aside class="overflow-hidden rounded-md">
+            <img src="{{ asset('Gabo.png') }}" alt="portrait image" style="width: 640px; height: 780px;" />
+        </aside>
         <aside class="flex flex-col max-w-xl justify-center text-2xl">
             <h2 class="font-bold text-2xl tracking-tight sm:text-6xl">Art by Gabo</h2>
             <p class="mt-8 text-lg leading-8">The painting by Gabo depicts a powerful horse galloping through a river, its
@@ -119,9 +119,9 @@
             <a class="btn btn-primary mt-8 w-[150px] text-center">More Info</a>
         </aside>
 
-        <div class="overflow-hidden rounded-md" style="width: 640px; height: 780px;">
+        <aside class="flex items-center overflow-hidden rounded-md" style="width: 640px; height: 780px;">
             <img src="{{ asset('Maria.png') }}" alt="portrait image" class="object-contain" />
-        </div>
+        </aside>
 
     </section>
 

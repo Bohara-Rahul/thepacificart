@@ -181,8 +181,33 @@ textarea {
 }
 
 .navbar {
-    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in p-0;
-    height: 80px;
+    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in p-0 h-[80px];
+}
+
+.hero {
+    @apply flex;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .left-side {
+        @apply flex flex-1 flex-col justify-center text-2xl mr-5;
+
+        @media (max-width: 1024px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.secondary-hero {
+    @apply flex items-center;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        /* margin-top: 20px; */
+    }
 }
 
 .card-container {
@@ -302,7 +327,7 @@ textarea {
 }
 
 .btn {
-    @apply rounded px-3 py-2 text-white ;
+    @apply rounded px-3 py-2 text-white;
 }
 
 .btn-primary {

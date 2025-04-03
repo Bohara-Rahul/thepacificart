@@ -30,7 +30,7 @@
              <li>
                  <button class="flex justify-center items-center relative">
                      <a href="{{ route('front.cart') }}">
-                         Cart ({{ count(session('cart', [])) }})
+                         Cart ({{ $cartCount }})
                      </a>
                  </button>
              </li>

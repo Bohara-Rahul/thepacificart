@@ -10,27 +10,33 @@ use App\Models\Wishlist;
 
 class OtherPageNav extends Component
 {
-    public $cartCount;
+    public $cartCount = 0;
+    public $cartItems = [];
     public $wishlistCount = 0;
 
-    protected $listeners = ['cartUpdated' => 'loadCartCount'];
+    protected $listeners = ['cartUpdated' => 'loadCart'];
 
     public function mount()
     {
-        $this->loadCartCount();
+        $this->loadCart();
         $this->loadWishlistCount();
+    }
+
+    public function loadCart()
+    {
+        if (Auth::check()) {
+            // Count items from database for logged-in users
+            $this->cartItems = Cart::where('user_id', Auth::id())->count();
+        } else {
+            // Count items from session for guest users
+            $this->cartItems = Session::get('cart', []);
+        }
+        $this->loadCartCount();
     }
 
     public function loadCartCount()
     {
-        if (Auth::check()) {
-            // Count items from database for logged-in users
-            $this->cartCount = Cart::where('user_id', Auth::id())->count();
-        } else {
-            // Count items from session for guest users
-            $cart = Session::get('cart', []);
-            $this->cartCount = count($cart);
-        }
+        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
     }
 
     public function loadWishlistCount()

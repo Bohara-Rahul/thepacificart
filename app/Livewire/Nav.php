@@ -10,27 +10,35 @@ use App\Models\Wishlist;
 
 class Nav extends Component
 {
+    public $cartItems = [];
+    public $cart;
     public $cartCount;
     public $wishlistCount = 0;
 
-    protected $listeners = ['cartUpdated' => 'loadCartCount'];
+    protected $listeners = ['cartUpdated' => 'loadCart'];
 
     public function mount()
     {
+        // $this->cart = Session::get('cart', []);
+        $this->loadCart();
+    }
+
+    public function loadCart()
+    {
+        if (Auth::check()) {
+            // Load cart items from database
+            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
+        } else {
+            // Load cart items from session
+            $this->cartItems = Session::get('cart', []);
+        }
         $this->loadCartCount();
         $this->loadWishlistCount();
     }
 
     public function loadCartCount()
     {
-        if (Auth::check()) {
-            // Count items from database for logged-in users
-            $this->cartCount = Cart::where('user_id', Auth::id())->count();
-        } else {
-            // Count items from session for guest users
-            $cart = Session::get('cart', []);
-            $this->cartCount = count($cart);
-        }
+        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
     }
 
     public function loadWishlistCount()

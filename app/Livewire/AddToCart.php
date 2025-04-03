@@ -67,8 +67,6 @@ class AddToCart extends Component
             }
             Session::put('cart', $cart);
         }
-
-        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item added to cart'); // Show toast 
     }
