@@ -12,12 +12,8 @@ class Cart extends Component
 {
     // public $productId;
     public $cartItems = [];
-    public $cartCount = 0;
-    public $subTotal = 0;
 
-    protected $listeners = [
-        'cartUpdated' => 'loadCart'
-    ];
+    protected $listeners = ['cartUpdated' => 'loadCart'];
 
     public function mount()
     {
@@ -25,34 +21,15 @@ class Cart extends Component
         $this->loadCart();
     }
 
-    public function calculateTotalNumOfItems()
-    {
-        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
-    }
-
     public function loadCart()
     {
         if (Auth::check()) {
             // Load cart items from database
-            $this->cartItems = CartModel::where('user_id', Auth::id())
-                ->with('product')
-                ->get()
-                ->toArray();
+            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
         } else {
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
         }
-        $this->calculateTotalNumOfItems();
-        $this->findSubtotal();
-    }
-    
-    public function findSubtotal() 
-    {
-        if (Auth::check()) {
-            $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['product']['price'] * $item['quantity']);
-            return;
-        }
-        $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['price']*$item['quantity']);
     }
 
     public function addToCart($productId)
@@ -61,9 +38,7 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = CartModel::where('user_id', Auth::id())
-                ->where('product_id', $productId)
-                ->first();
+            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
             if ($cartItem) {
                 $cartItem->quantity += 1;
                 $cartItem->save();
@@ -91,8 +66,9 @@ class Cart extends Component
                 ];
             }
             Session::put('cart', $cart);
-            
         }
+
+        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item added to cart'); // Show toast 
     }
@@ -103,7 +79,7 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = CartModel::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
             if ($cartItem->quantity == 1) {
                 $this->removeFromCart($product->id);
             }
@@ -117,25 +93,32 @@ class Cart extends Component
                 $this->dispatch('showToast', 'No item'); // Show toast 
             }
         } else {
+            // Save to session
             $cart = Session::get('cart', []);
-            if (!empty($cart) && is_array($cart) && isset($cart[$productId])) {
-                if (isset($cart[$productId]['quantity']) && $cart[$productId]['quantity'] > 1) {
-                    // Reduce quantity by 1
-                    $cart[$productId]['quantity']--;
-                } else {
-                    // Remove item completely if quantity is 1
-                    unset($cart[$productId]);
-                    // {{ dd($cart[$productId]['quantity']); }}
-                   }   
+            if ($cart[$productId]['quantity'] == 1) {
+                $this->removeFromCart($cart[$productId]);
+            }
+            if (is_array($cart) && isset($cart[$productId])) {
+                $cart[$productId]['quantity'] -= 1;
+                // dd($cart[$productId]['quantity'] );
+                if ($cart[$productId]['quantity'] == 1) {
+                    // dd($cart[$productId]['quantity']);
+                    $this->removeFromCart($cart[$productId]);
                 }
+            } else {
+                $this->dispatch('showToast', 'No item'); // Show toast 
+            }
             Session::put('cart', $cart);
         }
+
+        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
         $this->dispatch('showToast', 'Item Quantity decreased'); // Show toast 
     }
 
     public function removeFromCart($productId)
     {
+        // dd($productId);
         if (Auth::check()) {
             $deleted = CartModel::where('user_id', Auth::id())
                 ->where('product_id', $productId)
@@ -143,26 +126,30 @@ class Cart extends Component
    
             if ($deleted) {
                 $this->dispatch('cartUpdated');
+                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
             } else {
                 $this->dispatch('showToast', 'Failed to remove item', 'error'); 
             }       
 
         } else {
             $cart = Session::get('cart', []);
-            if (!empty($cart) && is_array($cart) && isset($cart[$productId])) {
-                // Remove item completely if quantity is 1
-                unset($cart[$productId]);   
+            if (is_array($cart) && isset($cart[$productId])) {
+                unset($cart[$productId]);
+                Session::put('cart', $cart);
+                $this->dispatch('cartUpdated');
+                $this->dispatch('showToast', 'Item removed from cart', 'success'); 
+            } else {
+                $this->dispatch('showToast', 'Item not found in cart', 'error'); 
             }
-            Session::put('cart', $cart);
-            $this->dispatch('cartUpdated');
         }
-        $this->dispatch('cartUpdated');
-        $this->dispatch('subtotalUpdated', $this->cartItems); 
-        $this->dispatch('showToast', 'Item removed from cart', 'success');    
+
+        $this->loadCart();
     }
 
     public function render()
     {
-        return view('livewire.cart');
+        return view('livewire.cart', [
+            'cartItems' => $this->cartItems,
+        ]);
     }
 }
