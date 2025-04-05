@@ -30,6 +30,17 @@ class Cart extends Component
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
         }
+        $this->calculateTotalNumOfItems();
+        $this->findSubtotal();
+    }
+    
+    public function findSubtotal() 
+    {
+        if (Auth::check()) {
+            $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['product']['price'] * $item['quantity']);
+            return;
+        }
+        $this->subTotal = collect($this->cartItems)->sum(fn($item) => $item['price']*$item['quantity']);
     }
 
     public function addToCart($productId)
