@@ -27,7 +27,7 @@ class Cart extends Component
     {
         if (Auth::check()) {
             // Load cart items from database
-            $this->cartItems = Cart::where('user_id', Auth::id())->with('product')->get()->toArray();
+            $this->cartItems = CartModel::where('user_id', Auth::id())->with('product')->get()->toArray();
         } else {
             // Load cart items from session
             $this->cartItems = Session::get('cart', []);
@@ -57,12 +57,12 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = CartModel::where('user_id', Auth::id())->where('product_id', $productId)->first();
             if ($cartItem) {
                 $cartItem->quantity += 1;
                 $cartItem->save();
             } else {
-                Cart::create([
+                CartModel::create([
                     'user_id' => Auth::id(),
                     'product_id' => $productId,
                     // 'primary_image' => $product->primaryImage,
@@ -98,7 +98,7 @@ class Cart extends Component
 
         if (Auth::check()) {
             // Save to database
-            $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $productId)->first();
+            $cartItem = CartModel::where('user_id', Auth::id())->where('product_id', $productId)->first();
             if ($cartItem->quantity == 1) {
                 $this->removeFromCart($product->id);
             }
