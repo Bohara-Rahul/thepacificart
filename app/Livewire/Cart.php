@@ -12,6 +12,8 @@ class Cart extends Component
 {
     // public $productId;
     public $cartItems = [];
+    public $cartCount = 0;
+    public $subTotal = 0;
 
     protected $listeners = ['cartUpdated' => 'loadCart'];
 
@@ -33,6 +35,12 @@ class Cart extends Component
         $this->calculateTotalNumOfItems();
         $this->findSubtotal();
     }
+
+    public function calculateTotalNumOfItems()
+    {
+        $this->cartCount = collect($this->cartItems)->sum(fn($item) => $item['quantity']);
+    }
+    
     
     public function findSubtotal() 
     {
