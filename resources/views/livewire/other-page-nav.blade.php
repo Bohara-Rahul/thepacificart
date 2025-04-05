@@ -35,11 +35,11 @@
                  </button>
              </li>
              @auth
-                 <li>
+                 <li class="{{ request()->routeIs('user.dashboard') ? 'nav-active' : '' }}">
                      <a href="{{ route('user.dashboard') }}">Dashboard</a>
                  </li>
              @else
-                 <li>
+                 <li class="{{ request()->routeIs('user.register') ? 'nav-active' : '' }}">
                      <a href="{{ route('user.register') }}">Register/Login</a>
                  </li>
              @endauth
