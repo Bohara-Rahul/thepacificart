@@ -21,7 +21,7 @@
             <h3 class="section-heading">
                 Arts by {{ $artist->name }}
             </h3>
-            <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 p-5">
+            <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5">
                 @foreach ($arts as $art)
                     <article class="p-5 border border-gray-300 hover:bg-gray-200 rounded-md">
                         <div class="overflow-hidden">
