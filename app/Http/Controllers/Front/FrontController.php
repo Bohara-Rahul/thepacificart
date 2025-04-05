@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Models\Product;
+use App\Models\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
 {

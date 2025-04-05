@@ -32,6 +32,8 @@ Route::get("/terms-conditions", [FrontController::class, 'terms_conditions'])->n
 Route::get("/wishlist/{product_id}", [FrontController::class, 'add_to_wishlist'])->name("front.add_to_wishlist");
 Route::get("/wishlist/remove/{product_id}", [FrontController::class, 'remove_from_wishlist'])->name("front.remove_from_wishlist");
 Route::get("/cart", [FrontController::class, 'cart'])->name("front.cart");
+// Merge cart when user logs in
+Route::middleware('auth')->get('/merge-cart', [FrontController::class, 'mergeCart'])->name('cart.merge');
 
 // Product related routes
 Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');

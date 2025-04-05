@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\EmailVerification;
 use App\Models\User;
+use App\Models\Cart;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -91,10 +92,34 @@ class UserController extends Controller
             'password' => 'string|required'
         ]);
 
-        if (Auth::attempt([
-            'email' => $validated['email'], 
-            'password' => $validated['password']])
-        ) {
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+
+            $userId = Auth::id();   
+            
+            if (session()->has('cart')) {
+                $sessionCart = session()->get('cart', []);
+
+                foreach ($sessionCart as $productId => $details) {
+                    $cartItem = Cart::where('user_id', $userId)
+                                    ->where('product_id', $productId)
+                                    ->first();
+        
+                    if ($cartItem) {
+                        // If item already exists, update quantity
+                        $cartItem->quantity += $details['quantity'];
+                        $cartItem->save();
+                    } else {
+                        // Otherwise, create new cart item
+                        Cart::create([
+                            'user_id' => $userId,
+                            'product_id' => $productId,
+                            'quantity' => $details['quantity'],
+                        ]);
+                    }
+                }
+                // Optionally clear the session cart
+                session()->forget('cart');
+            }
             
             // Check if there's a redirect_to parameter and store it
             $redirectTo = $request->input('redirect_to') 
