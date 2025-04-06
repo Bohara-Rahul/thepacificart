@@ -10,7 +10,8 @@
   <title>Document</title>
 </head>
 <body>
-  <section class="flex flex-col items-center">
+  @extends('layouts.other-page-layout')
+  <section class="container mt-28 mb-10">
     {{ $slot }}
    </section>
 </body>

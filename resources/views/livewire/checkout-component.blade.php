@@ -11,7 +11,7 @@
     <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
     <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" />
 
-    <button wire:click="placeOrder" class="bg-green-500 text-white px-4 py-2 rounded">Place Order</button>
+    <button wire:click="placeOrder" class="btn btn-secondary text-white">Place Order</button>
 
     @if ($success)
         <div class="text-green-600">{{ $success }}</div>
