@@ -137,4 +137,9 @@ class FrontController extends Controller
 
         return back()->with('error', 'Could not remove from the wishlist. Try again later');
     }
+
+    public function track_order()
+    {
+        return view('front.order.track');
+    }
 }
