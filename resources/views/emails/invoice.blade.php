@@ -7,7 +7,6 @@
 
     ## Items:
     @foreach ($order->items as $item)
-        {{ dd($item) }}
         - {{ $item->product->title }} x {{ $item->quantity }} — ${{ number_format($item->price, 2) }}
     @endforeach
 
@@ -15,6 +14,6 @@
         Track Your Order
     @endcomponent
 
-    Thanks,<br>
+    Thanks,<br/>
     {{ config('app.name') }}
 @endcomponent

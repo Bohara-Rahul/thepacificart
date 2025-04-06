@@ -14,6 +14,7 @@ use App\Http\Controllers\Product\PhotoController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // Front Contoller related routes
@@ -33,7 +34,7 @@ Route::get("/wishlist", [FrontController::class, 'wishlist'])->name("front.wishl
 Route::get("/wishlist/{product_id}", [FrontController::class, 'add_to_wishlist'])->name("front.add_to_wishlist");
 Route::get("/wishlist/remove/{product_id}", [FrontController::class, 'remove_from_wishlist'])->name("front.remove_from_wishlist");
 Route::get("/cart", [FrontController::class, 'cart'])->name("front.cart");
-Route::get("/orders/track/{order_id}", [FrontController::class, 'track_order'])->name("order.track");
+Route::get("/track-order/{order}", [OrderController::class, 'track'])->name("order.track");
 
 // Product related routes
 Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
