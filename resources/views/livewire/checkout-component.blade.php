@@ -14,6 +14,8 @@
     <button wire:click="placeOrder" class="btn btn-secondary text-white">Place Order</button>
 
     @if ($success)
-        <div class="text-green-600">{{ $success }}</div>
+        <div class="text-green-600">
+            {{ $success }}
+        </div>
     @endif
 </div>

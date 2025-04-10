@@ -7,19 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderInvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $order;
     /**
      * Create a new message instance.
      */
-    public function __construct($order)
+    public function __construct(public Order $order)
     {
-        $this->order = $order;
+        $this->order->load('items.product'); // Ensure products are loaded
     }
 
     /**
@@ -39,6 +40,9 @@ class OrderInvoiceMail extends Mailable
     {
         return new Content(
             markdown: 'emails.invoice',
+            with: [
+                'order' => $this->order,
+            ]
         );
     }
 
@@ -49,6 +53,10 @@ class OrderInvoiceMail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $pdf = PDF::loadView('pdf.invoice', ['order' => $this->order]);
+        return [
+            Attachment::fromData(fn () => $pdf->output(), 'invoice.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }
