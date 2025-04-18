@@ -60,6 +60,10 @@
                                             class="product-image rounded-md object-cover" />
                                     </article>
                                     <p class="text-justify">{!! substr($art->description, 0, 150) !!}</p>
+                                    <aside class="flex flex-wrap justify-between">
+                                        <p>Size: {{ $art->size }}</p>
+                                        <p>Price: ${{ $art->price }}</p>
+                                    </aside>
                                 </a>
 
                                 <article class="flex justify-between items-center mt-5 mb-5">
