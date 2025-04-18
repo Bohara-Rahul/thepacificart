@@ -3,10 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-class Checkout extends Component
+
+class UserPageNav extends Component
 {
     public function render()
     {
-        return view('livewire.checkout');
+        return view('livewire.user-page-nav');
     }
 }

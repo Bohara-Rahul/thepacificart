@@ -16,6 +16,11 @@ class Order extends Model
         'shipping_country',
         'status',
         'total',
+        'payment_mode',
+        'payment_id',
+        'session_id',
+        'email_sent',
+        'is_paid',
     ];
 
     public function items() 

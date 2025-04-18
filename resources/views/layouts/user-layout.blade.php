@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'The Pacific Art - Art Marketplace')</title>
 
-    <title>The Pacific Art - Art marketplace</title>
+    @livewireStyles
+    @vite('resources/css/app.css')
 </head>
 
 <body>
@@ -26,11 +28,18 @@
         </div>
     @endif
 
+    <livewire:user-page-nav />
+
     <main class="container">
         @yield('main_content')
     </main>
 
-    <footer>All rights reserved with &copy; {{ date('Y') }}</footer>
+    @component('front.components.footer')
+        
+    @endcomponent
+
+    @livewireScripts
+    @vite('resources/js/app.js')
 </body>
 
 </html>

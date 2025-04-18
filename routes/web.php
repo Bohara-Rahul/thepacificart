@@ -15,7 +15,9 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebhookController;
 
 // Front Contoller related routes
 Route::get("/", [FrontController::class, 'index'])->name('front.home');
@@ -35,6 +37,7 @@ Route::get("/wishlist/{product_id}", [FrontController::class, 'add_to_wishlist']
 Route::get("/wishlist/remove/{product_id}", [FrontController::class, 'remove_from_wishlist'])->name("front.remove_from_wishlist");
 Route::get("/cart", [FrontController::class, 'cart'])->name("front.cart");
 Route::get("/track-order/{order}", [OrderController::class, 'track'])->name("order.track");
+Route::get('/invoice/download/{order}', [OrderController::class, 'downloadPDF'])->name('invoice.download');
 
 // Product related routes
 Route::get('/arts/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
@@ -48,7 +51,14 @@ Route::get("/login", [UserController::class, 'login'])->name('user.login');
 Route::post("/login", [UserController::class, 'login_submit'])->name('user.login_submit');
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('mustBeLoggedIn');
 Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
-Route::get("/checkout", [FrontController::class, 'checkout'])->name("checkout");
+
+// checkout related routes
+Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
+
+// stripe webhook
+// Route::post('/stripe/webhook', [WebhookController::class, 'handleStripeWebhook'])->name('webhook.stripe');
 
 // Admin Auth Controller related routes
 Route::prefix('admin')->group(function () {

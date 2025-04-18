@@ -1,17 +1,31 @@
 <div class="space-y-4 max-w-xl mx-auto">
     <h2 class="text-xl font-bold">Checkout</h2>
 
-    @if (!Auth::check())
-        <input type="email" wire:model="email" placeholder="Your Email" class="w-full p-2 border rounded" />
-    @endif
+    <form wire:submit.prevent="placeOrder">
 
-    <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
-    <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />
-    <input type="text" wire:model="shipping_city" placeholder="City" class="w-full p-2 border rounded" />
-    <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
-    <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" />
+        @if (!Auth::check())
+            <input type="email" wire:model="email" placeholder="Your Email" class="w-full p-2 border rounded" />
+        @endif
 
-    <button wire:click="placeOrder" class="btn btn-secondary text-white">Place Order</button>
+        <h2>Billing Address</h2>
+        <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_city" placeholder="City" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" />
+
+        {{-- <h2>Postal Address</h2>
+        <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_city" placeholder="City" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
+        <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" /> --}}
+        {{-- <label>Select Payment Method:</label>
+        <input type="radio" wire:model="paymentMethod" value="stripe"> Direct Deposit
+        <input type="radio" wire:model="paymentMethod" value="paypal"> PayPal --}}
+
+        <button type="submit" class="btn btn-primary">Pay Now</button>
+    </form>
 
     @if ($success)
         <div class="text-green-600">

@@ -2,16 +2,17 @@
 
 namespace App\Livewire;
 
+use Stripe\Stripe;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
-use Illuminate\Support\Facades\Mail;
 
 class CheckoutComponent extends Component
 {
     public $email, $shipping_name, $shipping_address, $shipping_city, $shipping_zip, $shipping_country;
+    public $paymentMethod = 'stripe';
     public $success;
 
 public function placeOrder()
@@ -24,6 +25,8 @@ public function placeOrder()
         'shipping_country' => 'required|string',
         'email' => Auth::check() ? 'nullable' : 'required|email',
     ]);
+
+    $user = Auth::user();
 
     $cart = Auth::check()
         ? Cart::with('product')->where('user_id', Auth::id())->get()
@@ -52,6 +55,7 @@ public function placeOrder()
         'shipping_country' => $this->shipping_country,
         'status' => 'pending',
         'total' => $cart->sum(fn($item) => $item->price * $item->quantity['quantity']),
+        'is_paid' => false,
     ]);
 
     // Create order items
@@ -63,16 +67,32 @@ public function placeOrder()
         ]);
     }
 
-    // Clear cart
-    Auth::check()
-        ? Cart::where('user_id', Auth::id())->delete()
-        : session()->forget('cart');
+    \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+    
+        $stripeSession = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => array_values($cart->map(function ($item) {
+                return [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => ['name' => $item->product->title],
+                        'unit_amount' => $item->price * 100, // cents
+                    ],
+                    'quantity' => $item->quantity['quantity'],
+                ];
+            })->toArray()),
+            'mode' => 'payment',
+            'customer_email' => Auth::user()->email ?? $this->email,
+            'success_url' => route('checkout.success', [], true) . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('checkout.cancel', [], true),
+        ]);
 
-    // Send invoice email
-    Mail::to(Auth::id() ? Auth::user()->email : $this->email)
-        ->send(new \App\Mail\OrderInvoiceMail($order));
+        // Save session_id
+        $order->update(['session_id' => $stripeSession->id]);
 
-    $this->success = "Order placed successfully! Check your email for the invoice.";
+        $this->success = "Order placed successfully! Check your email for the invoice.";
+    
+        return redirect($stripeSession->url);
 }   
     public function render()
     {

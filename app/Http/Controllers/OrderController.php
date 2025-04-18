@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -22,5 +23,14 @@ class OrderController extends Controller
         }
 
         return view('front.orders.track', compact('order'));
+    }
+
+    public function downloadPDF(Order $order)
+    {
+        $order->load('items.product');
+
+        $pdf = PDF::loadView('pdf.invoice', ['order' => $order]);
+
+        return $pdf->download("invoice-#{$order->id}.pdf");
     }
 }

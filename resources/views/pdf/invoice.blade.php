@@ -85,7 +85,7 @@
                 </tr>
             @endforeach
             <tr>
-                <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+                <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
                 <td><strong>${{ number_format($order->total, 2) }}</strong></td>
             </tr>
         </tbody>
