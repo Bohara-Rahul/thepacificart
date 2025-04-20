@@ -69,19 +69,21 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
                 <th>Qty</th>
                 <th>Price (Each)</th>
-                <th>Subtotal</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($order->items as $item)
                 <tr>
+                    <td>
+                        <img src="{{ public_path('uploads/'.$item->product->primary_image) }}" style="height: 80px;" />
+                    </td>
                     <td>{{ $item->product->title ?? 'Product Removed' }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>${{ number_format($item->prodduct->price, 2) }}</td>
-                    <td>${{ number_format($item->product->price * $item->quantity, 2) }}</td>
+                    <td>${{ number_format($item->product->price, 2) }}</td>
                 </tr>
             @endforeach
             <tr>

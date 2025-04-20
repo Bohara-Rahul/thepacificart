@@ -3,12 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Cart as CartModel;
-use App\Models\Product;
 use App\Services\CartService;
-use Illuminate\Validation\ValidationException;
 
 class Cart extends Component
 {
@@ -42,28 +37,22 @@ class Cart extends Component
     public function addToCart($productId)
     {
         $this->cartService->addToCart($productId);
-        $this->loadCart();
         $this->dispatch('cartUpdated'); // Notify the cart component to refresh
     }
 
     public function removeFromCart($productId)
     {
         $removed = $this->cartService->removeFromCart($productId);
-
         if ($removed) {
             $this->dispatch('cartUpdated');
         } else {
             $this->error('Could not find the item');
         }
-
-        $this->loadCart();
     }
 
     public function render()
     {
-        return view('livewire.cart', [
-            'cartItems' => $this->cartItems,
-        ]);
+        return view('livewire.cart');
     }
 
      // public function decreaseQuantity($productId)

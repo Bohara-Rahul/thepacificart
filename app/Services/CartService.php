@@ -10,17 +10,35 @@ use Illuminate\Validation\ValidationException;
 
 class CartService
 {
-    public function getCartItems()
-    {
-        if (Auth::check()) {
-            return Cart::where('user_id', Auth::id())
-                ->with('product')
-                ->get()
-                ->toArray();
-        }
-
-        return Session::get('cart', []);
-    }
+  public function getCartItems()
+  {
+      if (Auth::check()) {
+          $items = Cart::where('user_id', Auth::id())->with('product')->get();
+  
+          return $items->map(function ($item) {
+              return [
+                  'product_id' => $item->product->id,
+                  'title' => $item->product->title,
+                  'price' => $item->product->price,
+                  'quantity' => $item->quantity,
+                  'product' => $item->product,
+              ];
+          });
+      }
+  
+      $sessionCart = Session::get('cart', []);
+      
+      return collect($sessionCart)->map(function ($item) {
+          $product = Product::find($item['product_id']);
+          return [
+              'product_id' => $product->id,
+              'title' => $product->title,
+              'price' => $product->price,
+              'quantity' => $item['quantity'],
+              'product' => $product,
+          ];
+      });
+  }
 
     public function calculateCartCount($items)
     {
@@ -29,9 +47,7 @@ class CartService
 
     public function calculateSubtotal($items)
     {
-        return Auth::check()
-            ? collect($items)->sum(fn($item) => $item['product']['price'] * $item['quantity'])
-            : collect($items)->sum(fn($item) => $item['price'] * $item['quantity']);
+      return collect($items)->sum(fn($item) => $item['price'] * $item['quantity']);
     }
 
     public function addToCart($productId)
@@ -43,7 +59,11 @@ class CartService
                 ->where('product_id', $productId)
                 ->first();
 
-            if ($cartItem) return;
+            if ($cartItem) {
+              throw ValidationException::withMessages([
+                'error' => 'Item already added to cart',
+              ]);
+            }
 
             $created = Cart::create([
                 'user_id' => Auth::id(),
@@ -58,7 +78,12 @@ class CartService
             }
         } else {
             $cart = Session::get('cart', []);
-            if (isset($cart[$productId])) return;
+            
+            if (isset($cart[$productId])) {
+              throw ValidationException::withMessages([
+                'error' => 'Item already added to cart',
+            ]);
+            }
 
             $cart[$productId] = [
                 'product_id' => $product->id,

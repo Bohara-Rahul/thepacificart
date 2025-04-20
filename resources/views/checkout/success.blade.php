@@ -52,7 +52,7 @@
                 {{-- Download PDF --}}
                 <div class="mt-6 text-center">
                     <a href="{{ route('invoice.download', $order) }}"
-                        class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition">
+                        class="inline-flex items-center px-4 py-2 bg-[#13292a] hover:bg-[#3d6571] text-white font-semibold rounded-lg shadow-md transition">
                         📄 Download Invoice (PDF)
                     </a>
                 </div>

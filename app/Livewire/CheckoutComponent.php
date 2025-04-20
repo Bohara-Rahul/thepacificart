@@ -5,19 +5,30 @@ namespace App\Livewire;
 use Stripe\Stripe;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Product;
-use App\Models\Cart;
 use App\Models\Order;
+use App\Services\CartService;
 
 class CheckoutComponent extends Component
 {
-    public $user, $email, $shipping_name, $shipping_address, $shipping_city, $shipping_zip, $shipping_country;
+    public $email, $shipping_name, $shipping_address, $shipping_city, $shipping_zip, $shipping_country;
     public $paymentMethod = 'stripe';
     public $success;
 
+    protected $cartService;
+
+    public function boot(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function mount()
     {
-        $this->user = Auth::user() ?? null;
+        if(Auth::check()) {
+            $user = Auth::user();
+            $this->email = $user->email;
+            $this->shipping_name = $user->name;
+            return;
+        }
     }
 
 
@@ -32,50 +43,33 @@ class CheckoutComponent extends Component
             'email' => Auth::check() ? 'nullable' : 'required|email',
         ]);
 
-    $cart = $this->user
-        ? Cart::with('product')->where('user_id', Auth::id())
-        ->get()
-        ->map(function ($item) {
-            return (object)[
-                'product' => $item->product,
-                'quantity' => $item->quantity,
-                'price' => $item->product->price,
-            ]; 
-        })
-        : collect(session('cart', []))->map(function ($item) {
-            $product = Product::find($item['product_id']);
-            return (object)[
-                'product' => $product,
-                'quantity' => $item['quantity'],
-                'price' => $item['price'],
-            ];
-        });
+    $cart = $this->cartService->getCartItems();
 
-    if ($cart->isEmpty()) {
+    if (empty($cart)) {
         $this->addError('cart', 'Your cart is empty.');
         return;
     }
 
-   // Create order
-   $order = Order::create([
-        'user_id' => Auth::id(),
-        'guest_email' => Auth::check() ? null : $this->email,
-        'shipping_name' => $this->shipping_name,
-        'shipping_address' => $this->shipping_address,
-        'shipping_city' => $this->shipping_city,
-        'shipping_zip' => $this->shipping_zip,
-        'shipping_country' => $this->shipping_country,
-        'status' => 'pending',
-        'total' => $cart->sum(fn($item) => $item->price * $item->quantity),
-        'is_paid' => false,
-   ]);
+    // create new order
+    $order = new Order();
+    $order->user_id = Auth::id();
+    $order->guest_email = Auth::check() ? null : $this->email;
+    $order->shipping_name = $this->shipping_name;
+    $order->shipping_address = $this->shipping_address;
+    $order->shipping_city = $this->shipping_city;
+    $order->shipping_zip = $this->shipping_zip;
+    $order->shipping_country = $this->shipping_country;
+    $order->status = 'pending';
+    $order->is_paid = false;
+    $order->total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+    $order->save();
 
     // Create order items
     foreach ($cart as $item) {
         $order->items()->create([
-            'product_id' => $item->product->id,
-            'quantity' => $item->quantity,
-            'price' => $item->price,
+            'product_id' => $item['product_id'],
+            'quantity' => $item['quantity'],
+            'price' => $item['price'],
         ]);
     }
 
@@ -83,14 +77,14 @@ class CheckoutComponent extends Component
     
         $stripeSession = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'line_items' => array_values($cart->map(function ($item) {
+            'line_items' => array_values(collect($cart)->map(function ($item) {
                 return [
                     'price_data' => [
                         'currency' => 'usd',
-                        'product_data' => ['name' => $item->product->title],
-                        'unit_amount' => $item->price * 100, // cents
+                        'product_data' => ['name' => $item['title']],
+                        'unit_amount' => $item['price'] * 100,
                     ],
-                    'quantity' => $item->quantity,
+                    'quantity' => $item['quantity'],
                 ];
             })->toArray()),
             'mode' => 'payment',
@@ -103,11 +97,10 @@ class CheckoutComponent extends Component
 
         // Save session ID to order
         $order->update(['session_id' => $stripeSession->id]);
-
-        $this->success = "Order placed successfully! Check your email for the invoice.";
     
         return redirect($stripeSession->url);
-}   
+    }
+
     public function render()
     {
         return view('livewire.checkout-component');

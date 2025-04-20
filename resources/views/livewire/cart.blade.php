@@ -4,14 +4,24 @@
     @else
         <h2 class="text-3xl text-center mb-8">Your Cart</h2>
         @foreach ($cartItems as $item)
-            <div class="grid grid-cols-1 md:grid-cols-5 mb-5">
-                <img src="{{ asset('uploads/' . $item['primary_image']) }}" class="w-28 h-28" />
+            <div class="grid grid-cols-1 md:grid-cols-4 mb-5">
+                @auth
+                    <img 
+                        class="w-28 h-28" 
+                        src="{{ asset('uploads/' . $item['product']['primary_image'])  }}"  
+                    /> 
+                @else
+                    <img 
+                        class="w-28 h-28" 
+                        src="{{ asset('uploads/' . $item['primary_image'])  }}"  
+                    /> 
+                @endauth
  
                 <div class="flex justify-start items-center">
-                    <h4 class="text-2xl">
-                        {{ $item['title'] }}
-                    </h4>
+                    <h4 class="text-2xl">{{ $item['product']['title'] ?? $item['title'] }}</h4>
+
                     <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer" wire:click="removeFromCart({{ $item['product_id'] }})"></i>
+                    
                 </div>
                 <div>
                     <p>Qty</p>
@@ -19,11 +29,12 @@
                 </div>
                 <div>
                     <p>Price Per Unit</p>
-                    <p>${{ $item['price'] }}</p>
-                </div>
-                <div>
-                    <p>Total Price</p>
-                    <p>${{ number_format($item['price'] * $item['quantity'], 2) }}</p>
+                    @auth
+                        <p>${{ $item['product']['price'] * 100 }}</p>
+                    @else   
+                        <p>${{ $item['price'] }}</p>   
+                    @endauth
+                    
                 </div>
             </div>
             <hr class="mb-5" />
