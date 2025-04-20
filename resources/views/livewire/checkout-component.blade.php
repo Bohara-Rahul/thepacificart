@@ -20,7 +20,7 @@
         <input type="radio" wire:model="paymentMethod" value="stripe"> Direct Deposit
         <input type="radio" wire:model="paymentMethod" value="paypal"> PayPal --}}
 
-        <button type="submit" class="btn btn-primary">Pay Now</button>
+        <button type="submit" class="btn btn-secondary">Pay Now</button>
     </form>
 
     @if ($success)
