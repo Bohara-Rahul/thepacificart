@@ -2,11 +2,7 @@
     <h2 class="text-xl font-bold">Checkout</h2>
 
     <form wire:submit.prevent="placeOrder">
-
-        @if (!Auth::check())
-            <input type="email" wire:model="email" placeholder="Your Email" class="w-full p-2 border rounded" />
-        @endif
-
+        <input type="email" wire:model="email" class="w-full p-2 border rounded" placeholder="Your email" />
         <h2>Billing Address</h2>
         <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
         <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />

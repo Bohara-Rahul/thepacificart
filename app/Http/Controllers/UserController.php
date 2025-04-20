@@ -29,6 +29,14 @@ class UserController extends Controller
             'password' => 'string|required|confirmed',
         ]);
 
+        $existingUser = User::where('email', $validated['email']);
+
+        if ($existingUser) {
+            throw ValidationException::withMessages([
+                'credentials' => 'Email already taken'
+            ]);
+        }
+
         $user = new User();
 
         if ($request->photo) {
@@ -49,7 +57,7 @@ class UserController extends Controller
         $user->password = Hash::make($validated['password']);
         $token = hash('sha256',time());
         $user->token = $token;
-        $user->isAdmin = 0;
+        $user->isAdmin = 0;  
         $user->save();
 
         $verification_link = url('register-verify/'.$token.'/'.$request->email);
@@ -88,49 +96,35 @@ class UserController extends Controller
     public function login_submit(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'string|required|email', // 'email' => ['string','required','email']
+            'email' => 'string|required|email',
             'password' => 'string|required'
         ]);
 
-        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+        if (Auth::attempt([
+            'email' => $validated['email'], 
+            'password' => $validated['password']
+        ])) {
+                
+                if (Session::has('cart')) {
+                    $sessionCart = Session::get('cart', []);
+                    foreach ($sessionCart as $productId => $item) {
+                        \App\Livewire\Cart::addToCart($productId);
+                    }       
 
-            $userId = Auth::id();   
-            
-            if (session()->has('cart')) {
-                $sessionCart = session()->get('cart', []);
-
-                foreach ($sessionCart as $productId => $details) {
-                    $cartItem = Cart::where('user_id', $userId)
-                                    ->where('product_id', $productId)
-                                    ->first();
-        
-                    if ($cartItem) {
-                        // If item already exists, update quantity
-                        $cartItem->quantity += $details['quantity'];
-                        $cartItem->save();
-                    } else {
-                        // Otherwise, create new cart item
-                        Cart::create([
-                            'user_id' => $userId,
-                            'product_id' => $productId,
-                            'quantity' => $details['quantity'],
-                        ]);
-                    }
+                    Session::forget('cart');
                 }
-                // Optionally clear the session cart
-                session()->forget('cart');
+
+                // Check if there's a redirect_to parameter and store it
+                $redirectTo = $request->input('redirect_to') 
+                    ?? route('user.dashboard');
+
+                return redirect($redirectTo)->with('success', 'You have successfully logged in');
             }
-            
-            // Check if there's a redirect_to parameter and store it
-            $redirectTo = $request->input('redirect_to') 
-                ?? Session::pull('url.intended', route('user.dashboard'));
-
-            return redirect($redirectTo);
+        else {
+            throw ValidationException::withMessages([
+                'credentials' => 'Invalid credentials'
+            ]);
         }
-
-        throw ValidationException::withMessages([
-            'credentials' => 'Invalid credentials'
-        ]);
     }
 
     public function logout(Request $request)

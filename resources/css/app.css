@@ -39,7 +39,7 @@ html {
 }
 
 body {
-    @apply min-h-screen text-black;
+    @apply min-h-screen text-gray-600;
     font-family: "Quicksand";
     background-image: linear-gradient(
         60deg,
@@ -181,7 +181,7 @@ textarea {
 }
 
 .navbar {
-    @apply container flex justify-between items-center text-2xl text-white transition duration-300 ease-in p-0 h-[80px];
+    @apply container flex justify-between items-center text-2xl text-gray-300 transition duration-300 ease-in p-0 h-[80px];
 }
 
 .hero {
@@ -452,5 +452,5 @@ textarea {
 }
 
 .footer {
-    @apply bg-[#0a3341] text-[#fff];
+    @apply bg-[#0a3341] text-gray-300;
 }

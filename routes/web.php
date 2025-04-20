@@ -45,10 +45,8 @@ Route::get('/categories/{slug}', [CategoryController::class, 'category_detail'])
 
 // User Controller related routes
 Route::get('/register', [UserController::class, 'register'])->name('user.register');
-Route::post('/register', [UserController::class, 'register_submit'])->name('user.register_submit');
 Route::get('register-verify/{token}/{email}', [UserController::class, 'register_verify'])->name('user.register-verify');
 Route::get("/login", [UserController::class, 'login'])->name('user.login');
-Route::post("/login", [UserController::class, 'login_submit'])->name('user.login_submit');
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('mustBeLoggedIn');
 Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
 

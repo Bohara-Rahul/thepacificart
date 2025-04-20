@@ -42,7 +42,7 @@ class CheckoutController extends Controller
                 'status' => 'paid',
                 'is_paid' => true,
             ]);
-
+            // dd($existingOrder);
             // send email to customer 
             Mail::to($session->customer_email)->send(new OrderInvoiceMail($existingOrder));
 
