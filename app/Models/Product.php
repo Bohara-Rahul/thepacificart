@@ -65,8 +65,8 @@ class Product extends Model
         return $this->attributes['price'] = $value / 100;
     }
 
-    // public function setPriceAttribute($value)
-    // {
-    //     return $this->attributes['price'] = $value * 100;
-    // }
+    public function setPriceAttribute($value)
+    {
+        return $this->attributes['price'] = $value * 100;
+    }
 }

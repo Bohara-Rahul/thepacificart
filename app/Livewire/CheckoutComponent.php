@@ -33,13 +33,21 @@ class CheckoutComponent extends Component
         ]);
 
     $cart = $this->user
-        ? Cart::with('product')->where('user_id', Auth::id())->get()
-        : collect(session('cart', []))->map(function ($qty, $productId) {
-            $product = Product::find($productId);
+        ? Cart::with('product')->where('user_id', Auth::id())
+        ->get()
+        ->map(function ($item) {
+            return (object)[
+                'product' => $item->product,
+                'quantity' => $item->quantity,
+                'price' => $item->product->price,
+            ]; 
+        })
+        : collect(session('cart', []))->map(function ($item) {
+            $product = Product::find($item['product_id']);
             return (object)[
                 'product' => $product,
-                'quantity' => $qty,
-                'price' => $product->price,
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
             ];
         });
 
@@ -48,60 +56,28 @@ class CheckoutComponent extends Component
         return;
     }
 
-    $order =  null;
+   // Create order
+   $order = Order::create([
+        'user_id' => Auth::id(),
+        'guest_email' => Auth::check() ? null : $this->email,
+        'shipping_name' => $this->shipping_name,
+        'shipping_address' => $this->shipping_address,
+        'shipping_city' => $this->shipping_city,
+        'shipping_zip' => $this->shipping_zip,
+        'shipping_country' => $this->shipping_country,
+        'status' => 'pending',
+        'total' => $cart->sum(fn($item) => $item->price * $item->quantity),
+        'is_paid' => false,
+   ]);
 
-    if (Auth::check()) {
-
-        // Create order
-        $order = Order::create([
-            'user_id' => Auth::id(),
-            'guest_email' => Auth::check() ? null : $this->email,
-            'shipping_name' => $this->shipping_name,
-            'shipping_address' => $this->shipping_address,
-            'shipping_city' => $this->shipping_city,
-            'shipping_zip' => $this->shipping_zip,
-            'shipping_country' => $this->shipping_country,
-            'status' => 'pending',
-            'total' => $cart->sum(fn($item) => $item->product->price * $item->quantity),
-            // 'total' => Auth::check() ?
-            // $cart->sum(fn($item) => $item->price * $item->quantity['quantity'])  : $cart->sum(fn($item) => $item->price * $item->quantity),
-            'is_paid' => false,
+    // Create order items
+    foreach ($cart as $item) {
+        $order->items()->create([
+            'product_id' => $item->product->id,
+            'quantity' => $item->quantity,
+            'price' => $item->price,
         ]);
-
-        // Create order items
-        foreach ($cart as $item) {
-            $order->items()->create([
-                'product_id' => $item->product->id,
-                'quantity' => $item->quantity,
-                'price' => $item->product->price,
-            ]);
-        }
-    } else {
-        // Create order
-        $order = Order::create([
-            'user_id' => Auth::id(),
-            'guest_email' => Auth::check() ? null : $this->email,
-            'shipping_name' => $this->shipping_name,
-            'shipping_address' => $this->shipping_address,
-            'shipping_city' => $this->shipping_city,
-            'shipping_zip' => $this->shipping_zip,
-            'shipping_country' => $this->shipping_country,
-            'status' => 'pending',
-            'total' => $cart->sum(fn($item) => $item->price * $item->quantity['quantity']) ,
-            'is_paid' => false,
-        ]);
-
-        // Create order items
-        foreach ($cart as $item) {
-            $order->items()->create([
-                'product_id' => $item->product->id,
-                'quantity' => $item->quantity['quantity'],
-                'price' => $item->price,
-            ]);
-        }
     }
-
-    dd($cart);
 
     \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
     
@@ -112,19 +88,20 @@ class CheckoutComponent extends Component
                     'price_data' => [
                         'currency' => 'usd',
                         'product_data' => ['name' => $item->product->title],
-                        'unit_amount' => (int) $item->product->price * 100, // cents
+                        'unit_amount' => $item->price * 100, // cents
                     ],
-                    // 'quantity' => $item->quantity['quantity']
-                    'quantity' => $item->quantity['quantity'] ?? $item->quantity,
+                    'quantity' => $item->quantity,
                 ];
             })->toArray()),
             'mode' => 'payment',
-            'customer_email' => Auth::user()->email ?? $this->email,
+            'customer_email' => Auth::check() 
+                ? Auth::user()->email 
+                : $this->email,
             'success_url' => route('checkout.success', [], true) . '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('checkout.cancel', [], true),
         ]);
 
-        // Save session_id
+        // Save session ID to order
         $order->update(['session_id' => $stripeSession->id]);
 
         $this->success = "Order placed successfully! Check your email for the invoice.";

@@ -58,7 +58,6 @@
                     <a href="{{ route('checkout') }}" class="btn btn-accent mb-2">
                         Checkout as a Guest
                     </a>
-                    <a href="{{ route('user.login') }}?redirect_to={{ urlencode(route('checkout')) }}" class="btn btn-primary">Login to Checkout</a>
                 @endauth
 
             </div>
