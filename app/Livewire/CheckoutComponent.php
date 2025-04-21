@@ -5,9 +5,8 @@ namespace App\Livewire;
 use Stripe\Stripe;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Product;
-use App\Models\Cart;
 use App\Models\Order;
+use App\Services\CartService;
 
 class CheckoutComponent extends Component
 {
@@ -15,55 +14,62 @@ class CheckoutComponent extends Component
     public $paymentMethod = 'stripe';
     public $success;
 
-public function placeOrder()
-{
-    $this->validate([
-        'shipping_name' => 'required|string',
-        'shipping_address' => 'required|string',
-        'shipping_city' => 'required|string',
-        'shipping_zip' => 'required|string',
-        'shipping_country' => 'required|string',
-        'email' => Auth::check() ? 'nullable' : 'required|email',
-    ]);
+    protected $cartService;
 
-    $user = Auth::user();
+    public function boot(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
 
-    $cart = Auth::check()
-        ? Cart::with('product')->where('user_id', Auth::id())->get()
-        : collect(session('cart', []))->map(function ($qty, $productId) {
-            $product = Product::find($productId);
-            return (object)[
-                'product' => $product,
-                'quantity' => $qty,
-                'price' => $product->price,
-            ];
-        });
+    public function mount()
+    {
+        if(Auth::check()) {
+            $user = Auth::user();
+            $this->email = $user->email;
+            $this->shipping_name = $user->name;
+            return;
+        }
+    }
 
-    if ($cart->isEmpty()) {
+
+    public function placeOrder()
+    {
+        $this->validate([
+            'shipping_name' => 'required|string',
+            'shipping_address' => 'required|string',
+            'shipping_city' => 'required|string',
+            'shipping_zip' => 'required|string',
+            'shipping_country' => 'required|string',
+            'email' => Auth::check() ? 'nullable' : 'required|email',
+        ]);
+
+    $cart = $this->cartService->getCartItems();
+
+    if (empty($cart)) {
         $this->addError('cart', 'Your cart is empty.');
         return;
     }
 
-    // Create order
-    $order = Order::create([
-        'user_id' => Auth::id(),
-        'guest_email' => Auth::check() ? null : $this->email,
-        'shipping_name' => $this->shipping_name,
-        'shipping_address' => $this->shipping_address,
-        'shipping_city' => $this->shipping_city,
-        'shipping_zip' => $this->shipping_zip,
-        'shipping_country' => $this->shipping_country,
-        'status' => 'pending',
-        'total' => $cart->sum(fn($item) => $item->price * $item->quantity['quantity']),
-        'is_paid' => false,
-    ]);
+    // create new order
+    $order = new Order();
+    $order->user_id = Auth::id();
+    $order->guest_email = Auth::check() ? null : $this->email;
+    $order->shipping_name = $this->shipping_name;
+    $order->shipping_address = $this->shipping_address;
+    $order->shipping_city = $this->shipping_city;
+    $order->shipping_zip = $this->shipping_zip;
+    $order->shipping_country = $this->shipping_country;
+    $order->status = 'pending';
+    $order->is_paid = false;
+    $order->total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+    $order->save();
 
     // Create order items
     foreach ($cart as $item) {
         $order->items()->create([
-            'product_id' => $item->product->id,
-            'quantity' => $item->quantity['quantity'],
-            'price' => $item->price,
+            'product_id' => $item['product_id'],
+            'quantity' => $item['quantity'],
+            'price' => $item['price'],
         ]);
     }
 
@@ -71,29 +77,30 @@ public function placeOrder()
     
         $stripeSession = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'line_items' => array_values($cart->map(function ($item) {
+            'line_items' => array_values(collect($cart)->map(function ($item) {
                 return [
                     'price_data' => [
                         'currency' => 'usd',
-                        'product_data' => ['name' => $item->product->title],
-                        'unit_amount' => $item->price * 100, // cents
+                        'product_data' => ['name' => $item['title']],
+                        'unit_amount' => $item['price'] * 100,
                     ],
-                    'quantity' => $item->quantity['quantity'],
+                    'quantity' => $item['quantity'],
                 ];
             })->toArray()),
             'mode' => 'payment',
-            'customer_email' => Auth::user()->email ?? $this->email,
+            'customer_email' => Auth::check() 
+                ? Auth::user()->email 
+                : $this->email,
             'success_url' => route('checkout.success', [], true) . '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('checkout.cancel', [], true),
         ]);
 
-        // Save session_id
+        // Save session ID to order
         $order->update(['session_id' => $stripeSession->id]);
-
-        $this->success = "Order placed successfully! Check your email for the invoice.";
     
         return redirect($stripeSession->url);
-}   
+    }
+
     public function render()
     {
         return view('livewire.checkout-component');

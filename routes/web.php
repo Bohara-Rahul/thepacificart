@@ -14,6 +14,7 @@ use App\Http\Controllers\Product\PhotoController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
@@ -45,12 +46,18 @@ Route::get('/categories/{slug}', [CategoryController::class, 'category_detail'])
 
 // User Controller related routes
 Route::get('/register', [UserController::class, 'register'])->name('user.register');
-Route::post('/register', [UserController::class, 'register_submit'])->name('user.register_submit');
 Route::get('register-verify/{token}/{email}', [UserController::class, 'register_verify'])->name('user.register-verify');
 Route::get("/login", [UserController::class, 'login'])->name('user.login');
-Route::post("/login", [UserController::class, 'login_submit'])->name('user.login_submit');
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('mustBeLoggedIn');
-Route::get("/dashboard", [UserController::class, 'dashboard'])->name('user.dashboard')->middleware('mustBeLoggedIn');
+
+// User Dashboard Realated Routes
+Route::middleware(['mustBeLoggedIn'])->group(function () {
+  Route::get('/dashboard', function () {})->name('user.dashboard');
+  Route::get('/profile/edit', function () {})->name('profile.edit');
+  Route::get('/profile/password', function () {})->name('profile.password');
+  Route::get('/orders/{order}', function () {})->name('orders.show');
+});
+
 
 // checkout related routes
 Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');

@@ -7,8 +7,7 @@
 
     ## Items:
     @foreach ($order->items as $item)
-        - {{ $item->product->title ?? 'Product Removed' }} x {{ $item->quantity }} —
-        ${{ number_format($item->price, 2) }}
+        - {{ $item->product->title ?? 'Product Removed' }} x {{$item->quantity }} — ${{ number_format($item->price, 2) }}
     @endforeach
 
     @component('mail::button', ['url' => route('order.track', $order->id)])

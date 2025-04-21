@@ -1,1 +1,4 @@
-<livewire:register-component />
+@extends('layouts.other-page-layout')
+@section('main_content')
+    <livewire:register-component />
+@endsection
