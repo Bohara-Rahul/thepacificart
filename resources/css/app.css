@@ -43,8 +43,8 @@ body {
     font-family: "Quicksand";
     background-image: linear-gradient(
         60deg,
-        rgb(231, 230, 234),
-        rgb(254, 254, 254)
+        rgb(252, 252, 252),
+        rgb(255, 255, 255)
     );
 
     /*linear-gradient(
@@ -168,8 +168,8 @@ textarea {
     position: relative;
     transition: all 0.3s ease-in-out;
     z-index: 10;
-    background: #0a3341;
-    color: #fff;
+    background: #00313E;
+    color: #002c29;
 }
 
 .navigation-container.fixed {
@@ -217,7 +217,7 @@ textarea {
 }
 
 .card {
-    background-color: #f8fafc;
+    background-color: #e0e0e0;
     padding: 10px;
     color: black;
     border-radius: 10px;
@@ -247,7 +247,7 @@ textarea {
 }
 
 .card:hover {
-    color: #fff;
+    color: #f0f0f0;
 }
 
 .card span {
@@ -452,5 +452,5 @@ textarea {
 }
 
 .footer {
-    @apply bg-[#0a3341] text-[#fff];
+    @apply bg-[#00313E] text-[#fff];
 }
