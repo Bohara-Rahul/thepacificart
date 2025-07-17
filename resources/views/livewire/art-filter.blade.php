@@ -1,6 +1,6 @@
 <div id="filterBar"
      x-data="{ open: false }"
-     class="sticky top-[64px] w-full z-40 shadow transition-all duration-300"
+     class="sticky top-[40px] w-full z-40 shadow transition-all duration-300"
      style="background-image: linear-gradient(to right, #1c2b38, #2e3e4f);">
 
   <!-- Mobile Toggle -->
@@ -24,7 +24,6 @@
           <option value="{{ $id }}">{{ $name }}</option>
         @endforeach
       </select>
-      <p>{{ $category }}</p>
 
       <!-- Price -->
       <!--<select wire:model="priceRange" class="min-w-[120px] p-2 border rounded bg-white text-black">-->

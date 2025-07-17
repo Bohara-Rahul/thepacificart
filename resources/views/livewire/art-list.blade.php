@@ -1,4 +1,4 @@
-<div class="container mx-auto px-4 sm:px-6 lg:px-12 mt-[450px]">
+<div class="container mx-auto px-4 sm:px-6 lg:px-12">
   <!-- Masonry Grid Container -->
   <div id="arts-masonry" class="masonry-container">
     @foreach ($arts as $art)

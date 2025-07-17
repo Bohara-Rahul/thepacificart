@@ -3,12 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Product;
-use App\Models\Artist;
-use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
-use Illuminate\Support\Str;
+
 
 class ArtList extends Component
 {
@@ -57,9 +55,6 @@ class ArtList extends Component
 
         return view('livewire.art-list', [
             'arts' => $arts,
-            'artists' => \App\Models\Artist::pluck('name', 'id'),
-            'locations' => \App\Models\Artist::distinct()->pluck('location'),
-            'categories' => \App\Models\Category::pluck('title', 'id'),
         ]);
     }
 }
