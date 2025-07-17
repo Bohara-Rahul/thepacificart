@@ -3,7 +3,7 @@
 @include('admin.layout.sidebar')
 <section>
   <h2>Create New Category</h2>
-  <form action="{{ route('admin_categories_edit_submit', $category->id) }}" method="POST">
+  <form action="{{ route('admin_categories_edit_submit', $category->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div>
       <label for="title">Title:</label>
@@ -12,6 +12,14 @@
         id="title"
         name="title" 
         value="{{ $category->title }}"  
+      />
+    </div>
+    <div>
+      <label for="photo">Thumbnail:</label>
+      <input 
+        type="file" 
+        id="photo"
+        name="photo"  
       />
     </div>
     <button type="submit" class="btn btn-primary">Update</button>

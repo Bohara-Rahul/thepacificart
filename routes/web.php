@@ -17,6 +17,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FollowController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebhookController;
 
@@ -52,11 +53,18 @@ Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->
 
 // User Dashboard Realated Routes
 Route::middleware(['mustBeLoggedIn'])->group(function () {
-  Route::get('/dashboard', function () {})->name('user.dashboard');
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
   Route::get('/profile/edit', function () {})->name('profile.edit');
   Route::get('/profile/password', function () {})->name('profile.password');
   Route::get('/orders/{order}', function () {})->name('orders.show');
 });
+
+// Follow related routes
+Route::middleware(['mustBeLoggedIn'])->group(function () {
+  Route::post('/follow/{id}', [FollowController::class, 'follow_user'])->name('follow.user');
+  Route::post('/unfollow/{id}', [FollowController::class, 'unfollow_user'])->name('unfollow.user');
+});
+
 
 
 // checkout related routes

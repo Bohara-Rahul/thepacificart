@@ -5,23 +5,13 @@
         <h2 class="text-3xl text-center mb-8">Your Cart</h2>
         @foreach ($cartItems as $item)
             <div class="grid grid-cols-1 md:grid-cols-4 mb-5">
-                @auth
-                    <img 
-                        class="w-28 h-28" 
-                        src="{{ asset('uploads/' . $item['product']['primary_image'])  }}"  
-                    /> 
-                @else
-                    <img 
-                        class="w-28 h-28" 
-                        src="{{ asset('uploads/' . $item['primary_image'])  }}"  
-                    /> 
-                @endauth
- 
+                <img class="w-28 h-28 object-cover" src="{{ asset('uploads/' . $item['product']['primary_image']) }}" />
                 <div class="flex justify-start items-center">
                     <h4 class="text-2xl">{{ $item['product']['title'] ?? $item['title'] }}</h4>
 
-                    <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer" wire:click="removeFromCart({{ $item['product_id'] }})"></i>
-                    
+                    <i class="fa-solid fa-trash ml-10 text-red-600 hover:cursor-pointer"
+                        wire:click="removeFromCart({{ $item['product_id'] }})"></i>
+
                 </div>
                 <div>
                     <p>Qty</p>
@@ -31,10 +21,10 @@
                     <p>Price Per Unit</p>
                     @auth
                         <p>${{ $item['product']['price'] * 100 }}</p>
-                    @else   
-                        <p>${{ $item['price'] }}</p>   
+                    @else
+                        <p>${{ $item['price'] }}</p>
                     @endauth
-                    
+
                 </div>
             </div>
             <hr class="mb-5" />

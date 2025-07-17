@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'mustBeLoggedIn' => \App\Http\Middleware\MustBeLoggedIn::class,
             'verify.stripe' => \App\Http\Middleware\VerifyStripeSignature::class,
+            'locationRedirect' => \App\Http\Middleware\LocationRedirect::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

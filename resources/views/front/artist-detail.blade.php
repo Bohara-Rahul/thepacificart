@@ -10,11 +10,13 @@
                 <h2 class="text-3xl">{{ $artist->name }}</h2>
                 <p class="max-w-5xl">{{ $artist->bio }}</p>
                 <p>Based in <span class="font-bold text-xl">{{ $artist->location }}</span></p>
-                <a class="text-center btn btn-secondary" href="#">
-                <button>
-                    <i class="fa-solid fa-user-plus"></i> Follow
-                </button>
+           
+                <a class="text-center btn btn-secondary" href="{{ route('follow.user', $artist->id) }}">
+                    <button>
+                        <i class="fa-solid fa-user-plus"></i> Follow
+                    </button>
                 </a>
+                
             </article>
         </div>
         <div>

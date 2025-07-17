@@ -59,6 +59,71 @@ prevBtn.addEventListener("click", prevSlide);
 // Auto-slide every 3 seconds
 setInterval(nextSlide, 3000);
 
+const navbar = document.getElementById("navbar");
+    const filterBar = document.getElementById("filterBar");
+    const verticalSpace = document.getElementById("vertical-space");
+
+    let lastScroll = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
+      const scrollingDown = currentScroll > lastScroll && currentScroll > 50;
+      const scrollingUp = currentScroll < lastScroll;
+
+      // Handle navbar visibility
+      if (scrollingDown) {
+        navbar.classList.add("-translate-y-full");
+      } else if (scrollingUp) {
+        navbar.classList.remove("-translate-y-full");
+      }
+
+      // Handle filter bar stickiness
+      if (scrollingDown && currentScroll > 64) {
+        // Stick filter to top when navbar is hidden
+        filterBar.classList.add("fixed", "top-0");
+        filterBar.classList.remove("absolute", "top-[64px]", "mt-[20px]");
+        verticalSpace.classList.add('display: none')
+      } else if (scrollingUp && currentScroll <= lastScroll) {
+        // Return filter to original position
+        filterBar.classList.remove("fixed", "top-0");
+        filterBar.classList.add("absolute", "top-[64px]");
+      }
+
+      lastScroll = currentScroll;
+    });
+
+// import EmblaCarousel from 'embla-carousel'
+// import { setupTweenScale } from './EmblaCarouselTweenScale'
+// import { addDotBtnsAndClickHandlers } from './EmblaCarouselDotButton'
+// import { addPrevNextBtnsClickHandlers } from './EmblaCarouselArrowButtons'
+// import '../css/embla.css'
+
+// const OPTIONS = { loop: true }
+
+// const emblaNode = document.querySelector('.embla')
+// const viewportNode = emblaNode.querySelector('.embla__viewport')
+// const previousBtn = emblaNode.querySelector('.embla__button--prev')
+// const nextIsBtn = emblaNode.querySelector('.embla__button--next')
+// const dotsNode = document.querySelector('.embla__dots')
+
+// const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
+// const removeTweenScale = setupTweenScale(emblaApi)
+
+// const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+//   emblaApi,
+//   previousBtn,
+//   nextIsBtn
+// )
+// const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+//   emblaApi,
+//   dotsNode
+// )
+
+// emblaApi
+//   .on('destroy', removeTweenScale)
+//   .on('destroy', removePrevNextBtnsClickHandlers)
+//   .on('destroy', removeDotBtnsAndClickHandlers)
+
 
 
 

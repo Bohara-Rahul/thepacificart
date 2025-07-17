@@ -1,27 +1,32 @@
 <div class="space-y-4 max-w-xl mx-auto">
     <h2 class="text-xl font-bold">Checkout</h2>
 
-    <form wire:submit.prevent="placeOrder">
-        <input type="email" wire:model="email" class="w-full p-2 border rounded" placeholder="Your email" />
-        <h2>Billing Address</h2>
-        <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_city" placeholder="City" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" />
+    <div class="space-y-6">
+        @if (!auth()->check())
+            <input type="email" wire:model="email" placeholder="Email Address" class="input w-full" />
+            @error('email')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        @endif
 
-        {{-- <h2>Postal Address</h2>
-        <input type="text" wire:model="shipping_name" placeholder="Full Name" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_address" placeholder="Address" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_city" placeholder="City" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_zip" placeholder="ZIP Code" class="w-full p-2 border rounded" />
-        <input type="text" wire:model="shipping_country" placeholder="Country" class="w-full p-2 border rounded" /> --}}
-        {{-- <label>Select Payment Method:</label>
-        <input type="radio" wire:model="paymentMethod" value="stripe"> Direct Deposit
-        <input type="radio" wire:model="paymentMethod" value="paypal"> PayPal --}}
+        <h2 class="text-xl font-semibold">Billing Address</h2>
+        @include('partials.address-form', ['model' => 'billing'])
 
-        <button type="submit" class="btn btn-secondary">Pay Now</button>
-    </form>
+        <div class="flex justify-between">
+            <label>
+                <input type="checkbox" wire:model="sameAsBilling">
+                Shipping address same as billing?
+            </label>
+        </div>
+
+        @if (!$sameAsBilling)
+            <h2 class="text-xl font-semibold">Shipping Address</h2>
+            @include('partials.address-form', ['model' => 'shipping'])
+        @endif
+
+        <button wire:click="placeOrder" class="bg-blue-600 text-white px-4 py-2 rounded">Place Order</button>
+    </div>
+
 
     @if ($success)
         <div class="text-green-600">

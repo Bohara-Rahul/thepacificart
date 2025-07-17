@@ -10,9 +10,12 @@ use App\Services\CartService;
 
 class CheckoutComponent extends Component
 {
-    public $email, $shipping_name, $shipping_address, $shipping_city, $shipping_zip, $shipping_country;
+    public $billing = [];
+    public $shipping = [];
     public $paymentMethod = 'stripe';
+    public $sameAsBilling = true;
     public $success;
+    public $email;
 
     protected $cartService;
 
@@ -26,22 +29,41 @@ class CheckoutComponent extends Component
         if(Auth::check()) {
             $user = Auth::user();
             $this->email = $user->email;
-            $this->shipping_name = $user->name;
+            $this->billing['full_name'] = $user->name;
             return;
         }
     }
 
+    public function updatedSameAsBilling()
+    {
+        if ($this->sameAsBilling) {
+            $this->shipping = $this->billing;
+        } 
+    }
 
     public function placeOrder()
     {
-        $this->validate([
-            'shipping_name' => 'required|string',
-            'shipping_address' => 'required|string',
-            'shipping_city' => 'required|string',
-            'shipping_zip' => 'required|string',
-            'shipping_country' => 'required|string',
-            'email' => Auth::check() ? 'nullable' : 'required|email',
-        ]);
+        $rules = [
+            'billing.full_name' => 'required',
+            'billing.street' => 'required',
+            'billing.city' => 'required',
+            'billing.state' => 'required',
+            'billing.postal_code' => 'required',
+            'billing.country' => 'required',
+        ];
+
+        if (!$this->sameAsBilling) {
+            $rules = array_merge($rules, [
+                'shipping.full_name' => 'required',
+                'shipping.street' => 'required',
+                'shipping.city' => 'required',
+                'shipping.state' => 'required',
+                'shipping.postal_code' => 'required',
+                'shipping.country' => 'required',
+            ]);
+        }
+
+        $this->validate($rules);
 
     $cart = $this->cartService->getCartItems();
 

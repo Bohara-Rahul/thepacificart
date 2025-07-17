@@ -8,6 +8,22 @@ use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class Product extends Model
 {
+
+    protected static function booted()
+    {
+        static::deleting(function ($product) {
+            // Delete photo from DB
+            $product->photos()->each(function ($photo) {
+                // Delete photos from uploads folder
+                if ($photo->path && file_exists(public_path('uploads/' . $photo->path))) {
+                    unlink(public_path('uploads/' . $photo->path));
+                }
+
+                $photo->delete();
+            });
+        });
+    }
+
     use HasTrixRichText;
     
     public function scopeSearch($query, $searchTerm)

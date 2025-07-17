@@ -133,6 +133,10 @@ textarea {
     @apply block w-full mt-2 mb-4 p-2 text-black;
 }
 
+input {
+    @apply border border-gray-300;
+}
+
 /* custom classes */
 .container {
     @apply max-w-screen-2xl mx-auto px-12;
@@ -145,31 +149,12 @@ textarea {
     justify-content: center;
 }
 
-.header {
-    position: relative;
-    height: 70vh;
-    top: 0;
-    right: 0;
-    left: 0;
-}
-
-.header video {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
 .navigation-container {
     position: relative;
     transition: all 0.3s ease-in-out;
     z-index: 10;
-    background: #00313E;
-    color: #002c29;
+    background-image: linear-gradient(to right, #1c2b38, #2e3e4f);
+    color: #d1d5db;
 }
 
 .navigation-container.fixed {
@@ -182,6 +167,12 @@ textarea {
 
 .navbar {
     @apply container flex justify-between items-center text-2xl text-gray-300 transition duration-300 ease-in p-0 h-[80px];
+}
+
+@media (max-width: 950px) {
+    .navbar ul {
+        display: none;
+    }
 }
 
 .hero {
@@ -217,7 +208,6 @@ textarea {
 }
 
 .card {
-    background-color: #e0e0e0;
     padding: 10px;
     color: black;
     border-radius: 10px;
@@ -225,34 +215,12 @@ textarea {
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
     overflow: hidden;
-    transition: color 0.3s ease-in-out;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #3d6571;
-    transition: top 0.3s ease-in-out;
-    z-index: 0;
-}
-
-.card:hover::before {
-    top: 0;
+    transition: 0.5s ease-in-out;
 }
 
 .card:hover {
-    color: #f0f0f0;
-}
-
-.card span {
-    position: relative;
-    z-index: 1;
+    background-color: #e5e7eb;
 }
 
 /* .left-navbar {
@@ -390,7 +358,7 @@ textarea {
 .product-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .image-container {
@@ -452,6 +420,6 @@ textarea {
 }
 
 .footer {
-    @apply bg-[#0a3341] text-gray-300;
-    @apply bg-[#00313E] text-[#fff];
+    background-image: linear-gradient(to right, #1c2b38, #2e3e4f);
+    color: #d1d5db;
 }

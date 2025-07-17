@@ -2,58 +2,66 @@
 
 namespace App\Livewire;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Artist;
+use App\Models\Category;
 use Livewire\Component;
-use Livewire\withPagination;
+use Livewire\WithPagination;
+use Livewire\Attributes\On;
+use Illuminate\Support\Str;
 
 class ArtList extends Component
 {
+    use WithPagination;
 
-    use withPagination;
+    public $category = '';
+    public $artist = '';
+    public $orientation = '';
+    public $location = '';
 
-    public $results;
-    public $searchTerm = '';
-    public $selectedPrice = '';
-    public $selectedCategories = [];
-
-    // Function to update category when the user selects one
-    public function updatedSelectedCategory($value)
+    #[On('apply-filters')]
+    public function filter_arts($filters)
     {
-        $this->resetPage(); // Reset pagination when category changes
+        $this->category = $filters['category'];
+        $this->location = $filters['location'];
+        $this->artist = $filters['artist'];
+        $this->orientation = $filters['orientation'];
     }
 
-    // Resets all properties of form
-    public function resetForm()
-    {
-        $this->reset();
-    }
-    
     public function render()
-    {        
-        $categories = Category::all();
+    {
+        $query = Product::query()->latest();
 
-        $query = Product::query();
-
-        if ($this->searchTerm == '') {
-            if (count($this->selectedCategories)) {
-                $query->when(count($this->selectedCategories), function ($subQuery) {
-                    $subQuery->whereIn('category_id', $this->selectedCategories);
-                })->get();
-            } else {
-                $query->get();
-            }
-        } else {
-            $query->search($this->searchTerm);
+        if (!empty($this->category)) {
+            $query->where('category_id', $this->category);
         }
 
-        // if ($this->selectedPrice) {
-            
+        // if (!empty($this->priceRange) && Str::contains($this->priceRange, '-')) {
+        //     [$min, $max] = explode('-', $this->priceRange);
+        //     $query->whereBetween('price', [(float)$min, (float)$max]);
         // }
 
+        if (!empty($this->artist)) {
+            $query->where('artist_id', $this->artist);
+        }
+
+        if (!empty($this->location)) {
+            $query->where('location', $this->location);
+        }
+
+        if (!empty($this->orientation)) {
+            $query->where('orientation', $this->orientation);
+        }
+
+        $arts = $query->paginate(16);
+
         return view('livewire.art-list', [
-            'arts' => $query->paginate(15),
-            'categories' => $categories,
+            'arts' => $arts,
+            'artists' => \App\Models\Artist::pluck('name', 'id'),
+            'locations' => \App\Models\Artist::distinct()->pluck('location'),
+            'categories' => \App\Models\Category::pluck('title', 'id'),
         ]);
     }
 }
+
+

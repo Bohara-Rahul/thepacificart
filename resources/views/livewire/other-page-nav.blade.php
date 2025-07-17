@@ -1,5 +1,5 @@
- <div class="navigation-container fixed bg-[#13292a]" id="nav-container">
-     <nav class="navbar" id="nav-bar">
+  <header id="navbar" class="bg-[#0a3341] fixed top-0 left-0 w-full shadow z-50 transition-transform duration-300">
+      <nav class="navbar">
          <a href="/">
              <img src="{{ asset('logo_3.png') }}" alt="logo" style="height: 100px; object-fit: cover;" />
          </a>
@@ -46,4 +46,6 @@
 
          </ul>
      </nav>
- </div>
+  </header>
+
+

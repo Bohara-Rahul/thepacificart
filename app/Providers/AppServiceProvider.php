@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +24,17 @@ class AppServiceProvider extends ServiceProvider
         Gate::define("visitAdminPages", function($user) {
             return $user->isAdmin === 1;
         });
+        app()->setLocale($this->getLocaleFromDomain());
+    }
+
+    public function getLocaleFromDomain()
+    {
+        $host = request()->getHost();
+
+        if (Str::endsWith($host, '.co')) {
+            return 'co';
+        }
+
+        return 'en';
     }
 }

@@ -20,15 +20,14 @@
     </main>
 
     @component('front.components.footer')
-        
     @endcomponent
 
     <script>
-        @if(session('success'))
+        @if (session('success'))
             toastr.success("{{ session('success') }}");
         @endif
-    
-        @if(session('error'))
+
+        @if (session('error'))
             toastr.error("{{ session('error') }}");
         @endif
     </script>

@@ -95,7 +95,12 @@ class FrontController extends Controller
 
     public function wishlist()
     {
-        return view("front.wishlist");
+        if (Auth::check()) {
+            $wishlist_items = Wishlist::where('user_id', Auth::user()->id)->get();
+            return view("front.wishlist", compact('wishlist_items'));
+        }
+
+        return back()->with('failure', 'Please login to see the wishlist');
     }
 
     public function add_to_wishlist($product_id)

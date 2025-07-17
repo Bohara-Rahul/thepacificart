@@ -1,7 +1,8 @@
 @extends('layouts.front')
 @section('title', 'Homepage - The Pacific Art Marketplace')
-@include('front.components.HeaderVideo')
+
 @section('main_content')
+@include('front.components.HeaderImage')
     @include('front.components.hero-section')
 
     <section class="bg-slate-100 text-black p-5">
@@ -26,7 +27,7 @@
 
     <section class="container mt-28">
         <h2 class="section-heading mb-10">Best Sellers</h2>
-        <article class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-2">
+        <article class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-2">
             @foreach ($best_seller_arts as $best_seller_art)
                 <x-card>
                     <section class="flex flex-col justify-start text-black p-5">
@@ -44,8 +45,7 @@
                         <article class="flex justify-between items-center mt-5">
                             @if ($best_seller_art->wishlist()->where('user_id', Auth::id())->exists())
                                 <a href="{{ route('front.remove_from_wishlist', $best_seller_art->id) }}"
-                                class="btn btn-accent"
-                                >
+                                    class="btn btn-accent">
                                     Remove from Wishlist
                                 </a>
                             @else

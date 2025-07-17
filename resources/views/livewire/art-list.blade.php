@@ -1,125 +1,74 @@
-<section class="container mt-40">
-    <h2 class="section-heading mb-10">Gallery</h2>
-    <div class="flex">
-        <aside class="mb-5">
-            <input type="text" placeholder="Search arts here...." class="border border-gray-300 rounded-md"
-                wire:model.live.debounce.300ms="searchTerm" />
-            <h3>Filters</h3>
-            <hr />
-            <h5 class="font-extrabold mt-2 mb-2">Select Caetgory:</h5>
-            @foreach ($categories as $category)
-                <div wire:key="{{ $category->id }}" class="grid grid-cols-2 place-content-center place-items-start">
-                    <label class="text-left text-gray-800">{{ $category->title }}</label>
-                    <input wire:model="selectedCategories" type="checkbox" value="{{ $category->id }}" />
-                </div>
-            @endforeach
-            <h5 class="font-extrabold mb-2">Choose Price:</h5>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">100$ ≤ Price ≤ 1000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price between 100 and 1000" />
-            </div>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">1001$ ≤ Price ≤ 2000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price between 1001 and 2000" />
-            </div>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">2001$ ≤ Price ≤ 3000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price between 2001 and 3000" />
-            </div>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">3001$ ≤ Price ≤ 4000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price between 3001 and 4000" />
-            </div>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">4001$ ≤ Price ≤ 5000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price between 4001 and 5000" />
-            </div>
-            <div class="grid grid-cols-3 place-content-center place-items-start">
-                <label class="col-span-2">Price > 5000$</label>
-                <input wire:model="selectedPrice" type="radio" value="price above 5000" />
-            </div>
-            <button wire:click="$refresh" class="btn btn-primary">Apply Filter</button>
-            <button wire:click="resetForm" class="text-black hover:underline">Reset Filter</button>
-        </aside>
-        <section class="flex-1">
-            @if (count($arts))
-                <article class="grid-container gap-2 justify-center">
-                    @foreach ($arts as $art)
-                        <x-card>
-                            <section class="flex flex-col justify-start text-black p-5 w-[360px]">
-                                <a href="{{ route('product_detail', $art->slug) }}">
-                                    <header class="flex justify-between items-center">
-                                        <h3 class="text-2xl text-[#13292a] capitalize font-bold">
-                                            {{ $art->title }}
-                                        </h3>
-                                    </header>
+<div class="container mx-auto px-4 sm:px-6 lg:px-12 mt-[450px]">
+  <!-- Masonry Grid Container -->
+  <div id="arts-masonry" class="masonry-container">
+    @foreach ($arts as $art)
+    <div class="masonry-item mb-6">
+      <a href="{{ route('product_detail', $art->slug) }}">
+        <section class="flex flex-col justify-start text-black p-3 border border-gray-300 rounded-xl shadow-sm bg-white w-full transition-all duration-300 transform">
+          <!-- Image -->
+          <article class="w-full bg-gray-50 rounded-md overflow-hidden">
+            <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="art image"
+                 class="w-full h-auto object-cover object-center rounded-md transition-transform duration-300 ease-in-out hover:scale-105" />
+          </article>
 
+          <!-- Title -->
+          <h3 class="text-[#13292a] capitalize font-bold mt-2 mb-0">
+              {{ $art->title }}
+          </h3>
 
-                                    <article class="shadow-lg w-80 h-[340px]">
-                                        <img src="{{ asset('uploads/' . $art->primary_image) }}" alt="art image"
-                                            class="product-image rounded-md object-cover" />
-                                    </article>
-                                    <p class="text-justify">{!! substr($art->description, 0, 150) !!}</p>
-                                    <aside class="flex flex-wrap justify-between">
-                                        <p>Size: {{ $art->size }}</p>
-                                        <p>Price: ${{ $art->price }}</p>
-                                    </aside>
-                                </a>
+          <!-- Description -->
+          <p class="prose mt-1">{!! Str::words($art->description, 20, '...') !!}</p>
 
-                                <article class="flex justify-between items-center mt-5 mb-5">
-                                    @if ($art->wishlist()->where('user_id', Auth::id())->exists())
-                                        <a href="{{ route('front.remove_from_wishlist', $art->id) }}"
-                                            class="btn btn-accent">
-                                            Remove from Wishlist
-                                        </a>
-                                    @else
-                                        <a href="{{ route('front.add_to_wishlist', $art->id) }}" class="btn btn-accent">
-                                            Add to Wishlist
-                                        </a>
-                                    @endif
+          <!-- Size and Price -->
+          <aside class="flex flex-wrap justify-between text-xs mt-2">
+            <p>Size: {{ $art->size }}</p>
+            <p>Price: ${{ $art->price }}</p>
+          </aside>
 
-                                    @livewire('add-to-cart', ['productId' => $art->id])
-                                </article>
-
-                                <a class="btn btn-primary text-center mb-5"
-                                    href="{{ route('product_detail', $art->slug) }}">
-                                    Explore the Masterpiece
-                                </a>
-
-                            </section>
-
-                        </x-card>
-                        </a>
-                    @endforeach
+          <!-- Explore Button -->
+          <span class="btn btn-primary text-center block mt-2 text-xs">
+            Explore the Masterpiece
+          </span>
         </section>
+      </a>
+
+      <!-- Wishlist / Cart Buttons BELOW the card -->
+      <div class="flex justify-between items-center gap-2 mt-6 px-3">
+          @if ($art->wishlist()->where('user_id', Auth::id())->exists())
+            <a href="{{ route('front.remove_from_wishlist', $art->id) }}" class="btn btn-accent text-xs w-1/2 text-center">
+              <i class="fas fa-trash mr-2"></i>Remove from Wishlist
+            </a>
+          @else
+            <a href="{{ route('front.add_to_wishlist', $art->id) }}" class="btn btn-accent text-xs w-1/2 text-center">
+              <i class="far fa-heart mr-2"></i>Add to Wishlist
+            </a>
+          @endif
+
+        <div class="w-1/2 text-center text-xs">
+          @livewire('add-to-cart', ['productId' => $art->id])
+        </div>
+      </div>
     </div>
-    <div class="pagination mt-4">
-        @if ($arts->onFirstPage())
-            <span class="px-3 py-2 text-gray-400 cursor-not-allowed">
-                <i class="fa-solid fa-arrow-left"></i>
-            </span>
-        @else
-            <a href="{{ $arts->previousPageUrl() }}" class="px-3 py-2 text-white rounded"><i
-                    class="fa-solid fa-arrow-left"></i></a>
-        @endif
-        @foreach ($arts->links()->elements[0] as $page => $url)
-            @if ($page == $arts->currentPage())
-                <span class="active">{{ $page }}</span>
-            @else
-                <a href="{{ $url }}">{{ $page }}</a>
-            @endif
-        @endforeach
-        @if ($arts->hasMorePages())
-            <a href="{{ $arts->nextPageUrl() }}" class="px-3 py-2  text-white rounded"><i
-                    class="fa-solid fa-arrow-right"></i></a>
-        @else
-            <span class="px-3 py-2 text-gray-400 cursor-not-allowed"><i class="fa-solid fa-arrow-right"></i></span>
-        @endif
+    @endforeach
+  </div>
+</div>
 
-    </div>
-@else
-    <h2 class="text-center">Your filters do not match any arts</h2>
-    @endif
-
-
-</section>
+ <!--Macy.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/macy@2/dist/macy.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    Macy({
+      container: '#arts-masonry',
+      trueOrder: true,
+      waitForImages: true,
+      margin: 24,
+      columns: 4,
+      breakAt: {
+        1200: 4,
+        992: 3,
+        768: 2,
+        480: 1
+      }
+    });
+  });
+</script>
